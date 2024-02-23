@@ -23,7 +23,7 @@
 <html lang="en" class="classic">
     <head>
         <meta charset="UTF-8">
-        <title>CyberChef</title>
+        <title>CTFx</title>
 
         <meta name="copyright" content="Crown Copyright 2016" />
         <meta name="description" content="The Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis" />
@@ -43,27 +43,7 @@
 
             // Define loading messages
             var loadingMsgs = [
-                "Proving P = NP...",
-                "Computing 6 x 9...",
-                "Mining bitcoin...",
-                "Dividing by 0...",
-                "Initialising Skynet...",
-                "[REDACTED]",
-                "Downloading more RAM...",
-                "Ordering 1s and 0s...",
-                "Navigating neural network...",
-                "Importing machine learning...",
-                "Issuing Alice and Bob one-time pads...",
-                "Mining bitcoin cash...",
-                "Generating key material by trying to escape vim...",
-                "for i in range(additional): Pylon()",
-                "(creating unresolved tension...",
-                "Symlinking emacs and vim to ed...",
-                "Training branch predictor...",
-                "Timing cache hits...",
-                "Speculatively executing recipes...",
-                "Adding LLM hallucinations...",
-                "Decompressing malware..."
+                "正在加载..."
             ];
 
             // Shuffle array using Durstenfeld algorithm
@@ -117,16 +97,16 @@
                     (e.colno ? "\nColumn: " + e.colno : "") +
                     (e.error ? "\nError: " + e.error : "") +
                     "\nUser-Agent: " + navigator.userAgent +
-                    "\nCyberChef version: <%= htmlWebpackPlugin.options.version %>";
+                    "\nCTFx version: <%= htmlWebpackPlugin.options.version %>";
 
                 clearInterval(window.loadingMsgsInt);
                 document.getElementById("preloader").remove();
                 document.getElementById("preloader-msg").remove();
                 document.getElementById("preloader-error").innerHTML =
                     "CyberChef encountered an error while loading.<br><br>" +
-                    "The following browser versions are supported:" +
+                    "仅支持以下版本的浏览器：" +
                     "<ul><li>Google Chrome 50+</li><li>Mozilla Firefox 38+</li></ul>" +
-                    "Your user agent is:<br>" + escapeHtml(navigator.userAgent) + "<br><br>" +
+                    "UserAgent :<br>" + escapeHtml(navigator.userAgent) + "<br><br>" +
                     "If your browser is supported, please <a href='https://github.com/gchq/CyberChef/issues/new/choose'>" +
                     "raise an issue</a> including the following details:<br><br>" +
                     "<pre>" + escapeHtml(msg) + "</pre>";
@@ -142,37 +122,24 @@
             <div id="preloader-error" class="loading-error"></div>
         </div>
         <!-- End preloader overlay -->
-        <button type="button" class="btn btn-warning bmd-btn-icon" id="edit-favourites" data-toggle="tooltip" title="Edit favourites">
+        <button type="button" class="btn btn-warning bmd-btn-icon" id="edit-favourites" data-toggle="tooltip" title="编辑收藏">
             <i class="material-icons">star</i>
         </button>
         <div id="content-wrapper">
-            <div id="banner" class="row">
-                <div class="col" style="text-align: left; padding-left: 10px;">
-                    <a href="#" data-toggle="modal" data-target="#download-modal" data-help-title="Downloading CyberChef" data-help="<p>CyberChef can be downloaded to run locally or hosted within your own network. It has no server-side component so all that is required is that the ZIP file is uncompressed and the files are accessible.</p><p>As a user, it is worth noting that unofficial versions of CyberChef could have been modified to introduce Input and/or Recipe exfiltration. We recommend always using the official, open source, up-to-date version of CyberChef hosted at <a href='https://gchq.github.io/CyberChef'>https://gchq.github.io/CyberChef</a> if accessible.</p><p>The Network tab in your browser's Developer console (F12) can be used to inspect the network requests made by a website. This can confirm that no data is uploaded when a CyberChef recipe is baked.</p>">Download CyberChef <i class="material-icons">file_download</i></a>
-                </div>
-                <div class="col-md-6" id="notice-wrapper">
-                    <span id="notice">
-                        <script type="text/javascript">
-                            // Must be text/javascript rather than application/javascript otherwise IE won't recognise it...
-                            if (navigator.userAgent && navigator.userAgent.match(/Trident/)) {
-                                document.getElementById("notice").innerHTML += "Internet Explorer is not supported, please use Firefox or Chrome instead";
-                                alert("Internet Explorer is not supported, please use Firefox or Chrome instead");
-                            }
-                        </script>
-                        <noscript>JavaScript is not enabled. Good luck.</noscript>
-                    </span>
-                </div>
-                <div class="col" style="text-align: right; padding-right: 0;">
-                    <a href="#" id="options" data-help-title="Options and Settings" data-help="Configurable options to change how CyberChef behaves. These settings are stored in your browser's local storage, meaning they will persist between sessions that use the same browser profile.">Options <i class="material-icons">settings</i></a>
-                    <a href="#" id="support" data-toggle="modal" data-target="#support-modal" data-help-title="About / Support" data-help="This pane provides information about the CyberChef web app, how to use some of the features, and how to raise bug reports.">About / Support <i class="material-icons">help</i></a>
-                </div>
-            </div>
             <div id="workspace-wrapper">
                 <div id="operations" class="split split-horizontal no-select">
                     <div class="title no-select" data-help-title="Operations list" data-help="<p>The Operations list contains all the operations in CyberChef arranged into categories. Some operations may be present in multiple categories. You can search for operations using the search box.</p><p>To use an operation, either double click it, or drag it into the Recipe pane. You will then be able to configure its arguments (or 'Ingredients' in CyberChef terminology).</p>">
                         Operations
+                        <span class="pane-controls">
+                            <button type="button" class="btn btn-primary bmd-btn-icon" id="options" data-toggle="tooltip" title="Options and Settings" data-help-title="Options and Settings" data-help="Configurable options to change how CyberChef behaves. These settings are stored in your browser's local storage, meaning they will persist between sessions that use the same browser profile.">
+                                <i class="material-icons">settings</i>
+                            </button>
+                            <button type="button" class="btn btn-primary bmd-btn-icon" id="support" data-toggle="modal" data-target="#support-modal" title="About / Support" data-help-title="About / Support" data-help="This pane provides information about the CyberChef web app, how to use some of the features, and how to raise bug reports.">
+                                <i class="material-icons">help</i>
+                            </button>
+                        </span>
                     </div>
-                    <input id="search" type="search" class="form-control" placeholder="Search..." autocomplete="off" tabindex="2" data-help-title="Searching for operations" data-help="<p>Use the search box to find useful operations.</p><p>Both operation names and descriptions are queried using a fuzzy matching algorithm.</p>">
+                    <input id="search" type="search" class="form-control" placeholder="搜索..." autocomplete="off" tabindex="2" data-help-title="Searching for operations" data-help="<p>Use the search box to find useful operations.</p><p>Both operation names and descriptions are queried using a fuzzy matching algorithm.</p>">
                     <ul id="search-results" class="op-list"></ul>
                     <div id="categories" class="panel-group no-select"></div>
                 </div>
@@ -202,14 +169,14 @@
 
                             <button type="button" class="mx-2 btn btn-lg btn-success btn-raised btn-block" id="bake" data-help-title="Baking" data-help="<p>Baking causes CyberChef to run the Recipe against your data. This involves three steps:</p><ol><li>The data in the Input is encoded into bytes using the character encoding selected in the Input status bar.</li><li>The data is run through each of the operations in the Recipe in turn with the output of one operation being fed into the next operation as its input.</li><li>The outcome of the final operation in the Recipe is decoded into Output text using the character encoding selected in the Output status bar.</li></ol><p>If there are multiple Inputs, the Bake button causes every Input to be baked simultaneously.</p>">
                                 <img aria-hidden="true" src="<%- require('../static/images/cook_male-32x32.png') %>" alt="Chef Icon"/>
-                                <span>Bake!</span>
+                                <span>GO!</span>
                             </button>
 
                             <div class="form-group" style="display: contents;">
                                 <div class="mx-1 checkbox" data-help-title="Auto-bake" data-help="<p>When Auto-bake is turned on, CyberChef will bake the Input using the Recipe whenever anything in the Input or Recipe changes.</p>This includes:<ul><li>Adding or removing operations</li><li>Modifying operation arguments</li><li>Editing the Input</li><li>Changing the Input character encoding</li></ul><p>If there are multiple inputs, only the currently active tab will be baked when Auto-bake triggers. You can bake all inputs manually using the Bake button.</p>">
                                     <label id="auto-bake-label">
                                         <input type="checkbox" checked="checked" id="auto-bake">
-                                        <br>Auto Bake
+                                        <br>Auto
                                     </label>
                                 </div>
                             </div>
@@ -430,13 +397,13 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content" data-help-proxy="#options">
                     <div class="modal-header">
-                        <h5 class="modal-title">Options</h5>
+                        <h5 class="modal-title">设置</h5>
                     </div>
                     <div class="modal-body" id="options-body">
-                        <p style="font-weight: bold">Please note that these options will persist between sessions.</p>
+                        <p style="font-weight: bold">注意：以下设置在你清理浏览器缓存之前会一直生效。</p>
 
                         <div class="form-group option-item">
-                            <label for="theme" class="bmd-label-floating"> Theme (only supported in modern browsers)</label>
+                            <label for="theme" class="bmd-label-floating">主题</label>
                             <select class="form-control" option="theme" id="theme">
                                 <option value="classic">Classic</option>
                                 <option value="dark">Dark</option>
@@ -447,7 +414,7 @@
                         </div>
 
                         <div class="form-group option-item">
-                            <label for="logLevel" class="bmd-label-floating">Console logging level</label>
+                            <label for="logLevel" class="bmd-label-floating">日志输出级别</label>
                             <select class="form-control" option="logLevel" id="logLevel">
                                 <option value="silent">Silent</option>
                                 <option value="error">Error</option>
@@ -461,67 +428,74 @@
                         <div class="checkbox option-item">
                             <label for="updateUrl">
                                 <input type="checkbox" option="updateUrl" id="updateUrl" checked>
-                                Update the URL when the input or recipe changes
+                                流程或输入改变时自动更新URL
                             </label>
                         </div>
 
                         <div class="checkbox option-item">
                             <label for="showHighlighter">
                                 <input type="checkbox" option="showHighlighter" id="showHighlighter" checked>
-                                Highlight selected bytes in output and input (when possible)
+                                高亮显示输入输出框中被选中的字节
+                            </label>
+                        </div>
+
+                        <div class="checkbox option-item">
+                            <label for="outputUTF8">
+                                <input type="checkbox" option="outputUTF8" id="outputUTF8">
+                                输出框默认使用UTF-8编码
                             </label>
                         </div>
 
                         <div class="checkbox option-item">
                             <label for="wordWrap">
                                 <input type="checkbox" option="wordWrap" id="wordWrap" checked>
-                                Word wrap the input and output
+                                对输入输出自动换行
                             </label>
                         </div>
 
                         <div class="checkbox option-item mb-0">
                             <label for="showErrors">
                                 <input type="checkbox" option="showErrors" id="showErrors" checked>
-                                Show errors from operations (recommended)
+                                显示操作运行时的报错信息（推荐）
                             </label>
                         </div>
 
                         <div class="form-group option-item">
-                            <label for="errorTimeout" class="bmd-label-floating">Operation error timeout in ms (0 for never)</label>
+                            <label for="errorTimeout" class="bmd-label-floating">操作运行错误超时毫秒数（0为不限制）</label>
                             <input type="number" class="form-control" option="errorTimeout" id="errorTimeout">
                         </div>
 
                         <div class="checkbox option-item">
                             <label for="useMetaKey">
                                 <input type="checkbox" option="useMetaKey" id="useMetaKey">
-                                Use meta key for keybindings (Windows ⊞/Command ⌘)
+                                使用系统功能键 (Windows ⊞/Command ⌘)
                             </label>
                         </div>
 
                         <div class="checkbox option-item">
                             <label for="autoMagic">
                                 <input type="checkbox" option="autoMagic" id="autoMagic">
-                                Attempt to detect encoded data automagically
+                                尝试自动解码输入
                             </label>
                         </div>
 
                         <div class="checkbox option-item">
                             <label for="imagePreview">
                                 <input type="checkbox" option="imagePreview" id="imagePreview">
-                                Render a preview of the input if it's detected to be an image
+                                如果检测到输入的内容是图像格式，显示图像
                             </label>
                         </div>
 
                         <div class="checkbox option-item">
                             <label for="syncTabs">
                                 <input type="checkbox" option="syncTabs" id="syncTabs">
-                                Keep the current tab in sync between the input and output
+                                同步选中输入输出标签
                             </label>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" id="reset-options">Reset options to default</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" id="reset-options">恢复默认</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
                     </div>
                 </div>
             </div>
@@ -531,13 +505,13 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content" data-help-proxy="a[data-target='#catFavourites']">
                     <div class="modal-header">
-                        <h5 class="modal-title">Edit Favourites</h5>
+                        <h5 class="modal-title">编辑收藏工具</h5>
                     </div>
                     <div class="modal-body" id="favourites-body">
                         <ul>
-                            <li><span style="font-weight: bold">To add:</span> drag the operation over the favourites category and drop it</li>
-                            <li><span style="font-weight: bold">To reorder:</span> drag up and down in the list below</li>
-                            <li><span style="font-weight: bold">To remove:</span> hit the delete button or drag out of the list below</li>
+                            <li><span style="font-weight: bold">添加:</span> 把操作直接拖动到收藏分类上面</li>
+                            <li><span style="font-weight: bold">调整:</span> 直接在列表里上下拖动调整位置</li>
+                            <li><span style="font-weight: bold">移除:</span> 点击删除按钮或者直接拖动出去</li>
                         </ul>
                         <br>
                         <ul id="edit-favourites-list" class="op-list"></ul>
@@ -545,9 +519,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="reset-favourites">Reset favourites to default</button>
-                        <button type="button" class="btn btn-success" data-dismiss="modal" id="save-favourites">Save</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="reset-favourites">恢复默认</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal" id="save-favourites">保存</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
                     </div>
                 </div>
             </div>
@@ -579,17 +553,17 @@
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link" href="#report-bug" aria-controls="messages" role="tab" data-toggle="tab">
-                                    Report a bug
+                                    上报BUG
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link" href="#about" aria-controls="messages" role="tab" data-toggle="tab">
-                                    About
+                                    关于
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link" href="#keybindings" aria-controls="messages" role="tab" data-toggle="tab">
-                                    Keybindings
+                                    快捷键
                                 </a>
                             </li>
                         </ul>
@@ -688,7 +662,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
                     </div>
                     <a href="https://github.com/gchq/CyberChef">
                         <img aria-hidden="true" style="position: absolute; top: 0; right: 0; border: 0;" src="<%- require('../static/images/fork_me.png') %>" alt="Fork me on GitHub">

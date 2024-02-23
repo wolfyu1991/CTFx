@@ -204,7 +204,7 @@ class Recipe  {
                 log.debug(`Executing operation '${op.name}'`);
 
                 if (isWorkerEnvironment()) {
-                    self.sendStatusMessage(`Baking... (${i+1}/${this.opList.length})`);
+                    self.sendStatusMessage(`Running... (${i+1}/${this.opList.length})`);
                     self.sendProgressMessage(i + 1, this.opList.length);
                 }
 
