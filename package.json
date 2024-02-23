@@ -171,6 +171,7 @@
     "ssdeep.js": "0.0.3",
     "stream-browserify": "^3.0.0",
     "tesseract.js": "5.0.4",
+    "toastr": "^2.1.4",
     "ua-parser-js": "^1.0.37",
     "unorm": "^1.6.0",
     "utf8": "^3.0.0",

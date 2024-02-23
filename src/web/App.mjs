@@ -12,6 +12,8 @@ import HTMLOperation from "./HTMLOperation.mjs";
 import Split from "split.js";
 import moment from "moment-timezone";
 import cptable from "codepage";
+import toastr from "toastr";
+import "../../node_modules/toastr/build/toastr.min.css";
 
 
 /**
@@ -109,6 +111,24 @@ class App {
 
         this.manager.input.calcMaxTabs();
         this.manager.output.calcMaxTabs();
+
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-bottom-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
     }
 
 
@@ -283,12 +303,12 @@ class App {
         // Add edit button to first category (Favourites)
         const favCat = document.querySelector("#categories a");
         favCat.appendChild(document.getElementById("edit-favourites"));
-        favCat.setAttribute("data-help-title", "Favourite operations");
-        favCat.setAttribute("data-help", `<p>This category displays your favourite operations.</p>
+        favCat.setAttribute("data-help-title", "收藏工具");
+        favCat.setAttribute("data-help", `<p>此分类展示之前收藏的工具。</p>
         <ul>
-            <li><b>To add:</b> drag an operation over the Favourites category</li>
-            <li><b>To reorder:</b> Click on the 'Edit favourites' button and drag operations up and down in the list provided</li>
-            <li><b>To remove:</b> Click on the 'Edit favourites' button and hit the delete button next to the operation you want to remove</li>
+            <li><b>添加:</b> 把操作直接拖动到收藏分类上面</li>
+            <li><b>调整:</b> 直接在列表里上下拖动调整位置</li>
+            <li><b>移除:</b> 点击删除按钮或者直接拖动出去</li>
         </ul>`);
     }
 
@@ -385,8 +405,8 @@ class App {
             if (favourites[i] in this.operations) {
                 validFavs.push(favourites[i]);
             } else {
-                this.alert(`The operation "${Utils.escapeHtml(favourites[i])}" is no longer available. ` +
-                    "It has been removed from your favourites.");
+                this.alert(`未找到操作 "${Utils.escapeHtml(favourites[i])}"。` +
+                    "已将其从收藏列表中移除。");
             }
         }
         return validFavs;
@@ -401,7 +421,7 @@ class App {
     saveFavourites(favourites) {
         if (!this.isLocalStorageAvailable()) {
             this.alert(
-                "Your security settings do not allow access to local storage so your favourites cannot be saved.",
+                "未授予本地存储权限，无法保存收藏列表。",
                 5000
             );
             return false;
@@ -432,7 +452,7 @@ class App {
         const favourites = JSON.parse(localStorage.favourites);
 
         if (favourites.indexOf(name) >= 0) {
-            this.alert(`'${name}' is already in your favourites`, 3000);
+            this.alert(`'${name}' 已经存在于收藏列表中`, 3000);
             return;
         }
 
@@ -708,14 +728,17 @@ class App {
         log.info("[" + time.toLocaleString() + "] " + str);
         if (silent) return;
 
-        this.currentSnackbar = $.snackbar({
-            content: str,
-            timeout: timeout,
-            htmlAllowed: true,
-            onClose: () => {
-                this.currentSnackbar.remove();
-            }
-        });
+        toastr.options.timeOut = timeout;
+        toastr.info(str);
+
+        // this.currentSnackbar = $.snackbar({
+        //     content: str,
+        //     timeout: timeout,
+        //     htmlAllowed: true,
+        //     onClose: () => {
+        //         this.currentSnackbar.remove();
+        //     }
+        // });
     }
 
 
