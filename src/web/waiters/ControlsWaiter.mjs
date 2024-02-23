@@ -172,7 +172,7 @@ class ControlsWaiter {
         try {
             const recipeConfig = Utils.parseRecipeConfig(e.target.value);
             this.initialiseSaveLink(recipeConfig);
-        } catch (err) {}
+        } catch (err) { }
     }
 
 
@@ -235,7 +235,7 @@ class ControlsWaiter {
         }
 
         const recipeName = Utils.escapeHtml(document.getElementById("save-name").value);
-        const recipeStr  = document.querySelector("#save-texts .tab-pane.active textarea").value;
+        const recipeStr = document.querySelector("#save-texts .tab-pane.active textarea").value;
 
         if (!recipeName) {
             this.app.alert("Please enter a recipe name", 3000);
@@ -354,7 +354,7 @@ class ControlsWaiter {
             icon.setAttribute("hide-args", "true");
             icon.setAttribute("data-original-title", "Show arguments");
             icon.children[0].innerText = "keyboard_arrow_down";
-            Array.from(document.getElementsByClassName("hide-args-icon")).forEach(function(item){
+            Array.from(document.getElementsByClassName("hide-args-icon")).forEach(function (item) {
                 item.setAttribute("hide-args", "true");
                 item.innerText = "keyboard_arrow_down";
                 item.classList.add("hide-args-selected");
@@ -364,11 +364,11 @@ class ControlsWaiter {
             icon.setAttribute("hide-args", "false");
             icon.setAttribute("data-original-title", "Hide arguments");
             icon.children[0].innerText = "keyboard_arrow_up";
-            Array.from(document.getElementsByClassName("hide-args-icon")).forEach(function(item){
+            Array.from(document.getElementsByClassName("hide-args-icon")).forEach(function (item) {
                 item.setAttribute("hide-args", "false");
                 item.innerText = "keyboard_arrow_up";
                 item.classList.remove("hide-args-selected");
-                item.parentNode.previousElementSibling.style.display = "grid";
+                item.parentNode.previousElementSibling.style.display = "inline-block";
             });
         }
     }
