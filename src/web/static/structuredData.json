@@ -13,7 +13,7 @@
         "@context": "http://schema.org",
         "@type": "WebSite",
         "url": "https://gchq.github.io/CyberChef/",
-        "name": "CyberChef",
+        "name": "CTFx",
         "potentialAction": {
             "@type": "SearchAction",
             "target": "https://gchq.github.io/CyberChef/?op={operation_search_term}",
