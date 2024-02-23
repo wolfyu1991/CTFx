@@ -2,6 +2,8 @@
  * @author h345983745
  * @copyright Crown Copyright 2019
  * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
  */
 import Operation from "../Operation.mjs";
 import OperationError from "../errors/OperationError.mjs";
@@ -20,11 +22,11 @@ class DNSOverHTTPS extends Operation {
         this.name = "DNS over HTTPS";
         this.module = "Default";
         this.description = [
-            "Takes a single domain name and performs a DNS lookup using DNS over HTTPS.",
+            "使用 DNS over HTTPS 对给定域名发起DNS查询。",
             "<br><br>",
-            "By default, <a href='https://developers.cloudflare.com/1.1.1.1/dns-over-https/'>Cloudflare</a> and <a href='https://developers.google.com/speed/public-dns/docs/dns-over-https'>Google</a> DNS over HTTPS services are supported.",
+            "默认情况下，支持 <a href='https://developers.cloudflare.com/1.1.1.1/dns-over-https/'>Cloudflare</a> 和 <a href='https://developers.google.com/speed/public-dns/docs/dns-over-https'>Google</a> 的 DNS over HTTPS 服务。",
             "<br><br>",
-            "Can be used with any service that supports the GET parameters <code>name</code> and <code>type</code>."
+            "可用于支持 GET 请求参数 <code>name</code> 和 <code>type</code> 的任意 DNS over HTTPS 服务器。"
         ].join("\n");
         this.infoURL = "https://wikipedia.org/wiki/DNS_over_HTTPS";
         this.inputType = "string";
@@ -32,7 +34,7 @@ class DNSOverHTTPS extends Operation {
         this.manualBake = true;
         this.args = [
             {
-                name: "Resolver",
+                name: "解析服务器",
                 type: "editableOption",
                 value: [
                     {
@@ -46,7 +48,7 @@ class DNSOverHTTPS extends Operation {
                 ]
             },
             {
-                name: "Request Type",
+                name: "查询类型",
                 type: "option",
                 value: [
                     "A",
@@ -75,12 +77,12 @@ class DNSOverHTTPS extends Operation {
                 ]
             },
             {
-                name: "Answer Data Only",
+                name: "仅显示应答信息",
                 type: "boolean",
                 value: false
             },
             {
-                name: "Disable DNSSEC validation",
+                name: "禁用 DNSSEC 验证",
                 type: "boolean",
                 value: false
             }
@@ -99,8 +101,8 @@ class DNSOverHTTPS extends Operation {
             url = new URL(resolver);
         } catch (error) {
             throw new OperationError(error.toString() +
-            "\n\nThis error could be caused by one of the following:\n" +
-            " - An invalid Resolver URL\n");
+            "\n\n此错误可能由以下原因产生：\n" +
+            " - 无效的解析服务器URL\n");
         }
         const params = {name: input, type: requestType, cd: DNSSEC};
 
@@ -114,7 +116,7 @@ class DNSOverHTTPS extends Operation {
             }
             return data;
         }).catch(e => {
-            throw new OperationError(`Error making request to ${url}\n${e.toString()}`);
+            throw new OperationError(`错误：无法发起请求： ${url}\n${e.toString()}`);
         });
 
     }
