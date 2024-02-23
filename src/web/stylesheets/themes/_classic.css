@@ -37,12 +37,12 @@
     --banner-bg-colour: #dff0d8;
     --banner-url-colour: #1976d2;
 
-    --category-list-font-colour: #1976d2;
+    --category-list-font-colour: #1485EE;
 
     --loader-background-colour: var(--secondary-border-colour);
-    --loader-outer-colour: #3498db;
-    --loader-middle-colour: #e74c3c;
-    --loader-inner-colour: #f9c922;
+    --loader-outer-colour: #1485EE;
+    --loader-middle-colour: #FA5151;
+    --loader-inner-colour: #CB7D2F;
 
 
     /* Operation colours */
@@ -101,7 +101,7 @@
     --btn-default-hover-border-colour: #adadad;
 
     --btn-success-font-colour: #fff;
-    --btn-success-bg-colour: #5cb85c;
+    --btn-success-bg-colour: #07c160;
     --btn-success-border-colour: #4cae4c;
 
     --btn-success-hover-font-colour: #fff;
