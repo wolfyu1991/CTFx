@@ -396,6 +396,9 @@ class OutputWaiter {
         // Remove the output (will only get removed if it already exists)
         this.removeOutput(inputNum);
 
+        // Option to make output use UTF-8 as default for showing Chinese characters
+        const defaultEnc = this.app.options.outputUTF8 ? 65001 : 0;
+
         const newOutput = {
             data: null,
             inputNum: inputNum,
@@ -404,7 +407,7 @@ class OutputWaiter {
             status: "inactive",
             bakeId: -1,
             progress: false,
-            encoding: 0,
+            encoding: defaultEnc,
             eolSequence: "\u000a"
         };
 

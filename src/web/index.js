@@ -51,7 +51,8 @@ function main() {
         logLevel:            "info",
         autoMagic:           true,
         imagePreview:        true,
-        syncTabs:            true
+        syncTabs:            true,
+        outputUTF8:          true
     };
 
     document.removeEventListener("DOMContentLoaded", main, false);
