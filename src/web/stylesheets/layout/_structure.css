@@ -45,11 +45,14 @@ div#output {
     position: relative;
 }
 
-#operations.split {
+.categories-list {
     overflow: auto;
+    width: 100%;
+    height: calc(100% - 88px);
 }
 
-.split.split-horizontal, .gutter.gutter-horizontal {
+.split.split-horizontal,
+.gutter.gutter-horizontal {
     height: 100%;
     float: left;
 }
