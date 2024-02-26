@@ -525,7 +525,7 @@
         ]
     },
     {
-        "name": "控制流程",
+        "name": "流程控制",
         "ops": [
             "Magic",
             "Fork",
@@ -536,7 +536,8 @@
             "Jump",
             "Conditional Jump",
             "Return",
-            "Comment"
+            "Comment",
+            "Sleep"
         ]
     }
 ]
