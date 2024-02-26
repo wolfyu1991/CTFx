@@ -31,6 +31,10 @@ div#recipe {
     height: 100%;
 }
 
+div#categories-list {
+    width: 100%;
+}
+
 div#input,
 div#output {
     width: 100%;
@@ -45,7 +49,7 @@ div#output {
     position: relative;
 }
 
-#operations.split {
+#categories-list {
     overflow: auto;
 }
 
