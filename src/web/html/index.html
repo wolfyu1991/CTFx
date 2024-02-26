@@ -127,8 +127,8 @@
         </button>
         <div id="content-wrapper">
             <div id="workspace-wrapper">
-                <div id="operations" class="split split-horizontal no-select">
-                    <div class="title no-select" data-help-title="Operations list" data-help="<p>The Operations list contains all the operations in CyberChef arranged into categories. Some operations may be present in multiple categories. You can search for operations using the search box.</p><p>To use an operation, either double click it, or drag it into the Recipe pane. You will then be able to configure its arguments (or 'Ingredients' in CyberChef terminology).</p>">
+                <div id="operations" class="split split-horizontal no-select"  data-help-title="Operations list" data-help="<p>The Operations list contains all the operations in CyberChef arranged into categories. Some operations may be present in multiple categories. You can search for operations using the search box.</p><p>To use an operation, either double click it, or drag it into the Recipe pane. You will then be able to configure its arguments (or 'Ingredients' in CyberChef terminology).</p>">
+                    <div class="title no-select">
                         Operations
                         <span class="pane-controls">
                             <button type="button" class="btn btn-primary bmd-btn-icon" id="options" data-toggle="tooltip" title="Options and Settings" data-help-title="Options and Settings" data-help="Configurable options to change how CyberChef behaves. These settings are stored in your browser's local storage, meaning they will persist between sessions that use the same browser profile.">
@@ -140,8 +140,10 @@
                         </span>
                     </div>
                     <input id="search" type="search" class="form-control" placeholder="搜索..." autocomplete="off" tabindex="2" data-help-title="Searching for operations" data-help="<p>Use the search box to find useful operations.</p><p>Both operation names and descriptions are queried using a fuzzy matching algorithm.</p>">
-                    <ul id="search-results" class="op-list"></ul>
-                    <div id="categories" class="panel-group no-select"></div>
+                    <div id ="categories-list" class="split split-horizontal no-select">
+                        <ul id="search-results" class="op-list"></ul>
+                        <div id="categories" class="panel-group no-select"></div>
+                    </div>
                 </div>
 
                 <div id="recipe" class="split split-horizontal no-select" data-help-title="Recipe pane" data-help="<p>The Recipe pane is where your chosen Operations are configured. If you are a programmer, think of these as functions. If you are not a programmer, these are like steps in a cake recipe. The Input data will be processed based on the Operations in your Recipe.</p><ul><li>To reorder, simply drag and drop the Operations into the order your require</li><li>To remove an operation, either double click it, or drag it outside of the Recipe pane</li></ul><p>The arguments (or 'Ingredients' in CyberChef terminology) can be configured to change how an Operation processes the data.</p>">
