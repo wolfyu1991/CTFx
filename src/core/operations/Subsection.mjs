@@ -2,6 +2,8 @@
  * @author j433866 [j433866@gmail.com]
  * @copyright Crown Copyright 2019
  * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
  */
 
 import Operation from "../Operation.mjs";
@@ -22,28 +24,28 @@ class Subsection extends Operation {
         this.name = "Subsection";
         this.flowControl = true;
         this.module = "Default";
-        this.description = "Select a part of the input data using a regular expression (regex), and run all subsequent operations on each match separately.<br><br>You can use up to one capture group, where the recipe will only be run on the data in the capture group. If there's more than one capture group, only the first one will be operated on.<br><br>Use the Merge operation to reset the effects of subsection.";
+        this.description = "使用正则对输入数据进行匹配，然后对匹配到的内容进行下面的所有操作。<br><br>最多只能使用一个捕获组，整个流程只会针对这个捕获组的匹配内容进行操作。如果有多个捕获组，只会使用第一个的内容。<br><br>使用Merge操作来重置Subsection操作的效果。";
         this.infoURL = "";
         this.inputType = "string";
         this.outputType = "string";
         this.args = [
             {
-                "name": "Section (regex)",
+                "name": "匹配内容（正则）",
                 "type": "string",
                 "value": ""
             },
             {
-                "name": "Case sensitive matching",
+                "name": "忽略大小写（i）",
                 "type": "boolean",
                 "value": true
             },
             {
-                "name": "Global matching",
+                "name": "全局匹配（g）",
                 "type": "boolean",
                 "value": true
             },
             {
-                "name": "Ignore errors",
+                "name": "忽略报错",
                 "type": "boolean",
                 "value": false
             }
