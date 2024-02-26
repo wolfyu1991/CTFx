@@ -31,10 +31,6 @@ div#recipe {
     height: 100%;
 }
 
-div#categories-list {
-    width: 100%;
-}
-
 div#input,
 div#output {
     width: 100%;
@@ -49,11 +45,14 @@ div#output {
     position: relative;
 }
 
-#categories-list {
+.categories-list {
     overflow: auto;
+    width: 100%;
+    height: calc(100% - 40px);
 }
 
-.split.split-horizontal, .gutter.gutter-horizontal {
+.split.split-horizontal,
+.gutter.gutter-horizontal {
     height: 100%;
     float: left;
 }
