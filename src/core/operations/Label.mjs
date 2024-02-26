@@ -2,6 +2,8 @@
  * @author n1474335 [n1474335@gmail.com]
  * @copyright Crown Copyright 2016
  * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
  */
 
 import Operation from "../Operation.mjs";
@@ -20,12 +22,12 @@ class Label extends Operation {
         this.name = "Label";
         this.flowControl = true;
         this.module = "Default";
-        this.description = "Provides a location for conditional and fixed jumps to redirect execution to.";
+        this.description = "给Conditional和Fixed Jump（跳转操作）提供一个跳转位置。";
         this.inputType = "string";
         this.outputType = "string";
         this.args = [
             {
-                "name": "Name",
+                "name": "名称",
                 "type": "shortString",
                 "value": ""
             }

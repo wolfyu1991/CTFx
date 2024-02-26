@@ -2,6 +2,8 @@
  * @author n1474335 [n1474335@gmail.com]
  * @copyright Crown Copyright 2018
  * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
  */
 
 import Operation from "../Operation.mjs";
@@ -19,12 +21,12 @@ class Sleep extends Operation {
 
         this.name = "Sleep";
         this.module = "Default";
-        this.description = "Sleep causes the recipe to wait for a specified number of milliseconds before continuing execution.";
+        this.description = "Sleep操作让流程执行时在等待给定的毫秒数后继续。";
         this.inputType = "ArrayBuffer";
         this.outputType = "ArrayBuffer";
         this.args = [
             {
-                "name": "Time (ms)",
+                "name": "时长 (ms)",
                 "type": "number",
                 "value": 1000
             }

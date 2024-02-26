@@ -2,6 +2,8 @@
  * @author n1474335 [n1474335@gmail.com]
  * @copyright Crown Copyright 2018
  * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
  */
 
 import Operation from "../Operation.mjs";
@@ -21,17 +23,17 @@ class Jump extends Operation {
         this.name = "Jump";
         this.flowControl = true;
         this.module = "Default";
-        this.description = "Jump forwards or backwards to the specified Label";
+        this.description = "跳转到指定的Label位置。";
         this.inputType = "string";
         this.outputType = "string";
         this.args = [
             {
-                "name": "Label name",
+                "name": "Label名称",
                 "type": "string",
                 "value": ""
             },
             {
-                "name": "Maximum jumps (if jumping backwards)",
+                "name": "最大跳转次数（用于向后跳转）",
                 "type": "number",
                 "value": 10
             }

@@ -2,6 +2,8 @@
  * @author n1474335 [n1474335@gmail.com]
  * @copyright Crown Copyright 2018
  * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
  */
 
 import Operation from "../Operation.mjs";
@@ -20,7 +22,7 @@ class Return extends Operation {
         this.name = "Return";
         this.flowControl = true;
         this.module = "Default";
-        this.description = "End execution of operations at this point in the recipe.";
+        this.description = "结束此流程的操作运行。";
         this.inputType = "string";
         this.outputType = "string";
         this.args = [];

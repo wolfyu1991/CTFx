@@ -2,6 +2,8 @@
  * @author n1474335 [n1474335@gmail.com]
  * @copyright Crown Copyright 2018
  * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
  */
 
 import Operation from "../Operation.mjs";
@@ -20,12 +22,12 @@ class Merge extends Operation {
         this.name = "Merge";
         this.flowControl = true;
         this.module = "Default";
-        this.description = "Consolidate all branches back into a single trunk. The opposite of Fork. Unticking the Merge All checkbox will only consolidate all branches up to the nearest Fork/Subsection.";
+        this.description = "将所有分支合并回一个单独进程。Fork的反操作。不勾选“合并全部”则只会抵消最近的Fork/Subsection。";
         this.inputType = "string";
         this.outputType = "string";
         this.args = [
             {
-                name: "Merge All",
+                name: "全部合并",
                 type: "boolean",
                 value: true,
             }

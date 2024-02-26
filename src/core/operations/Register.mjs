@@ -2,6 +2,8 @@
  * @author n1474335 [n1474335@gmail.com]
  * @copyright Crown Copyright 2018
  * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
  */
 
 import Operation from "../Operation.mjs";
@@ -23,28 +25,28 @@ class Register extends Operation {
         this.name = "Register";
         this.flowControl = true;
         this.module = "Regex";
-        this.description = "Extract data from the input and store it in registers which can then be passed into subsequent operations as arguments. Regular expression capture groups are used to select the data to extract.<br><br>To use registers in arguments, refer to them using the notation <code>$Rn</code> where n is the register number, starting at 0.<br><br>For example:<br>Input: <code>Test</code><br>Extractor: <code>(.*)</code><br>Argument: <code>$R0</code> becomes <code>Test</code><br><br>Registers can be escaped in arguments using a backslash. e.g. <code>\\$R0</code> would become <code>$R0</code> rather than <code>Test</code>.";
+        this.description = "从输入中提取数据并存储在“寄存器（Register）”中，用于作为变量传递到下面的操作参数中。使用正则表达式捕获组来选择需要提取的数据。<br><br>在其它操作的参数中使用<code>$Rn</code>（n是寄存器编号，从0开始）来访问存储的值。<br><br>例如：<br>输入：<code>Test</code><br>提取规则：<code>(.*)</code><br>参数：<code>$R0</code>就代表<code>Test</code><br><br>寄存器语法可以用反斜线来转义。例如：<code>\\$R0</code>代表字符<code>$R0</code>而不是<code>Test</code>。";
         this.infoURL = "https://wikipedia.org/wiki/Regular_expression#Syntax";
         this.inputType = "string";
         this.outputType = "string";
         this.args = [
             {
-                "name": "Extractor",
+                "name": "提取规则",
                 "type": "binaryString",
                 "value": "([\\s\\S]*)"
             },
             {
-                "name": "Case insensitive",
+                "name": "忽略大小写",
                 "type": "boolean",
                 "value": true
             },
             {
-                "name": "Multiline matching",
+                "name": "多行匹配",
                 "type": "boolean",
                 "value": false
             },
             {
-                "name": "Dot matches all",
+                "name": "匹配包含换行符",
                 "type": "boolean",
                 "value": false
             }
