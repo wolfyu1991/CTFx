@@ -48,7 +48,7 @@ div#output {
 .categories-list {
     overflow: auto;
     width: 100%;
-    height: calc(100% - 40px);
+    height: calc(100% - 88px);
 }
 
 .split.split-horizontal,
