@@ -144,6 +144,7 @@ import "./tests/Typex.mjs";
 import "./tests/UnescapeString.mjs";
 import "./tests/Unicode.mjs";
 import "./tests/YARA.mjs";
+import "./tests/EmojiAES.mjs";
 
 const testStatus = {
     allTestsPassing: true,

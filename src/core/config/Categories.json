@@ -539,5 +539,11 @@
             "Comment",
             "Sleep"
         ]
+    },
+    {
+        "name": "定制功能",
+        "ops": [
+            "emoji-aes"
+        ]
     }
 ]
