@@ -45,7 +45,7 @@ class TimingWaiter {
      * @param {number} inputNum
      * @param {number} value
      */
-    recordTime(event, inputNum, value=Date.now()) {
+    recordTime(event, inputNum, value = Date.now()) {
         inputNum = inputNum.toString();
         if (!Object.keys(this.inputs).includes(inputNum)) {
             this.inputs[inputNum] = {};
@@ -146,10 +146,10 @@ class TimingWaiter {
             outputDecoding = input.outputDecodingEnd - input.outputDecodingStart,
             overhead = total - inputEncoding - outputDecoding - input.bakeDuration;
 
-        return `Input encoding: ${inputEncoding}ms
-Recipe duration: ${input.bakeDuration}ms
-Output decoding: ${outputDecoding}ms
-<span class="small">Threading overhead: ${overhead}ms</span>`;
+        return `输入编码： ${inputEncoding}ms
+        流程处理： ${input.bakeDuration}ms
+        输出解码： ${outputDecoding}ms
+        线程开销： ${overhead}ms`;
     }
 
     /**
@@ -173,7 +173,7 @@ outputDecodingStart: ${input.outputDecodingStart} | ${input.outputDecodingStart 
 outputDecodingEnd:   ${input.outputDecodingEnd} | ${input.outputDecodingEnd - input.outputDecodingStart}ms output encoding time
 complete:            ${input.complete} | ${input.complete - input.outputDecodingEnd}ms since output decoded
 Total:                             | ${input.complete - input.trigger}ms since trigger`);
-        } catch (err) {}
+        } catch (err) { }
 
     }
 
