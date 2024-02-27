@@ -13,7 +13,7 @@ TestRegister.addTests([
     {
         name: "Magic: nothing",
         input: "",
-        expectedOutput: "Nothing of interest could be detected about the input data.\nHave you tried modifying the operation arguments?",
+        expectedOutput: "针对输入数据未检测到任何可用操作。\n请尝试调整操作参数。",
         recipeConfig: [
             {
                 op: "Magic",
@@ -24,7 +24,7 @@ TestRegister.addTests([
     {
         name: "Magic: hex, correct rank",
         input: "41 42 43 44 45",
-        expectedMatch: /Properties[^#]+?#recipe=From_Hex\('Space'\)"/,
+        expectedMatch: /属性[^#]+?#recipe=From_Hex\('Space'\)"/,
         recipeConfig: [
             {
                 op: "Magic",
@@ -134,7 +134,7 @@ TestRegister.addTests([
     {
         name: "Magic: Defang IP Address, valid",
         input: "192.168.0.1",
-        expectedMatch: /Properties[^#]+?#recipe=Defang_IP_Addresses\(\)"/,
+        expectedMatch: /属性[^#]+?#recipe=Defang_IP_Addresses\(\)"/,
         recipeConfig: [
             {
                 op: "Magic",
