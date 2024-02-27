@@ -238,8 +238,8 @@ class StatusBarPanel {
         const button = val.closest(".cm-status-bar-select-btn");
         const eolName = eolLookup[state.lineBreak];
         val.textContent = eolName[0];
-        button.setAttribute("title", `End of line sequence:<br>${eolName[1]}`);
-        button.setAttribute("data-original-title", `End of line sequence:<br>${eolName[1]}`);
+        button.setAttribute("title", `行结尾字符：<br>${eolName[1]}`);
+        button.setAttribute("data-original-title", `行结尾字符：<br>${eolName[1]}`);
         this.eolVal = state.lineBreak;
     }
 
@@ -256,8 +256,8 @@ class StatusBarPanel {
         const val = this.dom.querySelector(".chr-enc-value");
         const button = val.closest(".cm-status-bar-select-btn");
         val.textContent = name;
-        button.setAttribute("title", `${this.label} character encoding:<br>${name}`);
-        button.setAttribute("data-original-title", `${this.label} character encoding:<br>${name}`);
+        button.setAttribute("title", `编码:<br>${name}`);
+        button.setAttribute("data-original-title", `编码:<br>${name}`);
         this.chrEncVal = chrEncVal;
     }
 
@@ -324,21 +324,21 @@ class StatusBarPanel {
      */
     constructLHS() {
         return `
-            <span data-toggle="tooltip" title="${this.label} length" data-help-title="${this.label} length" data-help="This number represents the number of characters in the ${this.label}.<br><br>The CRLF end of line separator is counted as two characters which impacts this value.">
+            <span data-toggle="tooltip" title="字符" data-help-title="字符" data-help="这个数字代表${this.label}框中的字符数。<br><br>CRLF换行符算作两个字符，会影响总数。">
                 <i class="material-icons">abc</i>
                 <span class="stats-length-value"></span>
             </span>
-            <span data-toggle="tooltip" title="Number of lines"  data-help-title="Number of lines" data-help="This number represents the number of lines in the ${this.label}. Lines are separated by the End of Line Sequence which can be changed using the EOL selector at the far right of this status bar.">
+            <span data-toggle="tooltip" title="行数"  data-help-title="行数" data-help="这个数字代表${this.label}框中文本的行数。换行符类型可在状态栏最右侧手工切换。">
                 <i class="material-icons">sort</i>
                 <span class="stats-lines-value"></span>
             </span>
 
-            <span class="sel-info" data-toggle="tooltip" title="Main selection" data-help-title="Main selection" data-help="These numbers show which offsets have been selected and how many characters are in the current selection. If multiple selections are made, these numbers refer to the latest one. ">
+            <span class="sel-info" data-toggle="tooltip" title="选中区域" data-help-title="选中区域" data-help="这些数字代表当前选择范围的开头和结尾偏移量以及选择了多少个字符。如果有多个选择区域，这些数字代表最近选择的那个区域。 ">
                 <i class="material-icons">highlight_alt</i>
                 <span class="sel-start-value"></span>\u279E<span class="sel-end-value"></span>
-                (<span class="sel-length-value"></span> selected)
+                (<span class="sel-length-value"></span> 选中)
             </span>
-            <span class="cur-offset-info" data-toggle="tooltip" title="Cursor offset" data-help-title="Cursor offset" data-help="This number indicates what the current offset of the cursor is from the beginning of the ${this.label}.<br><br>The CRLF end of line separator is counted as two characters which impacts this value.">
+            <span class="cur-offset-info" data-toggle="tooltip" title="光标偏移量" data-help-title="光标偏移量" data-help="这个数字代表目前光标所在的${this.label}字符位置。<br><br>CRLF换行符算作两个字符，会影响总数。">
                 <i class="material-icons">location_on</i>
                 <span class="cur-offset-value"></span>
             </span>`;
@@ -366,7 +366,7 @@ class StatusBarPanel {
         }
 
         return `
-            <span class="baking-time-info" style="display: none" data-toggle="tooltip" data-html="true" title="Baking time" data-help-title="Baking time" data-help="The baking time is the total time between data being read from the input, processed, and then displayed in the output.<br><br>The 'Threading overhead' value accounts for the transfer of data between different processing threads, as well as some garbage collection. It is not included in the overall bake time displayed in the status bar as it is largely influenced by background operating system and browser activity which can fluctuate significantly.">
+            <span class="baking-time-info" style="display: none" data-toggle="tooltip" data-html="true" title="处理时间" data-help-title="处理时间" data-help="处理时间指从输入框中读取、处理，到显示在输出框中的总计用时。<br><br>“线程开销”值指数据在处理线程间传递以及垃圾回收消耗的时间。此时间不计入处理时间，由于受操作系统和浏览器影响，此时间上下浮动范围较大。">
                 <i class="material-icons">schedule</i>
                 <span class="baking-time-value"></span>ms
             </span>

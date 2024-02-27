@@ -1410,18 +1410,18 @@ class OutputWaiter {
     maximiseOutputClick(e) {
         const el = e.target.id === "maximise-output" ? e.target : e.target.parentNode;
 
-        if (el.getAttribute("data-original-title").indexOf("Maximise") === 0) {
+        if (el.getAttribute("data-original-title").indexOf("最大化") === 0) {
             document.body.classList.add("output-maximised");
             this.app.initialiseSplitter(true);
             this.app.columnSplitter.collapse(0);
             this.app.columnSplitter.collapse(1);
             this.app.ioSplitter.collapse(0);
 
-            $(el).attr("data-original-title", "Restore output pane");
+            $(el).attr("data-original-title", "恢复");
             el.querySelector("i").innerHTML = "fullscreen_exit";
         } else {
             document.body.classList.remove("output-maximised");
-            $(el).attr("data-original-title", "Maximise output pane");
+            $(el).attr("data-original-title", "最大化");
             el.querySelector("i").innerHTML = "fullscreen";
             this.app.initialiseSplitter(false);
             this.app.resetLayout();
