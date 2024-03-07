@@ -20,7 +20,7 @@ class EmojiAES extends Operation {
     constructor() {
         super();
 
-        this.name = "emoji-aes";
+        this.name = "Emoji AES";
         this.module = "CTF";
         this.description = "emoji-aes使用对称AES加密算法（使用crypto-js），对字符串数据进行加密，然后将Base64输出替换为表情符号。";
         this.infoURL = "https://aghorler.github.io/emoji-aes/#encrypt";
@@ -77,8 +77,10 @@ class EmojiAES extends Operation {
                     }
                     // 构建正则表达式，用于匹配所有表情符号
                     const emojiRegex = new RegExp(emojis.join("|"), "g");
+                    const charRegex = new RegExp(`[^${characters}]`, "g");
                     // Replace characters using the mapping
-                    const unemojified = message.replace(emojiRegex, match => charMap[match]);
+                    let unemojified = message.replace(emojiRegex, match => charMap[match]);
+                    unemojified = unemojified.replace(charRegex, "");
                     /* Decrypt Base64 string. */
                     const plaintext = CryptoJS.AES.decrypt(unemojified, key).toString(CryptoJS.enc.Utf8);
                     return plaintext;
