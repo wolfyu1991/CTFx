@@ -605,6 +605,7 @@
     {
         "name": "定制功能",
         "ops": [
+            "BrainFuck",
             "emoji-aes",
             "百家姓编码",
             "与佛论禅",

@@ -200,6 +200,7 @@ import "./tests/XXTEA.mjs";
 import "./tests/EmojiAES.mjs";
 import "./tests/BaiJiaXing.mjs";
 import "./tests/CoreValues.mjs";
+import "./tests/Brainfuck.mjs";
 
 const testStatus = {
     allTestsPassing: true,
