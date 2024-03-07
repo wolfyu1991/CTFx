@@ -102,7 +102,8 @@ function base64StegoDecode(texts, table) {
     let decodedBinary = "";
     const b64Table = table || "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
-    for (const text of texts) {
+    for (let text of texts) {
+        text = text.trim();
         if (text.includes("==")) {
             // 隐写4bit
             decodedBinary += ("0000" + b64Table.indexOf(text.slice(-3, -2)).toString(2)).slice(-4);
