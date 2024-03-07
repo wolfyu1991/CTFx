@@ -89,6 +89,7 @@ class BuddhaCipher extends Operation {
      * @returns {string}
      */
     async run(input, args) {
+        if (!input) return "";
         if (args[0] === "佛曰") {
             if (input.startsWith("佛曰:") || input.startsWith("佛曰：")) {
                 input = input.substring(3);

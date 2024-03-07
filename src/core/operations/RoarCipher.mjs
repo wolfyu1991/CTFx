@@ -53,6 +53,7 @@ class RoarCipher extends Operation {
      * @returns {string}
      */
     run(input, args) {
+        if (!input) return "";
         const [mode, alphabet] = args;
 
         if (alphabet.length !== 4) {

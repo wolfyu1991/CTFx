@@ -47,6 +47,7 @@ class CoreValues extends Operation {
      * @returns {string}
      */
     run(input, args) {
+        if (!input) return "";
         if (args[0] === "Encode") {
             return encode(input);
         }

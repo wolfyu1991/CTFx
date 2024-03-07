@@ -40,6 +40,7 @@ class ChineseCommercialCode extends Operation {
      * @returns {string}
      */
     run(input, args) {
+        if (!input) return "";
         if (args[0] === "Decode") {
             return decode(input);
         } else {
