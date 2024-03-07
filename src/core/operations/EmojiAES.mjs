@@ -77,8 +77,10 @@ class EmojiAES extends Operation {
                     }
                     // 构建正则表达式，用于匹配所有表情符号
                     const emojiRegex = new RegExp(emojis.join("|"), "g");
+                    const charRegex = new RegExp(`[^${characters}]`, "g");
                     // Replace characters using the mapping
-                    const unemojified = message.replace(emojiRegex, match => charMap[match]);
+                    let unemojified = message.replace(emojiRegex, match => charMap[match]);
+                    unemojified = unemojified.replace(charRegex, "");
                     /* Decrypt Base64 string. */
                     const plaintext = CryptoJS.AES.decrypt(unemojified, key).toString(CryptoJS.enc.Utf8);
                     return plaintext;
