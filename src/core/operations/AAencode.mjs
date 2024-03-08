@@ -215,6 +215,7 @@ class AAencode extends Operation {
      * @returns {string}
      */
     run(input, args) {
+        if (input.length < 1) return "";
         const type = args[0];
         if (type === "Decode") {
             return this.decode(input);
