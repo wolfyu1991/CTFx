@@ -605,10 +605,12 @@
     {
         "name": "定制功能",
         "ops": [
+            "AAencode 颜文字加密",
             "Base64隐写",
             "BrainFuck",
             "Cloacked Pixel",
             "Emoji AES",
+            "Vigenere Solver",
             "百家姓编码",
             "与佛论禅",
             "核心价值观编码",
