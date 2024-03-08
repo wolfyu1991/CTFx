@@ -26,7 +26,7 @@ class CloackedPixel extends Operation {
 
         this.name = "Cloacked Pixel";
         this.module = "CTF";
-        this.description = "图片LSB隐写，提取图像中每个像素的最低有效位数据。这是在隐写术中隐藏数据的一种常见方法。支持文件格式：<code>PNG</code>";
+        this.description = "图片LSB隐写，提取图像中每个像素的最低有效位数据。这是在隐写术中隐藏数据的一种常见方法。<br>支持文件格式：<code>PNG</code>";
         this.infoURL = "https://github.com/livz/cloacked-pixel";
         this.inputType = "ArrayBuffer";
         this.outputType = "string";
