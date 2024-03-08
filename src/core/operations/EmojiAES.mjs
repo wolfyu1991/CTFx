@@ -20,7 +20,7 @@ class EmojiAES extends Operation {
     constructor() {
         super();
 
-        this.name = "emoji-aes";
+        this.name = "Emoji AES";
         this.module = "CTF";
         this.description = "emoji-aes使用对称AES加密算法（使用crypto-js），对字符串数据进行加密，然后将Base64输出替换为表情符号。";
         this.infoURL = "https://aghorler.github.io/emoji-aes/#encrypt";

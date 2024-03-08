@@ -10,12 +10,12 @@ import TestRegister from "../../lib/TestRegister.mjs";
 
 TestRegister.addTests([
     {
-        name: "emoji-aes",
+        name: "Emoji AES",
         input: "⏩😡🍴✖ℹ🚨😁🍍💵😇🏎🍌😀😡✉😇⏩🍴📂🤣⏩🌪🚹🍌🚹😍✅🐅😁👉📂❓🎃ℹ✖🚫🦓🌏🌪🎈🗒😁🔄👁",
         expectedOutput: "HelloWorld!",
         recipeConfig: [
             {
-                op: "emoji-aes",
+                op: "Emoji AES",
                 args: [
                     "Decrypt",
                     {"option": "Latin1", "string": "password"},
