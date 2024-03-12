@@ -25,8 +25,7 @@ class PBE extends Operation {
         this.description = "PBE\uff08Password-Based Encryption\uff0c\u57fa\u4e8e\u5bc6\u7801\u7684\u52a0\u5bc6\uff09\u662f\u4e00\u79cd\u52a0\u5bc6\u6280\u672f\uff0c\u5b83\u4f7f\u7528\u5bc6\u7801\uff08\u6216\u53eb\u53e3\u4ee4\uff09\u6765\u52a0\u5bc6\u548c\u89e3\u5bc6\u6570\u636e\u3002\u5bc6\u6587\u7279\u5f81: \u5bc6\u6587\u5e38\u4ee5 U2FsdGVkX1 \u5f00\u5934, base64\u89e3\u7801\u4e3a Salted__";
         this.infoURL = "";
         this.inputType = "string";
-        this.outputType = "json";
-        this.presentType = "html";
+        this.outputType = "string";
         this.args = [
             {
                 name: "MODE",
@@ -55,7 +54,7 @@ class PBE extends Operation {
     run(input, args) {
         const mode = args[0],
             type = args[1],
-            passphrase = args[2].string,
+            passphrase = Utils.convertToByteString(args[2].string, args[2].option),
             outformat = format.Latin1,
             charsets = ["AES", "DES", "TripleDES", "Rabbit", "RabbitLegacy", "RC4", "RC4Drop"];
         if (mode === "Decrypt") {
@@ -99,15 +98,20 @@ class PBE extends Operation {
      * @returns {html}
      */
     buildTable(encodings) {
-        let table = "<table class='table table-hover table-sm table-bordered table-nonfluid'><tr><th>Type</th><th>Value</th></tr>";
+        // 正则表达式匹配所有非打印字符（控制字符）
+        const regex = /[\x00-\x08\x0E-\x1F\x7F-\x9F]/u;
+        let table = [];
 
         for (const enc in encodings) {
-            const value = Utils.escapeHtml(Utils.escapeWhitespace(encodings[enc]));
-            table += `<tr><td>${enc}</td><td>${value}</td></tr>`;
+            const value = encodings[enc];
+            if (regex.test(value)) {
+                table.push(`${enc.padEnd(12, " ")}:${value}`);
+            } else {
+                table.push(`${enc.padEnd(12, " ")}:${value}`);
+            }
         }
 
-        table += "<table>";
-        return table;
+        return table.join("\r\n");
     }
 
 }
