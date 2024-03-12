@@ -100,7 +100,7 @@ class PBE extends Operation {
     buildTable(encodings) {
         // 正则表达式匹配所有非打印字符（控制字符）
         const regex = /[\x00-\x08\x0E-\x1F\x7F-\x9F]/u;
-        let table = [];
+        const table = [];
 
         for (const enc in encodings) {
             const value = encodings[enc];
