@@ -194,6 +194,9 @@ module.exports = {
 
         // Open category
         browser
+            .useCss()
+            .waitForElementNotVisible("#snackbar-container", 10000)
+            .useXpath()
             .click(otherCat)
             .expect.element(genUUID).to.be.visible;
 
@@ -230,10 +233,16 @@ module.exports = {
 
         // Alert bar shows and contains correct content
         browser
+            .waitForElementNotVisible("#snackbar-container")
             .click("#copy-output")
+<<<<<<< HEAD
             .waitForElementVisible("#toast-container")
             .waitForElementVisible("#toast-container .toast .toast-message")
             .expect.element("#toast-container .toast .toast-message").text.to.equal("原始数据复制成功。");
+=======
+            .waitForElementVisible("#snackbar-container .snackbar-content")
+            .expect.element("#snackbar-container .snackbar-content").text.to.equal("Copied raw output successfully.");
+>>>>>>> 6fd00e2598653b0c0231d2c7c475898e54532092
 
         // Alert bar disappears after the correct amount of time
         // Should disappear after 2000ms

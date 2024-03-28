@@ -82,6 +82,7 @@ import "./tests/HKDF.mjs";
 import "./tests/Image.mjs";
 import "./tests/IndexOfCoincidence.mjs";
 import "./tests/JA3Fingerprint.mjs";
+import "./tests/JA4Fingerprint.mjs";
 import "./tests/JA3SFingerprint.mjs";
 import "./tests/JSONBeautify.mjs";
 import "./tests/JSONMinify.mjs";
