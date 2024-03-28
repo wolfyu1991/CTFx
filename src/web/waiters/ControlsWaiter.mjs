@@ -229,7 +229,7 @@ class ControlsWaiter {
     saveButtonClick() {
         if (!this.app.isLocalStorageAvailable()) {
             this.app.alert(
-                "Your security settings do not allow access to local storage so your recipe cannot be saved.",
+                "您的安全设置不允许访问本地存储，因此您的Recipe无法保存。",
                 5000
             );
             return false;
@@ -239,7 +239,7 @@ class ControlsWaiter {
         const recipeStr = document.querySelector("#save-texts .tab-pane.active textarea").value;
 
         if (!recipeName) {
-            this.app.alert("Please enter a recipe name", 3000);
+            this.app.alert("请输入Recipe名称", 3000);
             return;
         }
 

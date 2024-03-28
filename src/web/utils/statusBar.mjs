@@ -218,12 +218,6 @@ class StatusBarPanel {
 
         const val = this.dom.querySelector(".eol-value");
         const button = val.closest(".cm-status-bar-select-btn");
-<<<<<<< HEAD
-        const eolName = eolLookup[state.lineBreak];
-        val.textContent = eolName[0];
-        button.setAttribute("title", `行结尾字符：<br>${eolName[1]}`);
-        button.setAttribute("data-original-title", `行结尾字符：<br>${eolName[1]}`);
-=======
         let eolCode = eolSeqToCode[state.lineBreak];
         let eolName = eolCodeToName[eolCode];
 
@@ -246,9 +240,8 @@ class StatusBarPanel {
         }
 
         val.textContent = eolCode;
-        button.setAttribute("title", `End of line sequence:<br>${eolName}`);
-        button.setAttribute("data-original-title", `End of line sequence:<br>${eolName}`);
->>>>>>> 6fd00e2598653b0c0231d2c7c475898e54532092
+        button.setAttribute("title", `行结尾字符：<br>${eolName}`);
+        button.setAttribute("data-original-title", `行结尾字符：<br>${eolName}`);
         this.eolVal = state.lineBreak;
     }
 

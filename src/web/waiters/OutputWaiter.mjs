@@ -164,7 +164,7 @@ class OutputWaiter {
 
         if (this.eolState === 1) {
             // Alert
-            this.app.alert(`Output end of line separator has been detected and changed to ${eolCodeToName[eol]}`, 5000);
+            this.app.alert(`输出行尾分隔符已识别并更改为 ${eolCodeToName[eol]}`, 5000);
         }
 
         const currentTabNum = this.manager.tabs.getActiveTab("output");
@@ -232,7 +232,7 @@ class OutputWaiter {
             this.app.updateURL(true);
         } else if (currentEnc !== chrEncVal) {
             // Alert
-            this.app.alert(`Output character encoding has been detected and changed to ${CHR_ENC_SIMPLE_REVERSE_LOOKUP[chrEncVal] || "Raw Bytes"}`, 5000);
+            this.app.alert(`输出字符编码已被识别并更改为 ${CHR_ENC_SIMPLE_REVERSE_LOOKUP[chrEncVal] || "Raw Bytes"}`, 5000);
         }
     }
 

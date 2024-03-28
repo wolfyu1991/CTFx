@@ -730,7 +730,6 @@ class App {
         log.info("[" + time.toLocaleString() + "] " + str);
         if (silent) return;
 
-<<<<<<< HEAD
         toastr.options.timeOut = timeout;
         toastr.info(str);
 
@@ -742,16 +741,6 @@ class App {
         //         this.currentSnackbar.remove();
         //     }
         // });
-=======
-        this.snackbars.push($.snackbar({
-            content: str,
-            timeout: timeout,
-            htmlAllowed: true,
-            onClose: () => {
-                this.snackbars.shift().remove();
-            }
-        }));
->>>>>>> 6fd00e2598653b0c0231d2c7c475898e54532092
     }
 
 

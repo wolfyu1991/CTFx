@@ -182,7 +182,7 @@ class InputWaiter {
 
         if (this.eolState === 1) {
             // Alert
-            this.app.alert(`Input end of line separator has been detected and changed to ${eolCodeToName[eol]}`, 5000);
+            this.app.alert(`已检测到输入行结束分隔符，并已更改为 ${eolCodeToName[eol]}`, 5000);
         }
 
         // Update the EOL value
@@ -278,7 +278,7 @@ class InputWaiter {
             if (longest > lineLengthThreshold) {
                 // If we are exceeding the max line length, turn off word wrap
                 wrap = false;
-                this.app.alert("Maximum line length exceeded. Word wrap will be temporarily disabled to improve performance.", 20000);
+                this.app.alert("超出了最大行长度。为了提高性能，将临时禁用自动换行。", 20000);
             }
         }
 
