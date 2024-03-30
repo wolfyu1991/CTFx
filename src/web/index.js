@@ -52,7 +52,7 @@ function main() {
         autoMagic:           true,
         imagePreview:        true,
         syncTabs:            true,
-        outputUTF8:          true
+        outputUTF8:          false
     };
 
     document.removeEventListener("DOMContentLoaded", main, false);
