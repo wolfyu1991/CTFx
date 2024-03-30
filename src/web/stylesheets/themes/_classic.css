@@ -10,7 +10,8 @@
 :root.classic {
     --primary-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
         Roboto, "Helvetica Neue", Arial, sans-serif;
-    --primary-font-colour: #333;
+    --primary-font-colour: #202124;
+    /* 修改为 Google 主题的文本颜色 */
     --primary-font-size: 14px;
     --primary-line-height: 20px;
 
@@ -19,95 +20,145 @@
     --fixed-width-font-colour: inherit;
     --fixed-width-font-size: inherit;
 
-    --subtext-font-colour: #999;
+    --subtext-font-colour: #5f6368;
+    /* 修改为 Google 主题的次要文本颜色 */
     --subtext-font-size: 13px;
 
-    --primary-background-colour: #fff;
-    --secondary-background-colour: #fafafa;
+    --primary-background-colour: #ffffff;
+    /* 修改为 Google 主题的背景颜色 */
+    --secondary-background-colour: #f5f5f5;
+    /* 修改为 Google 主题的次要背景颜色 */
 
-    --primary-border-colour: #ddd;
-    --secondary-border-colour: #eee;
+    --primary-border-colour: #dadce0;
+    /* 修改为 Google 主题的边框颜色 */
+    --secondary-border-colour: #e8eaed;
+    /* 修改为 Google 主题的次要边框颜色 */
 
-    --title-colour: #424242;
+    --title-colour: #3c4043;
+    /* 修改为 Google 主题的标题颜色 */
     --title-weight: bold;
     --title-size: 16px;
-    --title-background-colour: #fafafa;
+    --title-background-colour: #ffffff;
 
-    --banner-font-colour: #468847;
-    --banner-bg-colour: #dff0d8;
-    --banner-url-colour: #1976d2;
+    --banner-font-colour: #0f9d58;
+    /* 修改为 Google 主题的突出颜色 */
+    --banner-bg-colour: #e0f7fa;
+    /* 修改为 Google 主题的突出背景颜色 */
+    --banner-url-colour: #4285f4;
+    /* 修改为 Google 主题的链接颜色 */
 
-    --category-list-font-colour: #1485EE;
+    --category-list-font-colour: #4285f4;
+    /* 修改为 Google 主题的链接颜色 */
 
     --loader-background-colour: var(--secondary-border-colour);
-    --loader-outer-colour: #1485EE;
-    --loader-middle-colour: #FA5151;
-    --loader-inner-colour: #CB7D2F;
-
+    --loader-outer-colour: #4285f4;
+    /* 修改为 Google 主题的链接颜色 */
+    --loader-middle-colour: #ea4335;
+    /* 修改为 Google 主题的突出颜色 */
+    --loader-inner-colour: #fbbc05;
+    /* 修改为 Google 主题的突出颜色 */
 
     /* Operation colours */
-    --op-list-operation-font-colour: #3a87ad;
-    --op-list-operation-bg-colour: #d9edf7;
-    --op-list-operation-border-colour: #bce8f1;
+    --op-list-operation-font-colour: #1a73e8;
+    /* 修改为 Google 主题的按钮颜色 */
+    --op-list-operation-bg-colour: #e3f2fd;
+    /* 修改为 Google 主题的按钮背景颜色 */
+    --op-list-operation-border-colour: #b3e5fc;
+    /* 修改为 Google 主题的按钮边框颜色 */
 
-    --rec-list-operation-font-colour: #468847;
-    --rec-list-operation-bg-colour: #dff0d8;
-    --rec-list-operation-border-colour: #d3e8c0;
+    --rec-list-operation-font-colour: #0f9d58;
+    /* 修改为 Google 主题的突出颜色 */
+    --rec-list-operation-bg-colour: #e0f2f1;
+    /* 修改为 Google 主题的突出背景颜色 */
+    --rec-list-operation-border-colour: #b2dfdb;
+    /* 修改为 Google 主题的突出边框颜色 */
 
-    --selected-operation-font-color: #c09853;
-    --selected-operation-bg-colour: #fcf8e3;
-    --selected-operation-border-colour: #fbeed5;
+    --selected-operation-font-color: #fbbc05;
+    /* 修改为 Google 主题的突出颜色 */
+    --selected-operation-bg-colour: #fff9c4;
+    /* 修改为 Google 主题的突出背景颜色 */
+    --selected-operation-border-colour: #fff59d;
+    /* 修改为 Google 主题的突出边框颜色 */
 
-    --breakpoint-font-colour: #b94a48;
-    --breakpoint-bg-colour: #f2dede;
-    --breakpoint-border-colour: #eed3d7;
+    --breakpoint-font-colour: #d32f2f;
+    /* 修改为 Google 主题的警告颜色 */
+    --breakpoint-bg-colour: #ffcdd2;
+    /* 修改为 Google 主题的警告背景颜色 */
+    --breakpoint-border-colour: #ef9a9a;
+    /* 修改为 Google 主题的警告边框颜色 */
 
-    --disabled-font-colour: #999;
-    --disabled-bg-colour: #dfdfdf;
-    --disabled-border-colour: #cdcdcd;
+    --disabled-font-colour: #757575;
+    /* 修改为 Google 主题的禁用文本颜色 */
+    --disabled-bg-colour: #f5f5f5;
+    /* 修改为 Google 主题的禁用背景颜色 */
+    --disabled-border-colour: #e0e0e0;
+    /* 修改为 Google 主题的禁用边框颜色 */
 
-    --fc-operation-font-colour: #396f3a;
-    --fc-operation-bg-colour: #c7e4ba;
-    --fc-operation-border-colour: #b3dba2;
+    --fc-operation-font-colour: #2e7d32;
+    /* 修改为 Google 主题的成功颜色 */
+    --fc-operation-bg-colour: #c8e6c9;
+    /* 修改为 Google 主题的成功背景颜色 */
+    --fc-operation-border-colour: #a5d6a7;
+    /* 修改为 Google 主题的成功边框颜色 */
 
-    --fc-breakpoint-operation-font-colour: #94312f;
-    --fc-breakpoint-operation-bg-colour: #eabfbf;
-    --fc-breakpoint-operation-border-colour: #e2aeb5;
-
+    --fc-breakpoint-operation-font-colour: #c62828;
+    /* 修改为 Google 主题的失败颜色 */
+    --fc-breakpoint-operation-bg-colour: #ffcdd2;
+    /* 修改为 Google 主题的失败背景颜色 */
+    --fc-breakpoint-operation-border-colour: #ef9a9a;
+    /* 修改为 Google 主题的失败边框颜色 */
 
     /* Operation arguments */
     --op-title-font-weight: bold;
-    --arg-font-colour: #424242;
-    --arg-background: #fff;
-    --arg-border-colour: #ddd;
-    --arg-disabled-background: #eee;
-    --arg-label-colour: #388e3c;
-
+    --arg-font-colour: #202124;
+    /* 修改为 Google 主题的文本颜色 */
+    --arg-background: #ffffff;
+    /* 修改为 Google 主题的背景颜色 */
+    --arg-border-colour: #dadce0;
+    /* 修改为 Google 主题的边框颜色 */
+    --arg-disabled-background: #f5f5f5;
+    /* 修改为 Google 主题的禁用背景颜色 */
+    --arg-label-colour: #3c4043;
+    /* 修改为 Google 主题的标题颜色 */
 
     /* Operation buttons */
     --disable-icon-colour: #9e9e9e;
-    --disable-icon-selected-colour: #f44336;
+    /* 修改为 Google 主题的图标颜色 */
+    --disable-icon-selected-colour: #d32f2f;
+    /* 修改为 Google 主题的警告颜色 */
     --breakpoint-icon-colour: #9e9e9e;
-    --breakpoint-icon-selected-colour: #f44336;
-
+    /* 修改为 Google 主题的图标颜色 */
+    --breakpoint-icon-selected-colour: #d32f2f;
+    /* 修改为 Google 主题的警告颜色 */
 
     /* Buttons */
-    --btn-default-font-colour: #333;
-    --btn-default-bg-colour: #fff;
-    --btn-default-border-colour: #ddd;
+    --btn-default-font-colour: #3c4043;
+    /* 修改为 Google 主题的标题颜色 */
+    --btn-default-bg-colour: #ffffff;
+    /* 修改为 Google 主题的背景颜色 */
+    --btn-default-border-colour: #dadce0;
+    /* 修改为 Google 主题的边框颜色 */
 
-    --btn-default-hover-font-colour: #333;
-    --btn-default-hover-bg-colour: #ebebeb;
-    --btn-default-hover-border-colour: #adadad;
+    --btn-default-hover-font-colour: #3c4043;
+    /* 修改为 Google 主题的标题颜色 */
+    --btn-default-hover-bg-colour: #f1f3f4;
+    /* 修改为 Google 主题的按钮背景颜色 */
+    --btn-default-hover-border-colour: #c1c1c1;
+    /* 修改为 Google 主题的按钮边框颜色 */
 
-    --btn-success-font-colour: #fff;
-    --btn-success-bg-colour: #07c160;
-    --btn-success-border-colour: #4cae4c;
+    --btn-success-font-colour: #ffffff;
+    /* 修改为 Google 主题的文本颜色 */
+    --btn-success-bg-colour: #0f9d58;
+    /* 修改为 Google 主题的成功颜色 */
+    --btn-success-border-colour: #0f9d58;
+    /* 修改为 Google 主题的成功颜色 */
 
-    --btn-success-hover-font-colour: #fff;
-    --btn-success-hover-bg-colour: #449d44;
-    --btn-success-hover-border-colour: #398439;
-
+    --btn-success-hover-font-colour: #ffffff;
+    /* 修改为 Google 主题的文本颜色 */
+    --btn-success-hover-bg-colour: #0a6640;
+    /* 修改为 Google 主题的成功颜色 */
+    --btn-success-hover-border-colour: #0a6640;
+    /* 修改为 Google 主题的成功颜色 */
 
     /* Highlighter colours */
     --hl1: #ffee00aa;
@@ -116,20 +167,26 @@
     --hl4: #fcf8e3aa;
     --hl5: #8de768aa;
 
-
     /* Scrollbar */
-    --scrollbar-track: var(--secondary-background-colour);
-    --scrollbar-thumb: #ccc;
-    --scrollbar-hover: #bbb;
-
+    --scrollbar-track: #f5f5f5;
+    /* 修改为 Google 主题的次要背景颜色 */
+    --scrollbar-thumb: #cccccc;
+    /* 修改为 Google 主题的滚动条颜色 */
+    --scrollbar-hover: #bbbbbb;
+    /* 修改为 Google 主题的滚动条颜色 */
 
     /* Misc. */
-    --drop-file-border-colour: #3a87ad;
-    --table-border-colour: #ccc;
-    --popover-background: #fff;
-    --popover-border-colour: #ccc;
+    --drop-file-border-colour: #4285f4;
+    /* 修改为 Google 主题的链接颜色 */
+    --table-border-colour: #cccccc;
+    /* 修改为 Google 主题的边框颜色 */
+    --popover-background: #ffffff;
+    /* 修改为 Google 主题的背景颜色 */
+    --popover-border-colour: #cccccc;
+    /* 修改为 Google 主题的边框颜色 */
     --code-background: #f9f2f4;
     --code-font-colour: #c7254e;
     --input-highlight-colour: #1976d2;
-    --input-border-colour: #424242;
+    --input-border-colour: #202124;
+    /* 修改为 Google 主题的文本颜色 */
 }
