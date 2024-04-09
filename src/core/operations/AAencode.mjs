@@ -20,7 +20,7 @@ class AAencode extends Operation {
     constructor() {
         super();
 
-        this.name = "AAencode 颜文字加密";
+        this.name = "AAencode 颜文字";
         this.module = "CTF";
         this.description = "AAencode将JavaScript代码转换成颜文字网络表情的编码，本工具可以将JavaScript代码转换成颜文字网编码，同时可以将转换后的颜文字网编码的JavaScript代码解密。";
         this.infoURL = "https://utf-8.jp/public/aaencode.html";
