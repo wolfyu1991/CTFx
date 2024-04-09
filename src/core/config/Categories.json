@@ -544,7 +544,7 @@
     {
         "name": "定制功能",
         "ops": [
-            "AAencode 颜文字加密",
+            "AAencode 颜文字",
             "Base64隐写",
             "BrainFuck",
             "Cloacked Pixel",
