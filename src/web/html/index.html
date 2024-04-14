@@ -1,10 +1,10 @@
 <!-- htmlmin:ignore --><!--
     CyberChef - The Cyber Swiss Army Knife
 
-    @copyright Crown Copyright 2016
+    @copyright Crown Copyright 2016-<%= htmlWebpackPlugin.options.compileYear %>
     @license Apache-2.0
 
-      Copyright 2016 Crown Copyright
+      Copyright 2016-<%= htmlWebpackPlugin.options.compileYear %> Crown Copyright
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@
         <meta charset="UTF-8">
         <title>CTFx</title>
 
-        <meta name="copyright" content="Crown Copyright 2016" />
+        <meta name="copyright" content="Crown Copyright 2016-<%= htmlWebpackPlugin.options.compileYear %>" />
         <meta name="description" content="The Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis" />
         <meta name="keywords" content="base64, hex, decode, encode, encrypt, decrypt, compress, decompress, regex, regular expressions, hash, crypt, hexadecimal, user agent, url, certificate, x.509, parser, JSON, gzip,  md5, sha1, aes, des, blowfish, xor" />
 
@@ -122,8 +122,8 @@
             <div id="preloader-error" class="loading-error"></div>
         </div>
         <!-- End preloader overlay -->
-        <button type="button" class="btn btn-warning bmd-btn-icon" id="edit-favourites" data-toggle="tooltip" title="编辑收藏">
-            <i class="material-icons">star</i>
+        <button type="button" aria-label="Edit Favourites" class="btn btn-warning bmd-btn-icon" id="edit-favourites" data-toggle="tooltip" title="编辑收藏">
+            <i class="material-icons" aria-hidden="true">star</i>
         </button>
         <div id="content-wrapper">
             <div id="workspace-wrapper">
@@ -151,17 +151,17 @@
                     <div class="title no-select">
                         Recipe
                         <span class="pane-controls hide-on-maximised-output">
-                            <button type="button" class="btn btn-primary bmd-btn-icon" id="hide-icon" data-toggle="tooltip" title="折叠" hide-args="false">
+                            <button type="button" aria-label="Hide arguments" class="btn btn-primary bmd-btn-icon" id="hide-icon" data-toggle="tooltip" title="折叠" hide-args="false">
                                 <i class="material-icons">keyboard_arrow_up</i>
                             </button>
-                            <button type="button" class="btn btn-primary bmd-btn-icon" id="save" data-toggle="tooltip" title="保存" data-help-title="保存操作流程" data-help="<p>操作流程可以用不同格式表示，然后保存留待后续使用。你可以把操作流程复制下来保存到文件里，或者存到浏览器的本地存储当中。</p><ul><li><b>直链：</b>最简单的方法是保存一个直链，可以直接从地址栏复制（当输入内容或流程改变时会自动更新），或者从“保存流程”框中复制。当你访问这个链接的时候，输入内容和操作流程会自动恢复。</li><li><b>流程文本：</b>特殊的文本格式，简短而且具有一定可读性。这是用在地址栏当中的格式。</li><li><b>JSON格式：</b>使用空格和缩进的JSON文本，比较可读。</li><li><b>精简JSON：</b>精简过的JSON，可读性差一些。</li><li><b>本地存储：</b>你可以给操作流程起个名字直接保存到浏览器的本地存储。不清理缓存的情况下，同一个浏览器可以直接从“载入流程”功能中载入之前保存的流程。注意：如果浏览器本地存储被清空了，这些流程和数据也没了。</li></ul>">
+                            <button type="button" aria-label="Save recipe" class="btn btn-primary bmd-btn-icon" id="save" data-toggle="tooltip" title="保存" data-help-title="保存操作流程" data-help="<p>操作流程可以用不同格式表示，然后保存留待后续使用。你可以把操作流程复制下来保存到文件里，或者存到浏览器的本地存储当中。</p><ul><li><b>直链：</b>最简单的方法是保存一个直链，可以直接从地址栏复制（当输入内容或流程改变时会自动更新），或者从“保存流程”框中复制。当你访问这个链接的时候，输入内容和操作流程会自动恢复。</li><li><b>流程文本：</b>特殊的文本格式，简短而且具有一定可读性。这是用在地址栏当中的格式。</li><li><b>JSON格式：</b>使用空格和缩进的JSON文本，比较可读。</li><li><b>精简JSON：</b>精简过的JSON，可读性差一些。</li><li><b>本地存储：</b>你可以给操作流程起个名字直接保存到浏览器的本地存储。不清理缓存的情况下，同一个浏览器可以直接从“载入流程”功能中载入之前保存的流程。注意：如果浏览器本地存储被清空了，这些流程和数据也没了。</li></ul>">
                                 <i class="material-icons">save</i>
                             </button>
-                            <button type="button" class="btn btn-primary bmd-btn-icon" id="load" data-toggle="tooltip" title="载入" data-help-title="载入操作流程" data-help="<p>之前保存过的流程可以用以下方式载入：</p><ul><li>如果你保存了直链，直接在浏览器访问那个直链即可，数据和流程会自动恢复。</li><li>如果你有之前保存的文本格式，粘贴到“载入流程”框里然后点击“载入”即可。</li><li>如果你把流程保存到了浏览器本地存储，那么“载入流程”框的下拉列表里应该直接能选到。如果选不到，确认下是不是浏览器缓存被清空过，那样的话之前的数据就没了。</li></ul>">
-                                <i class="material-icons">folder</i>
+                            <button type="button" aria-label="Load recipe" class="btn btn-primary bmd-btn-icon" id="load" data-toggle="tooltip" title="载入" data-help-title="载入操作流程" data-help="<p>之前保存过的流程可以用以下方式载入：</p><ul><li>如果你保存了直链，直接在浏览器访问那个直链即可，数据和流程会自动恢复。</li><li>如果你有之前保存的文本格式，粘贴到“载入流程”框里然后点击“载入”即可。</li><li>如果你把流程保存到了浏览器本地存储，那么“载入流程”框的下拉列表里应该直接能选到。如果选不到，确认下是不是浏览器缓存被清空过，那样的话之前的数据就没了。</li></ul>">
+                                <i class="material-icons" aria-hidden="true">folder</i>
                             </button>
-                            <button type="button" class="btn btn-primary bmd-btn-icon" id="clr-recipe" data-toggle="tooltip" title="清除" data-help-title="清除操作流程" data-help="点击“清除流程”按钮会把整个操作流程列表清空。不影响输入框的数据，但如果“自动执行”勾选上了，输出框的内容会因此改变。">
-                                <i class="material-icons">delete</i>
+                            <button type="button" aria-label="Clear recipe" class="btn btn-primary bmd-btn-icon" id="clr-recipe" data-toggle="tooltip" title="清除" data-help-title="清除操作流程" data-help="点击“清除流程”按钮会把整个操作流程列表清空。不影响输入框的数据，但如果“自动执行”勾选上了，输出框的内容会因此改变。">
+                                <i class="material-icons" aria-hidden="true">delete</i>
                             </button>
                         </span>
                     </div>
@@ -196,22 +196,22 @@
                             <label for="input-text">Input</label>
                             <span class="pane-controls">
                                 <div class="io-info" id="input-files-info"></div>
-                                <button type="button" class="btn btn-primary bmd-btn-icon" id="btn-new-tab" data-toggle="tooltip" title="新标签页" data-help-title="标签页" data-help="<p>你可以创建多个标签页来支持多个输入数据。这些标签有独立的字符编码和换行符设定。</p><p>地址栏的直链只会显示 当前选中标签页的内容。</p>">
-                                    <i class="material-icons">add</i>
+                                <button type="button" aria-label="Add new input tab" class="btn btn-primary bmd-btn-icon" id="btn-new-tab" data-toggle="tooltip" title="新标签页" data-help-title="标签页" data-help="<p>你可以创建多个标签页来支持多个输入数据。这些标签有独立的字符编码和换行符设定。</p><p>地址栏的直链只会显示 当前选中标签页的内容。</p>">
+                                    <i class="material-icons" aria-hidden="true">add</i>
                                 </button>
-                                <button type="button" class="btn btn-primary bmd-btn-icon" id="btn-open-folder" data-toggle="tooltip" title="打开文件夹" data-help-title="打开文件夹" data-help="<p>你可以打开一整个文件夹，当中的每个文件都会显示到独立的标签页中。</p><p>支持同时打开很多文件，但浏览器性能会受到影响，尤其是文件很大的时候。</p><p>文件夹也可以直接用鼠标拖进输入框。</p>">
-                                    <i class="material-icons">folder_open</i>
+                                <button type="button" aria-label="Open folder as input" class="btn btn-primary bmd-btn-icon" id="btn-open-folder" data-toggle="tooltip" title="打开文件夹" data-help-title="打开文件夹" data-help="<p>你可以打开一整个文件夹，当中的每个文件都会显示到独立的标签页中。</p><p>支持同时打开很多文件，但浏览器性能会受到影响，尤其是文件很大的时候。</p><p>文件夹也可以直接用鼠标拖进输入框。</p>">
+                                    <i class="material-icons" aria-hidden="true">folder_open</i>
                                     <input type="file" id="open-folder" style="display: none" multiple directory webkitdirectory>
                                 </button>
-                                <button type="button" class="btn btn-primary bmd-btn-icon" id="btn-open-file" data-toggle="tooltip" title="打开文件" data-help-title="打开文件" data-help="<p>文件可以单独或者一起载入，使用打开文件按钮或者直接拖进输入框。</p><p>硬件足够给力的话，大文件（至少500MB）都是可以处理的，当然有些操作执行起来可能会变得超级慢。</p>">
-                                    <i class="material-icons">input</i>
+                                <button type="button" aria-label="Open file as input" class="btn btn-primary bmd-btn-icon" id="btn-open-file" data-toggle="tooltip" title="打开文件" data-help-title="打开文件" data-help="<p>文件可以单独或者一起载入，使用打开文件按钮或者直接拖进输入框。</p><p>硬件足够给力的话，大文件（至少500MB）都是可以处理的，当然有些操作执行起来可能会变得超级慢。</p>">
+                                    <i class="material-icons" aria-hidden="true">input</i>
                                     <input type="file" id="open-file" style="display: none" multiple>
                                 </button>
-                                <button type="button" class="btn btn-primary bmd-btn-icon" id="clr-io" data-toggle="tooltip" title="清空输入输出" data-help-title="清空输入输出" data-help="点击“清空输入输出”按钮会把输入和输出框的内容清空，不影响操作流程。">
-                                    <i class="material-icons">delete</i>
+                                <button type="button" aria-label="Clear input and output" class="btn btn-primary bmd-btn-icon" id="clr-io" data-toggle="tooltip" title="清空输入输出" data-help-title="清空输入输出" data-help="点击“清空输入输出”按钮会把输入和输出框的内容清空，不影响操作流程。">
+                                    <i class="material-icons" aria-hidden="true">delete</i>
                                 </button>
-                                <button type="button" class="btn btn-primary bmd-btn-icon" id="reset-layout" data-toggle="tooltip" title="重置窗口布局" data-help-title="重置窗口布局" data-help="界面的每个框都是能拖拽调整大小的，这个按钮把每个框的大小恢复成默认状态。">
-                                    <i class="material-icons">view_compact</i>
+                                <button type="button" aria-label="Reset pane layout" class="btn btn-primary bmd-btn-icon" id="reset-layout" data-toggle="tooltip" title="重置窗口布局" data-help-title="重置窗口布局" data-help="界面的每个框都是能拖拽调整大小的，这个按钮把每个框的大小恢复成默认状态。">
+                                    <i class="material-icons" aria-hidden="true">view_compact</i>
                                 </button>
                             </span>
                         </div>
@@ -253,17 +253,17 @@
                                 <button type="button" class="btn btn-primary bmd-btn-icon" id="save-all-to-file" data-toggle="tooltip" title="保存为压缩包" style="display: none" data-help-title="把所有的输出内容保存到ZIP压缩包" data-help="<p>当操作多个标签页的输入时，可以用这个按钮把处理结果打包成ZIP压缩包。</p><p>使用“执行”按钮来执行所有的输入内容。</p><p>你可以指定输出文件的扩展名，或者让程序自行检测，对于无法确定的类型，会使用“.dat”扩展名。</p>">
                                         <i class="material-icons">archive</i>
                                     </button>
-                                <button type="button" class="btn btn-primary bmd-btn-icon" id="save-to-file" data-toggle="tooltip" title="保存到文件" data-help-title="保存输出内容到文件" data-help="将当前选中的输出数据储存到文件中。你可以指定文件名和扩展名。程序会尝试检测对应的扩展名，如果无法成功检测，则会默认使用“.dat”，可以手动修改。">
-                                    <i class="material-icons">save</i>
+                                <button type="button" aria-label="save" class="btn btn-primary bmd-btn-icon" id="save-to-file" data-toggle="tooltip" title="保存到文件" data-help-title="保存输出内容到文件" data-help="将当前选中的输出数据储存到文件中。你可以指定文件名和扩展名。程序会尝试检测对应的扩展名，如果无法成功检测，则会默认使用“.dat”，可以手动修改。">
+                                    <i class="material-icons" aria-hidden="true">save</i>
                                 </button>
-                                <button type="button" class="btn btn-primary bmd-btn-icon" id="copy-output" data-toggle="tooltip" title="复制到剪贴板" data-help-title="复制输出的原始内容到剪贴板" data-help="<p>数据可以直接选中复制，这个按钮可以节省一步选中。会将输出框的完整原始内容直接复制到剪贴板，对于较长的输出可能会节省时间，因为不需要选中特别长的内容。</p>">
-                                    <i class="material-icons">content_copy</i>
+                                <button type="button" aria-label="copy content" class="btn btn-primary bmd-btn-icon" id="copy-output" data-toggle="tooltip" title="复制到剪贴板" data-help-title="复制输出的原始内容到剪贴板" data-help="<p>数据可以直接选中复制，这个按钮可以节省一步选中。会将输出框的完整原始内容直接复制到剪贴板，对于较长的输出可能会节省时间，因为不需要选中特别长的内容。</p>">
+                                    <i class="material-icons" aria-hidden="true">content_copy</i>
                                 </button>
-                                <button type="button" class="btn btn-primary bmd-btn-icon" id="switch" data-toggle="tooltip" title="填写到输入框" data-help-title="将输出内容填写到输入框" data-help="<p>此按钮将当前选中的输出框内容覆盖到输入框中。</p><p>输入框的字符编码和换行符会自动调整为输出框的当前设定。</p>">
-                                    <i class="material-icons">open_in_browser</i>
+                                <button type="button" aria-label="replace input with output" class="btn btn-primary bmd-btn-icon" id="switch" data-toggle="tooltip" title="填写到输入框" data-help-title="将输出内容填写到输入框" data-help="<p>此按钮将当前选中的输出框内容覆盖到输入框中。</p><p>输入框的字符编码和换行符会自动调整为输出框的当前设定。</p>">
+                                    <i class="material-icons" aria-hidden="true">open_in_browser</i>
                                 </button>
-                                <button type="button" class="btn btn-primary bmd-btn-icon" id="maximise-output" data-toggle="tooltip" title="最大化" data-help-title="最大化输出框" data-help="这个按钮会让输出框最大化，把可用操作栏、操作流程栏和输入框都隐藏掉。再点击一次会还原。">
-                                    <i class="material-icons">fullscreen</i>
+                                <button type="button" aria-label="maximise output pane" class="btn btn-primary bmd-btn-icon" id="maximise-output" data-toggle="tooltip" title="最大化" data-help-title="最大化输出框" data-help="这个按钮会让输出框最大化，把可用操作栏、操作流程栏和输入框都隐藏掉。再点击一次会还原。">
+                                    <i class="material-icons" aria-hidden="true">fullscreen</i>
                                 </button>
                             </span>
 
@@ -542,10 +542,10 @@
                     <div class="modal-body">
                         <img aria-hidden="true" class="about-img-left" src="<%- require('../static/images/cyberchef-128x128.png') %>" alt="CyberChef Logo"/>
                         <p class="subtext">
-                            Version <%=  htmlWebpackPlugin.options.version %><br>
+                            Version <%= htmlWebpackPlugin.options.version %><br>
                             Compile time: <%= htmlWebpackPlugin.options.compileTime %>
                         </p>
-                        <p>&copy; Crown Copyright 2016.</p>
+                        <p>&copy; Crown Copyright 2016-<%= htmlWebpackPlugin.options.compileYear %>.</p>
                         <p>Released under the Apache Licence, Version 2.0.</p>
 
                         <ul class="nav nav-tabs" role="tablist">
@@ -837,7 +837,7 @@
                         <ul>
                             <li>Build time: <%= htmlWebpackPlugin.options.compileTime %></li>
                             <li>The changelog for this version can be viewed <a href="https://github.com/gchq/CyberChef/blob/master/CHANGELOG.md">here</a></li>
-                            <li>&copy; Crown Copyright 2016</li>
+                            <li>&copy; Crown Copyright 2016-<%= htmlWebpackPlugin.options.compileYear %></li>
                             <li>Released under the Apache Licence, Version 2.0</li>
                             <li>SHA256 hash: DOWNLOAD_HASH_PLACEHOLDER</li>
                         </ul>

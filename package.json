@@ -1,6 +1,6 @@
 {
   "name": "CTFx",
-  "version": "10.10.0",
+  "version": "10.17.0",
   "description": "The Cyber Swiss Army Knife for encryption, encoding, compression and data analysis.",
   "author": "n1474335 <n1474335@gmail.com>",
   "homepage": "https://gchq.github.io/CyberChef",
@@ -123,6 +123,7 @@
     "escodegen": "^2.1.0",
     "esprima": "^4.0.1",
     "exif-parser": "^0.1.12",
+    "ieee754": "^1.1.13",
     "fernet": "^0.3.2",
     "file-saver": "^2.0.5",
     "flat": "^6.0.1",
@@ -176,7 +177,7 @@
     "unorm": "^1.6.0",
     "utf8": "^3.0.0",
     "vkbeautify": "^0.99.3",
-    "xmldom": "^0.6.0",
+    "@xmldom/xmldom": "^0.8.0",
     "xpath": "0.0.34",
     "xregexp": "^5.1.1",
     "zlibjs": "^0.3.1"

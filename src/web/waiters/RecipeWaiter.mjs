@@ -243,10 +243,8 @@ class RecipeWaiter {
             const uniqueIcons = icons.map(function(item) {
                 return item.getAttribute("hide-args");
             }).unique();
-            console.log(uniqueIcons);
 
             const controlsIconStatus = document.getElementById("hide-icon").getAttribute("hide-args");
-            console.log(controlsIconStatus);
 
             // If all icons are in the same state and the global icon isn't, fix it
             if (uniqueIcons.length === 1 && icon.getAttribute("hide-args") !== controlsIconStatus) {
