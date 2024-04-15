@@ -60,6 +60,7 @@ import "./tests/Crypt.mjs";
 import "./tests/CSV.mjs";
 import "./tests/DateTime.mjs";
 import "./tests/DefangIP.mjs";
+import "./tests/ECDSA.mjs";
 import "./tests/ELFInfo.mjs";
 import "./tests/Enigma.mjs";
 import "./tests/ExtractEmailAddresses.mjs";
@@ -158,6 +159,7 @@ import "./tests/BaiJiaXing.mjs";
 import "./tests/CoreValues.mjs";
 import "./tests/Brainfuck.mjs";
 import "./tests/PBE.mjs";
+import "./tests/ParseCSR.mjs";
 
 const testStatus = {
     allTestsPassing: true,
