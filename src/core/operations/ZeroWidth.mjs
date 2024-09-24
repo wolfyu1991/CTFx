@@ -8,7 +8,7 @@ import Operation from "../Operation.mjs";
 import * as z from "../lib/ZeroWidth.mjs";
 import zs from "../lib/ZwspSteg.mjs";
 import unicodeSteganographer from "../lib/UnicodeSteganography.mjs";
-
+import Utils from "../Utils.mjs";
 
 /**
  * ZeroWidth operation
@@ -37,14 +37,21 @@ class ZeroWidth extends Operation {
                         off: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
                     },
                     {
-                        name: "Unicode Steganography",
-                        on: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-                        off: [16]
-                    },
-                    {
-                        name: "zwsp-steg",
+                        name: "Unicode Steganography Auto",
                         off: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
                         on: [16]
+                    },
+                    {
+                        name: "Unicode Steganography Options",
+                        on: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+                    },
+                    {
+                        name: "zwsp-steg_FULL",
+                        off: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    },
+                    {
+                        name: "zwsp-steg_ZWSP",
+                        off: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
                     }
                 ]
             },
@@ -124,9 +131,10 @@ class ZeroWidth extends Operation {
                 "value": true
             },
             {
-                "name": "zwsp-steg Mode",
+                // Unicode Steg Type
+                "name": "Output",
                 "type": "option",
-                "value": ["MODE_FULL", "MODE_ZWSP"]
+                "value": ["Text", "Binary"]
             }
         ];
         this.checks = [
@@ -143,15 +151,38 @@ class ZeroWidth extends Operation {
      * @param {Object[]} args
      * @returns {string}
      */
-    run(input, args) {
+    async run(input, args) {
         if (!input) return "";
         if (args[0] === "zero-width-lib") {
             return z.decode(input);
         }
-        if (args[0] === "zwsp-steg") {
-            return args[16] === "MODE_FULL" ? zs.decode(input, zs.MODE_FULL) : args[16] === "MODE_ZWSP" ? zs.decode(input, zs.MODE_ZWSP) : null;
+        if (args[0] === "zwsp-steg_FULL") {
+            return zs.decode(input, zs.MODE_FULL);
         }
-        if (args[0] === "Unicode Steganography") {
+        if (args[0] === "zwsp-steg_ZWSP") {
+            return zs.decode(input, zs.MODE_ZWSP);
+        }
+        if (args[0] === "Unicode Steganography Auto") {
+            const allChars = ["\u034f", "\u200b", "\u200c", "\u200d", "\u200e", "\u200f", "\u2028", "\u2029", "\u202a", "\u202c", "\u202d", "\u2061", "\u2062", "\u2063", "\ufeff"];
+            let chars = "";
+            for (let j = 0; j < allChars.length; j++) {
+                if (input.indexOf(allChars[j]) !== -1) {
+                    chars += allChars[j];
+                }
+            }
+            unicodeSteganographer.setUseChars(chars);
+
+            if (args[16] === "Text") {
+                const result = unicodeSteganographer.decodeText(input);
+                return result.hiddenText;
+            } else {
+                const result = unicodeSteganographer.decodeBinary(input);
+                return Utils.arrayBufferToStr(result.hiddenData);
+            }
+
+
+        }
+        if (args[0] === "Unicode Steganography Options") {
             const allChars = ["\u034f", "\u200b", "\u200c", "\u200d", "\u200e", "\u200f", "\u2028", "\u2029", "\u202a", "\u202c", "\u202d", "\u2061", "\u2062", "\u2063", "\ufeff"];
             let chars = "";
             for (let j = 1; j < 16; j++) {
@@ -160,12 +191,18 @@ class ZeroWidth extends Operation {
                 }
             }
             unicodeSteganographer.setUseChars(chars);
-            const result = unicodeSteganographer.decodeText(input);
-
-            return result.hiddenText;
+            if (args[16] === "Text") {
+                const result = unicodeSteganographer.decodeText(input);
+                return result.hiddenText;
+            } else {
+                const result = unicodeSteganographer.decodeBinary(input);
+                return Utils.arrayBufferToStr(result.hiddenData);
+            }
         }
         return z.decode(input);
     }
+
+
 
 }
 export default ZeroWidth;
