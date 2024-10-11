@@ -1387,7 +1387,7 @@ class OutputWaiter {
         const dish = this.getOutputDish(this.manager.tabs.getActiveTab("output"));
         if (!this.app.options.autoMagic || dish === null) return;
         const buffer = await this.getDishBuffer(dish);
-        const sample = buffer.slice(0, 1000) || "";
+        const sample = buffer.slice(0, 10000) || "";
 
         if (sample.length || sample.byteLength) {
             this.manager.background.magic(sample);
