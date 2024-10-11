@@ -108,7 +108,7 @@ const parse = (function () {
             } else if (nextChar === "[") {
                 nodes.push(parseLoop());
             } else if (nextChar === "]") {
-                throw "Missing opening bracket";
+                // throw "Missing opening bracket";
             } else {
                 // ignore it
             }
@@ -123,11 +123,13 @@ const parse = (function () {
     function parseLoop() {
         const nodes = [];
         let nextChar;
+        let loopCounter = 0;
+        const maxLoopCount = 100000; // 设置一个最大循环次数，防止过多循环
 
-        while (programChars[0] !== "]") {
+        while (programChars[0] !== "]" && loopCounter < maxLoopCount) {
             nextChar = programChars.shift();
             if (nextChar === undefined) {
-                throw "Missing closing bracket";
+                // throw "Missing closing bracket";
             } else if (ops[nextChar]) {
                 nodes.push(ops[nextChar]);
             } else if (nextChar === "[") {
@@ -135,8 +137,16 @@ const parse = (function () {
             } else {
                 // ignore
             }
+            loopCounter++;
         }
-        programChars.shift();
+
+        if (loopCounter === maxLoopCount) {
+            throw "Exceeded maximum loop count";
+        }
+
+        if (programChars[0] === "]") {
+            programChars.shift();
+        }
 
         return loop(nodes);
     }
@@ -161,9 +171,10 @@ const parse = (function () {
  *
  */
 export function runBrainFuck(code, input) {
-    return new Promise((resolve, reject) => {
-        resolve(parse(code)(input));
-    });
+    return parse(code)(input);
+    // return new Promise((resolve, reject) => {
+    //     resolve(parse(code)(input));
+    // });
 }
 
 // module.exports = runBrainFuck;
