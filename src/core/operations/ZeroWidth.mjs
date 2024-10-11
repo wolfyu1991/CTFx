@@ -201,8 +201,5 @@ class ZeroWidth extends Operation {
         }
         return z.decode(input);
     }
-
-
-
 }
 export default ZeroWidth;
