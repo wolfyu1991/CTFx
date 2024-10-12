@@ -155,6 +155,7 @@ class Manager {
         // Recipe
         this.addDynamicListener(".arg:not(select)", "input", this.recipe.ingChange, this.recipe);
         this.addDynamicListener(".arg[type=checkbox], .arg[type=radio], select.arg", "change", this.recipe.ingChange, this.recipe);
+        this.addDynamicListener(".remove-icon", "click", this.recipe.operationremoveclick, this.recipe);
         this.addDynamicListener(".hide-args-icon", "click", this.recipe.hideArgsClick, this.recipe);
         this.addDynamicListener(".disable-icon", "click", this.recipe.disableClick, this.recipe);
         this.addDynamicListener(".breakpoint", "click", this.recipe.breakpointClick, this.recipe);

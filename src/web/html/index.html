@@ -129,7 +129,7 @@
             <div id="workspace-wrapper">
                 <div id="operations" class="split split-horizontal no-select"  data-help-title="Operations list" data-help="<p>The Operations list contains all the operations in CyberChef arranged into categories. Some operations may be present in multiple categories. You can search for operations using the search box.</p><p>To use an operation, either double click it, or drag it into the Recipe pane. You will then be able to configure its arguments (or 'Ingredients' in CyberChef terminology).</p>">
                     <div class="title no-select">
-                        Operations
+                        功能区
                         <span class="pane-controls">
                             <button type="button" class="btn btn-primary bmd-btn-icon" id="options" data-toggle="tooltip" title="设置" data-help-title="Options and Settings" data-help="Configurable options to change how CyberChef behaves. These settings are stored in your browser's local storage, meaning they will persist between sessions that use the same browser profile.">
                                 <i class="material-icons">settings</i>
@@ -149,7 +149,7 @@
 
                 <div id="recipe" class="split split-horizontal no-select" data-help-title="Recipe pane" data-help="<p>The Recipe pane is where your chosen Operations are configured. If you are a programmer, think of these as functions. If you are not a programmer, these are like steps in a cake recipe. The Input data will be processed based on the Operations in your Recipe.</p><ul><li>To reorder, simply drag and drop the Operations into the order your require</li><li>To remove an operation, either double click it, or drag it outside of the Recipe pane</li></ul><p>The arguments (or 'Ingredients' in CyberChef terminology) can be configured to change how an Operation processes the data.</p>">
                     <div class="title no-select">
-                        Recipe
+                        执行区
                         <span class="pane-controls hide-on-maximised-output">
                             <button type="button" aria-label="Hide arguments" class="btn btn-primary bmd-btn-icon" id="hide-icon" data-toggle="tooltip" title="折叠" hide-args="false">
                                 <i class="material-icons">keyboard_arrow_up</i>
@@ -173,16 +173,17 @@
                                 Step
                             </button>
 
-                            <button type="button" class="mx-2 btn btn-lg btn-success btn-raised btn-block" id="bake" data-help-title="Baking" data-help="<p>Baking causes CyberChef to run the Recipe against your data. This involves three steps:</p><ol><li>The data in the Input is encoded into bytes using the character encoding selected in the Input status bar.</li><li>The data is run through each of the operations in the Recipe in turn with the output of one operation being fed into the next operation as its input.</li><li>The outcome of the final operation in the Recipe is decoded into Output text using the character encoding selected in the Output status bar.</li></ol><p>If there are multiple Inputs, the Bake button causes every Input to be baked simultaneously.</p>">
-                                <img aria-hidden="true" src="<%- require('../static/images/cook_male-32x32.png') %>" alt="Chef Icon"/>
-                                <span>GO!</span>
+                            <button type="button" class="btn btn-lg btn-success btn-raised btn-block" id="bake" data-help-title="Baking" data-help="<p>Baking causes CyberChef to run the Recipe against your data. This involves three steps:</p><ol><li>The data in the Input is encoded into bytes using the character encoding selected in the Input status bar.</li><li>The data is run through each of the operations in the Recipe in turn with the output of one operation being fed into the next operation as its input.</li><li>The outcome of the final operation in the Recipe is decoded into Output text using the character encoding selected in the Output status bar.</li></ol><p>If there are multiple Inputs, the Bake button causes every Input to be baked simultaneously.</p>">
+                                <!-- <img aria-hidden="true" src="<%- require('../static/images/cook_male-32x32.png') %>" alt="Chef Icon"/> -->
+                                <i class="material-icons" aria-hidden="true" style="vertical-align:middle;font-size: 24px;">play_circle</i>
+                                <span>立即执行</span>
                             </button>
 
                             <div class="form-group" style="display: contents;">
                                 <div class="mx-1 checkbox" data-help-title="Auto-bake" data-help="<p>When Auto-bake is turned on, CyberChef will bake the Input using the Recipe whenever anything in the Input or Recipe changes.</p>This includes:<ul><li>Adding or removing operations</li><li>Modifying operation arguments</li><li>Editing the Input</li><li>Changing the Input character encoding</li></ul><p>If there are multiple inputs, only the currently active tab will be baked when Auto-bake triggers. You can bake all inputs manually using the Bake button.</p>">
                                     <label id="auto-bake-label">
                                         <input type="checkbox" checked="checked" id="auto-bake">
-                                        <br>Auto
+                                        自动执行
                                     </label>
                                 </div>
                             </div>

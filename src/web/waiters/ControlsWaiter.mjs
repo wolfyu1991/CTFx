@@ -369,7 +369,7 @@ class ControlsWaiter {
                 item.setAttribute("hide-args", "false");
                 item.innerText = "keyboard_arrow_up";
                 item.classList.remove("hide-args-selected");
-                item.parentNode.previousElementSibling.style.display = "inline-block";
+                item.parentNode.previousElementSibling.style.display = "block";
             });
         }
     }
@@ -429,21 +429,21 @@ ${navigator.userAgent}
 
         switch (func) {
             case "cancel":
-                btnText.innerText = "Cancel";
+                btnText.innerText = "取消操作";
                 bakeButton.classList.remove("btn-success");
                 bakeButton.classList.remove("btn-warning");
                 bakeButton.classList.add("btn-danger");
                 break;
             case "loading":
                 bakeButton.style.background = "";
-                btnText.innerText = "Loading...";
+                btnText.innerText = "加载中...";
                 bakeButton.classList.remove("btn-success");
                 bakeButton.classList.remove("btn-danger");
                 bakeButton.classList.add("btn-warning");
                 break;
             default:
                 bakeButton.style.background = "";
-                btnText.innerText = "GO!";
+                btnText.innerText = "立即执行";
                 bakeButton.classList.remove("btn-danger");
                 bakeButton.classList.remove("btn-warning");
                 bakeButton.classList.add("btn-success");
