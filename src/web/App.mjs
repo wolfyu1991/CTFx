@@ -41,7 +41,6 @@ class App {
 
         this.baking        = false;
         this.autoBake_     = false;
-        this.autoBakePause = false;
         this.progress      = 0;
         this.ingId         = 0;
 
@@ -175,11 +174,6 @@ class App {
      * Runs Auto Bake if it is set.
      */
     autoBake() {
-        // If autoBakePause is set, we are loading a full recipe (and potentially input), so there is no
-        // need to set the staleness indicator. Just exit and wait until auto bake is called after loading
-        // has completed.
-        if (this.autoBakePause) return false;
-
         if (this.baking) {
             this.manager.worker.cancelBakeForAutoBake();
             this.baking = false;
@@ -498,7 +492,6 @@ class App {
      * @fires Manager#statechange
      */
     loadURIParams(params=this.getURIParams()) {
-        this.autoBakePause = true;
         this.uriParams = params;
 
         // Read in recipe from URI params
@@ -527,7 +520,7 @@ class App {
         // Input Character Encoding
         // Must be set before the input is loaded
         if (this.uriParams.ienc) {
-            this.manager.input.chrEncChange(parseInt(this.uriParams.ienc, 10), true);
+            this.manager.input.chrEncChange(parseInt(this.uriParams.ienc, 10), true, true);
         }
 
         // Output Character Encoding
@@ -565,7 +558,6 @@ class App {
             this.manager.options.changeTheme(Utils.escapeHtml(this.uriParams.theme));
         }
 
-        this.autoBakePause = false;
         window.dispatchEvent(this.manager.statechange);
     }
 
@@ -598,10 +590,6 @@ class App {
      */
     setRecipeConfig(recipeConfig) {
         document.getElementById("rec-list").innerHTML = null;
-
-        // Pause auto-bake while loading but don't modify `this.autoBake_`
-        // otherwise `manualBake` cannot trigger.
-        this.autoBakePause = true;
 
         for (let i = 0; i < recipeConfig.length; i++) {
             const item = this.manager.recipe.addOperation(recipeConfig[i].op);
@@ -637,9 +625,6 @@ class App {
 
             this.progress = 0;
         }
-
-        // Unpause auto bake
-        this.autoBakePause = false;
     }
 
 
