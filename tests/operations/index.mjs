@@ -154,12 +154,6 @@ import "./tests/UnescapeString.mjs";
 import "./tests/Unicode.mjs";
 import "./tests/YARA.mjs";
 import "./tests/ParseCSR.mjs";
-import "./tests/EmojiAES.mjs";
-import "./tests/BaiJiaXing.mjs";
-import "./tests/CoreValues.mjs";
-import "./tests/Brainfuck.mjs";
-import "./tests/PBE.mjs";
-import "./tests/ParseCSR.mjs";
 import "./tests/XXTEA.mjs";
 
 const testStatus = {
