@@ -52,6 +52,7 @@ function main() {
         autoMagic:           true,
         imagePreview:        true,
         syncTabs:            true,
+        showCatCount:        false,
         outputUTF8:          false
     };
 

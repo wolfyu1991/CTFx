@@ -160,6 +160,7 @@ import "./tests/CoreValues.mjs";
 import "./tests/Brainfuck.mjs";
 import "./tests/PBE.mjs";
 import "./tests/ParseCSR.mjs";
+import "./tests/XXTEA.mjs";
 
 const testStatus = {
     allTestsPassing: true,

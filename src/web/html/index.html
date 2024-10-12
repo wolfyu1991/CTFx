@@ -130,6 +130,7 @@
                 <div id="operations" class="split split-horizontal no-select"  data-help-title="Operations list" data-help="<p>The Operations list contains all the operations in CyberChef arranged into categories. Some operations may be present in multiple categories. You can search for operations using the search box.</p><p>To use an operation, either double click it, or drag it into the Recipe pane. You will then be able to configure its arguments (or 'Ingredients' in CyberChef terminology).</p>">
                     <div class="title no-select">
                         功能区
+                        <span class="op-count"></span>
                         <span class="pane-controls">
                             <button type="button" class="btn btn-primary bmd-btn-icon" id="options" data-toggle="tooltip" title="设置" data-help-title="Options and Settings" data-help="Configurable options to change how CyberChef behaves. These settings are stored in your browser's local storage, meaning they will persist between sessions that use the same browser profile.">
                                 <i class="material-icons">settings</i>
@@ -246,7 +247,7 @@
                         </div>
                     </div>
 
-                    <div id="output" class="split" data-help-title="Output pane" data-help="<p>This pane displays the results of the Recipe after it has processed your Input.</p><p>CyberChef does its best to represent data as accurately as possible to ensure you know exactly what you are working with. Non-printable characters are represented using control character pictures, for example a null byte (0x00) is displayed like this: <span title='Control character null' aria-label='Control character null' class='cm-specialChar'>␀</span>.</p><p>When copying these characters from the Output, the original byte value should be copied into your clipboard, rather than the control character picture itself.</p>">
+                    <div id="output" class="split" data-help-title="Output pane" data-help="<p>This pane displays the results of the Recipe after it has processed your Input.</p><p>CyberChef does its best to represent data as accurately as possible to ensure you know exactly what you are working with. Non-printable characters are represented using control character pictures, for example a null byte (0x00) is displayed like this: <span title='Control character null' aria-label='Control character null' class='cm-specialChar'>␀</span>.</p><p>When copying these characters from the Output, the original byte value will be copied into your clipboard, rather than the control character picture itself.</p>">
                         <div class="title no-select">
                             <label for="output-text">Output</label>
                             <span class="pane-controls">
@@ -497,6 +498,20 @@
                             <label for="syncTabs">
                                 <input type="checkbox" option="syncTabs" id="syncTabs">
                                 同步选中输入输出标签
+                            </label>
+                        </div>
+
+                        <div class="checkbox option-item">
+                            <label for="showCatCount">
+                                <input type="checkbox" option="showCatCount" id="showCatCount">
+                                Show the number of operations in each category
+                            </label>
+                        </div>
+
+                        <div class="checkbox option-item">
+                            <label for="showCatCount">
+                                <input type="checkbox" option="showCatCount" id="showCatCount">
+                                Show the number of operations in each category
                             </label>
                         </div>
                     </div>
@@ -837,7 +852,7 @@
                         <h6>CyberChef v<%= htmlWebpackPlugin.options.version %></h6>
                         <ul>
                             <li>Build time: <%= htmlWebpackPlugin.options.compileTime %></li>
-                            <li>The changelog for this version can be viewed <a href="https://github.com/gchq/CyberChef/blob/master/CHANGELOG.md">here</a></li>
+                            <li>The changelog for this version can be viewed <a href="https://github.com/gchq/CyberChef/blob/v<%= htmlWebpackPlugin.options.version %>/CHANGELOG.md">here</a></li>
                             <li>&copy; Crown Copyright 2016-<%= htmlWebpackPlugin.options.compileYear %></li>
                             <li>Released under the Apache Licence, Version 2.0</li>
                             <li>SHA256 hash: DOWNLOAD_HASH_PLACEHOLDER</li>
