@@ -23,6 +23,13 @@ class FromBase92 extends Operation {
         this.infoURL = "https://wikipedia.org/wiki/List_of_numeral_systems";
         this.inputType = "string";
         this.outputType = "byteArray";
+        this.checks = [
+            {
+                pattern: /^[!#$%&'()*+,\\\-./0-9:;<=>?@A-Z[\]^_{|}~]{20,}$/,
+                flags: "i",
+                args: []
+            }
+        ];
     }
 
     /**
