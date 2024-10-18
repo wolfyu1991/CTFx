@@ -19,7 +19,7 @@ class FromBase91 extends Operation {
 
         this.name = "From Base91";
         this.module = "Default";
-        this.description = "BasE91 is an encoding method that uses ASCII characters. Similar to base64, it has the advantage of limiting the size of the encoded data and to be used as a cipher.";
+        this.description = "Base91 is an encoding method that uses ASCII characters. Similar to base64, it has the advantage of limiting the size of the encoded data and to be used as a cipher.";
         this.infoURL = "http://base91.sourceforge.net/";
         this.inputType = "string";
         this.outputType = "byteArray";
@@ -28,6 +28,13 @@ class FromBase91 extends Operation {
                 name: "Alphabet",
                 type: "editableOption",
                 value: ALPHABET_OPTIONS
+            }
+        ];
+        this.checks = [
+            {
+                pattern: "^[A-Z\\d!#$%&()*+,./:;<=>?@[\\]^_`{|}~\"]{20,}$",
+                flags: "i",
+                args: ["A-Za-z0-9!#$%&()*+,./:;<=>?@[]^_`{|}~\""]
             }
         ];
     }
