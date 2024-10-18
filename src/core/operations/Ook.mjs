@@ -40,12 +40,12 @@ class Ook extends Operation {
         ];
         this.checks = [
             {
-                pattern: "^[ .!?]{20,}$",
+                pattern: "^[ .!?\r\n]{20,}$",
                 flags: "i",
                 args: []
             },
             {
-                pattern: "^[Ook .!?]{20,}$",
+                pattern: "^[ok .!?\r\n]{20,}$",
                 flags: "i",
                 args: []
             }
