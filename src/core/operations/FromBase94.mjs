@@ -4,7 +4,7 @@
  */
 
 import Operation from "../Operation.mjs";
-import {fromBase94} from "../lib/Base94.mjs";
+import { fromBase94 } from "../lib/Base94.mjs";
 
 /**
  * From Base94 operation
@@ -32,6 +32,13 @@ class FromBase94 extends Operation {
                 name: "Remove Invalid Chars",
                 type: "boolean",
                 value: false
+            }
+        ];
+        this.checks = [
+            {
+                pattern: /^[!"#$%&'()*+,\-./0-9:;<=>?@A-Z[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ ]{20,}$/,
+                flags: "i",
+                args: [true, false]
             }
         ];
 
