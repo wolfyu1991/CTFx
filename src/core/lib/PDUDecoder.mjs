@@ -365,9 +365,6 @@ const tokens = {
 
     /**
      * Type-of-Message Token
-     *
-     * (This function only recognizes SMS-DELIVER and SMS-SUBMIT, there are others!)
-     *
      * {@linkplain http://www.dreamfabric.com/sms/deliver_fo.html}
      * {@linkplain http://www.dreamfabric.com/sms/submit_fo.html}
      *
@@ -393,7 +390,7 @@ const tokens = {
             text += "SMS-SUBMIT";
             submit = true;
         } else {
-            console.debug(o, padwZeros(o.toString(2)));
+            // console.debug(o, padwZeros(o.toString(2)));
         }
 
         // noinspection JSBitwiseOperatorUsage
