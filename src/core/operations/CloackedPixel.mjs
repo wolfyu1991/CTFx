@@ -9,7 +9,7 @@ import OperationError from "../errors/OperationError.mjs";
 import Utils from "../Utils.mjs";
 import { fromBinary } from "../lib/Binary.mjs";
 import { isImage } from "../lib/FileType.mjs";
-import jimp from "jimp";
+import Jimp from "jimp/es/index.js";
 import forge from "node-forge";
 import Sha256 from "crypto-api/src/hasher/sha256.mjs";
 
@@ -73,7 +73,7 @@ class CloackedPixel extends Operation {
         const password = Utils.convertToByteString(args[0].string, args[0].option),
             bit = 7,
             colours = [0, 1, 2],
-            parsedImage = await jimp.read(input),
+            parsedImage = await Jimp.read(input),
             rgba = parsedImage.bitmap.data;
 
         let i, combinedBinary = "";
