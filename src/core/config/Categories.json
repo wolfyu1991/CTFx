@@ -580,7 +580,10 @@
             "与佛论禅",
             "中文电码",
             "词频分析",
-            "Ook!"
+            "Ook!",
+            "TapCode",
+            "Long to Bytes",
+            "Bytes to Long"
         ]
     }
 ]

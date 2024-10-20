@@ -130,8 +130,8 @@
                 <div id="operations" class="split split-horizontal no-select"  data-help-title="Operations list" data-help="<p>The Operations list contains all the operations in CyberChef arranged into categories. Some operations may be present in multiple categories. You can search for operations using the search box.</p><p>To use an operation, either double click it, or drag it into the Recipe pane. You will then be able to configure its arguments (or 'Ingredients' in CyberChef terminology).</p>">
                     <div class="title no-select">
                         功能区
-                        <span class="op-count"></span>
                         <span class="pane-controls">
+                            <span class="op-count"></span>
                             <button type="button" class="btn btn-primary bmd-btn-icon" id="options" data-toggle="tooltip" title="设置" data-help-title="Options and Settings" data-help="Configurable options to change how CyberChef behaves. These settings are stored in your browser's local storage, meaning they will persist between sessions that use the same browser profile.">
                                 <i class="material-icons">settings</i>
                             </button>
@@ -195,7 +195,7 @@
                 <div class="split split-horizontal" id="IO">
                     <div id="input" class="split no-select" data-help-title="Input pane" data-help="<p>Input data can be entered by typing it in, pasting it in, dragging it in, or using the 'Load file' or 'Load folder' buttons.</p><p>CyberChef does its best to represent data as accurately as possible to ensure you know exactly what you are working with. Non-printable characters are represented using control character pictures, for example a null byte (0x00) is displayed like this: <span title='Control character null' aria-label='Control character null' class='cm-specialChar'>␀</span>.</p>">
                         <div class="title no-select">
-                            <label for="input-text">Input</label>
+                            <label for="input-text">输入区</label>
                             <span class="pane-controls">
                                 <div class="io-info" id="input-files-info"></div>
                                 <button type="button" aria-label="Add new input tab" class="btn btn-primary bmd-btn-icon" id="btn-new-tab" data-toggle="tooltip" title="新标签页" data-help-title="标签页" data-help="<p>你可以创建多个标签页来支持多个输入数据。这些标签有独立的字符编码和换行符设定。</p><p>地址栏的直链只会显示 当前选中标签页的内容。</p>">
@@ -249,7 +249,7 @@
 
                     <div id="output" class="split" data-help-title="Output pane" data-help="<p>This pane displays the results of the Recipe after it has processed your Input.</p><p>CyberChef does its best to represent data as accurately as possible to ensure you know exactly what you are working with. Non-printable characters are represented using control character pictures, for example a null byte (0x00) is displayed like this: <span title='Control character null' aria-label='Control character null' class='cm-specialChar'>␀</span>.</p><p>When copying these characters from the Output, the original byte value will be copied into your clipboard, rather than the control character picture itself.</p>">
                         <div class="title no-select">
-                            <label for="output-text">Output</label>
+                            <label for="output-text">输出区</label>
                             <span class="pane-controls">
                                 <div class="io-info" id="bake-info"></div>
                                 <button type="button" class="btn btn-primary bmd-btn-icon" id="save-all-to-file" data-toggle="tooltip" title="保存为压缩包" style="display: none" data-help-title="把所有的输出内容保存到ZIP压缩包" data-help="<p>当操作多个标签页的输入时，可以用这个按钮把处理结果打包成ZIP压缩包。</p><p>使用“执行”按钮来执行所有的输入内容。</p><p>你可以指定输出文件的扩展名，或者让程序自行检测，对于无法确定的类型，会使用“.dat”扩展名。</p>">
@@ -498,13 +498,6 @@
                             <label for="syncTabs">
                                 <input type="checkbox" option="syncTabs" id="syncTabs">
                                 同步选中输入输出标签
-                            </label>
-                        </div>
-
-                        <div class="checkbox option-item">
-                            <label for="showCatCount">
-                                <input type="checkbox" option="showCatCount" id="showCatCount">
-                                Show the number of operations in each category
                             </label>
                         </div>
 
