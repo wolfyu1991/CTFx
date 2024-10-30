@@ -22,7 +22,7 @@ import OperationError from "../errors/OperationError.mjs";
  * // toBase94([48, 65, 6c, 6c, 6f, 20, 57, 6f, 72, 6c, 64, 21]);
  * // e.g. toBase94(ToHex("Hello World!"))
  */
-export function toBase94(data, strictLength=true) {
+export function toBase94(data, strictLength = true) {
 
     if (!data) return "";
 
@@ -58,9 +58,9 @@ export function toBase94(data, strictLength=true) {
 
         for (j = 0; j < 5; j++) {
 
-            output += String.fromCharCode((acc % 94)+32);
+            output += String.fromCharCode((acc % 94) + 32);
 
-            acc  = Math.floor(acc / 94);
+            acc = Math.floor(acc / 94);
 
         }
 
@@ -88,7 +88,7 @@ export function toBase94(data, strictLength=true) {
  * // fromBase94("@Z<[+/- >5$@3z&T!Qh*|F.q+ZWIz&#J<[+][[4+trr# ", true, true);
  * // e.g. fromHex(fromBase94(....)); -> Hello World!
  */
-export function fromBase94(data, strictLength=true, removeInvalidChars=false) {
+export function fromBase94(data, strictLength = true, removeInvalidChars = false) {
 
     if (!data) {
         return [];

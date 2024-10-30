@@ -35,7 +35,7 @@ class FromBase62 extends Operation {
         ];
         this.checks = [
             {
-                pattern: /^[0-9A-Za-z]{20,}$/,
+                pattern: "^[0-9A-Z]{20,}$",
                 flags: "i",
                 args: ["0-9A-Za-z"]
             }

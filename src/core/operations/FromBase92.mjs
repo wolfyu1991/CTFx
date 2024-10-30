@@ -25,7 +25,7 @@ class FromBase92 extends Operation {
         this.outputType = "byteArray";
         this.checks = [
             {
-                pattern: /^[!#$%&'()*+,\\\-./0-9:;<=>?@A-Z[\]^_{|}~]{20,}$/,
+                pattern: "^[0-9A-Z!#$%&'()*+,-./:;<=>?@[\\]^_{|}~]{20,}$",
                 flags: "i",
                 args: []
             }
