@@ -5,8 +5,8 @@
  */
 
 import Operation from "../Operation.mjs";
-// import Utils from "../Utils.mjs";
-// import { LETTER_DELIM_OPTIONS, WORD_DELIM_OPTIONS } from "../lib/Delim.mjs";
+import Utils from "../Utils.mjs";
+import { LETTER_DELIM_OPTIONS, WORD_DELIM_OPTIONS } from "../lib/Delim.mjs";
 
 /**
  * From Morse Code operation
@@ -27,41 +27,31 @@ class FromMorseCode extends Operation {
         this.outputType = "string";
         this.args = [
             {
-                name: "Dash format",
-                type: "string",
-                value: "."
+                "name": "Letter delimiter",
+                "type": "option",
+                "value": LETTER_DELIM_OPTIONS
             },
             {
-                name: "Dot format",
+                "name": "Word delimiter",
+                "type": "option",
+                "value": WORD_DELIM_OPTIONS
+            },
+            {
+                name: "Dash format",
                 type: "string",
                 value: "-"
             },
             {
-                name: "Letter delimiter",
+                name: "Dot format",
                 type: "string",
-                value: " "
-            },
-            {
-                name: "Word delimiter",
-                type: "string",
-                value: "/"
+                value: "."
             }
-            // {
-            //     "name": "Letter delimiter",
-            //     "type": "option",
-            //     "value": LETTER_DELIM_OPTIONS
-            // },
-            // {
-            //     "name": "Word delimiter",
-            //     "type": "option",
-            //     "value": WORD_DELIM_OPTIONS
-            // }
         ];
         this.checks = [
             {
                 pattern: "(?:^[-. \\n]{5,}$|^[_. \\n]{5,}$|^(?:dash|dot| |\\n){5,}$)",
                 flags: "i",
-                args: [".", "-", " ", "\n"]
+                args: ["Space", "Line feed", "-", "."]
             }
         ];
     }
@@ -76,19 +66,17 @@ class FromMorseCode extends Operation {
             this.reverseTable();
         }
 
-        const letterDelim = args[2];
-        const wordDelim = args[3];
-        // const letterDelim = Utils.charRep(args[0]);
-        // const wordDelim = Utils.charRep(args[1]);
+        const letterDelim = Utils.charRep(args[0]);
+        const wordDelim = Utils.charRep(args[1]);
 
-        // input = input.replace(/-|‐|−|_|–|—|dash/ig, "<dash>"); // hyphen-minus|hyphen|minus-sign|undersore|en-dash|em-dash
-        // input = input.replace(/\.|·|dot/ig, "<dot>");
+        const dashFormat = args[2];
+        const dotFormat = args[3];
 
-        const dashFormat = args[0];
-        const dotFormat = args[1];
+        input = input.split(dashFormat).join("dash"); // hyphen-minus|hyphen|minus-sign|undersore|en-dash|em-dash
+        input = input.split(dotFormat).join("dot");
 
-        input = input.split(dashFormat).join("<dash>"); // hyphen-minus|hyphen|minus-sign|undersore|en-dash|em-dash
-        input = input.split(dotFormat).join("<dot>");
+        input = input.replace(/-|‐|−|_|–|—|dash/ig, "<dash>"); // hyphen-minus|hyphen|minus-sign|undersore|en-dash|em-dash
+        input = input.replace(/\.|·|dot/ig, "<dot>");
 
         let words = input.split(wordDelim);
         const self = this;
