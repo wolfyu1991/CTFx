@@ -583,7 +583,8 @@
             "Ook!",
             "TapCode",
             "Long to Bytes",
-            "Bytes to Long"
+            "Bytes to Long",
+            "Rail Fence Brute Force"
         ]
     }
 ]
