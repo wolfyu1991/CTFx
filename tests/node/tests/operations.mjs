@@ -1087,7 +1087,7 @@ ExifImageHeight: 57`);
         });
 
         // assert against the structure of the output, rather than the values.
-        assert.strictEqual(res.value.length, 深度 + 1);
+        assert.strictEqual(res.value.length, 深度 + 11);
         res.value.forEach(row => {
             assert.ok(row.recipe);
             assert.ok(row.data);
