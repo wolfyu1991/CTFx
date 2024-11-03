@@ -39,6 +39,13 @@ class FromBase45 extends Operation {
                 value: true
             },
         ];
+        this.checks = [
+            {
+                pattern: "^[0-9A-Z $%*+\\-./:]{20,}$",
+                flags: "",
+                args: ["0-9A-Z $%*+\\-./:", false]
+            },
+        ];
 
         this.highlight = highlightFromBase45;
         this.highlightReverse = highlightToBase45;
