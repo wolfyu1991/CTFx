@@ -584,7 +584,9 @@
             "TapCode",
             "Long to Bytes",
             "Bytes to Long",
-            "Rail Fence Brute Force"
+            "Rail Fence Brute Force",
+            "DNA Cipher",
+            "XXencode"
         ]
     }
 ]
