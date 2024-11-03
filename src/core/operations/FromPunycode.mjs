@@ -31,6 +31,18 @@ class FromPunycode extends Operation {
                 "value": false
             }
         ];
+        this.checks = [
+            {
+                pattern: "^xn--[a-z0-9]{6,}$",
+                flags: "",
+                args: [true]
+            },
+            {
+                pattern: "^[a-z0-9]{6,}$",
+                flags: "",
+                args: [false]
+            }
+        ];
     }
 
     /**
