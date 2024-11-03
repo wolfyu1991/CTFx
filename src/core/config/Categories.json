@@ -586,7 +586,8 @@
             "Bytes to Long",
             "Rail Fence Brute Force",
             "DNA Cipher",
-            "XXencode"
+            "XXencode",
+            "BubbleBabble"
         ]
     }
 ]
