@@ -33,7 +33,7 @@ class XXencode extends Operation {
         ];
         this.checks = [
             {
-                pattern: "^[0-9A-Z+-]{20,}$",
+                pattern: "^[0-9A-Z\\+\\-\\r\\n]{20,}$",
                 flags: "i",
                 args: ["Decode"]
             },
