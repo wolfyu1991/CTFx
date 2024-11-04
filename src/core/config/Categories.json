@@ -627,7 +627,8 @@
             "Rail Fence Brute Force",
             "DNA Cipher",
             "XXencode",
-            "BubbleBabble"
+            "BubbleBabble",
+            "UUencode"
         ]
     }
 ]
