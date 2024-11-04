@@ -41,6 +41,8 @@
             "From Base92",
             "To Base94",
             "From Base94",
+            "To Base2048",
+            "From Base2048",
             "To Base",
             "From Base",
             "To BCD",
