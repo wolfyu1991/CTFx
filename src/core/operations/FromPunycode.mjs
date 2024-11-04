@@ -26,7 +26,7 @@ class FromPunycode extends Operation {
         this.outputType = "string";
         this.args = [
             {
-                "name": "Internationalised domain name",
+                "name": "域名解析",
                 "type": "boolean",
                 "value": false
             }
@@ -41,7 +41,12 @@ class FromPunycode extends Operation {
                 pattern: "^[a-z0-9]{6,}$",
                 flags: "",
                 args: [false]
-            }
+            },
+            {
+                pattern: "^xn--.{6,}$",
+                flags: "",
+                args: [true]
+            },
         ];
     }
 
