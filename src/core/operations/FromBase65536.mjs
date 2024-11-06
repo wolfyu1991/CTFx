@@ -41,8 +41,8 @@ class FromBase65536 extends Operation {
         ];
         this.checks = [
             {
-                pattern: "^[^\x00-\u1500]{8,}$",
-                flags: "",
+                pattern: "^[\u1500\u3400-\u{16900}\u{20000}-\u{28500}]{4,}$",
+                flags: "u",
                 args: []
             },
         ];
