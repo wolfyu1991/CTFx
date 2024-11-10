@@ -159,7 +159,7 @@ class Magic {
             results.push({
                 data: sample.map(b => (b >> i) | ((b & (Math.pow(2, i) - 1)) << (8 - i))).buffer,
                 conf: {
-                    op: "Rotate right",
+                    op: "循环右移",
                     args: [i, false]
                 }
             });
