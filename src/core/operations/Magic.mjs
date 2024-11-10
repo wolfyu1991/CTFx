@@ -39,7 +39,7 @@ class Magic extends Operation {
             {
                 "name": "增强模式",
                 "type": "boolean",
-                "value": false
+                "value": true
             },
             {
                 "name": "扩展语言支持",
