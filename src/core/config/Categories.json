@@ -226,11 +226,11 @@
             "Divide",
             "Mean",
             "Median",
-            "Standard Deviation",
+            "标准差",
             "Bit shift left",
             "Bit shift right",
-            "Rotate left",
-            "Rotate right",
+            "循环左移",
+            "循环右移",
             "ROT13",
             "ROT8000"
         ]
