@@ -52,7 +52,7 @@ class ROT47BruteForce extends Operation {
         ];
         this.checks = [
             {
-                pattern: /^[\x20 - \x7E]{8,}$/,
+                pattern: "^[\x20-\x7E]{8,}$",
                 flags: "i",
                 args: [100, 0, false, "", true]
             }
