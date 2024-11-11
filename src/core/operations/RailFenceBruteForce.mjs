@@ -42,7 +42,7 @@ class RailFenceBruteForce extends Operation {
         ];
         this.checks = [
             {
-                pattern: /^f.*(\{.*\}|\}.*\{).*$/,
+                pattern: "^f.*({.*}|}.*{).*$",
                 flags: "i",
                 args: [false, "", true]
             }

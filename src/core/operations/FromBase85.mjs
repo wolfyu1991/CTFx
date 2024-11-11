@@ -35,7 +35,7 @@ class FromBase85 extends Operation {
             {
                 name: "Remove non-alphabet chars",
                 type: "boolean",
-                value: true
+                value: false
             },
             {
                 name: "All-zero group char",
@@ -92,7 +92,8 @@ class FromBase85 extends Operation {
         }
 
         if (allZeroGroupChar && alphabet.includes(allZeroGroupChar)) {
-            throw new OperationError("The all-zero group char cannot appear in the alphabet");
+            // throw new OperationError("The all-zero group char cannot appear in the alphabet");
+            throw new OperationError("全零组字符不能出现在字母表中。");
         }
 
         // Remove delimiters if present

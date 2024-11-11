@@ -36,7 +36,7 @@ class FromBase94 extends Operation {
         ];
         this.checks = [
             {
-                pattern: /^[!"#$%&'()*+,\-./0-9:;<=>?@A-Z[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ ]{20,}$/,
+                pattern: "^[-!\"#$%&'()*+,./0-9:;<=>?@A-Z[\\]^_`{|}~]{20,}$",
                 flags: "i",
                 args: [true, false]
             }

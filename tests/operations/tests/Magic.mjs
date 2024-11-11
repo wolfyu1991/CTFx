@@ -7,7 +7,7 @@
  * @license Apache-2.0
  */
 import TestRegister from "../../lib/TestRegister.mjs";
-// import { JPG_RAW } from "../../samples/Images.mjs";
+import { JPG_RAW } from "../../samples/Images.mjs";
 
 TestRegister.addTests([
     {
@@ -32,17 +32,17 @@ TestRegister.addTests([
             }
         ],
     },
-    // {
-    //     name: "Magic: jpeg render",
-    //     input: JPG_RAW,
-    //     expectedMatch: /Render_Image\('Raw'\)/,
-    //     recipeConfig: [
-    //         {
-    //             op: "Magic",
-    //             args: [3, false, false]
-    //         }
-    //     ],
-    // },
+    {
+        name: "Magic: jpeg render",
+        input: JPG_RAW,
+        expectedMatch: /Render_Image\('Raw'\)/,
+        recipeConfig: [
+            {
+                op: "Magic",
+                args: [3, false, false]
+            }
+        ],
+    },
     {
         name: "Magic: mojibake",
         input: "\xd0\x91\xd1\x8b\xd1\0\xd1\x82\xd1\x80\xd0\xb0\xd1\0\x20\xd0\xba\xd0\xbe\xd1\x80\xd0\xb8\xd1\x87\xd0\xbd\xd0\xb5\xd0\xb2\xd0\xb0\xd1\0\x20\xd0\xbb\xd0\xb8\xd1\0\xd0\xb0\x20\xd0\xbf\xd1\x80\xd1\x8b\xd0\xb3\xd0\xb0\xd0\xb5\xd1\x82\x20\xd1\x87\xd0\xb5\xd1\x80\xd0\xb5\xd0\xb7\x20\xd0\xbb\xd0\xb5\xd0\xbd\xd0\xb8\xd0\xb2\xd1\x83\xd1\x8e\x20\xd1\0\xd0\xbe\xd0\xb1\xd0\xb0\xd0\xba\xd1\x83\x2e",
