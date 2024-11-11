@@ -37,7 +37,7 @@ export function alphabetName(alphabet) {
     alphabet = escape(alphabet);
     let name;
 
-    ALPHABET_OPTIONS.forEach(function(a) {
+    ALPHABET_OPTIONS.forEach(function (a) {
         const expanded = Utils.expandAlphRange(a.value).join("");
         if (alphabet === escape(expanded)) name = a.name;
     });

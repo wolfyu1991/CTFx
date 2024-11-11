@@ -62,7 +62,7 @@ class ROT13BruteForce extends Operation {
         ];
         this.checks = [
             {
-                pattern: /^[a-z]{4}{.*?}$/,
+                pattern: "^[a-z]{4}{.*?}$",
                 flags: "i",
                 args: [true, true, false, 100, 0, false, "flag{"]
             }
