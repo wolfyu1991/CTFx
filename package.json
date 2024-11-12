@@ -168,6 +168,7 @@
     "reflect-metadata": "^0.2.2",
     "rison": "^0.1.1",
     "scryptsy": "^2.1.0",
+    "sjcl": "^1.0.8",
     "snackbarjs": "^1.1.0",
     "sortablejs": "^1.15.2",
     "split.js": "^1.6.5",
