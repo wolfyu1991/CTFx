@@ -54,8 +54,8 @@ module.exports = {
         testOp(browser, "Bcrypt parse", "$2a$05$kXWtAIGB/R8VEzInoM5ocOTBtyc0m2YTIwFiBU/0XoW032f9QrkWW", /Rounds: 5/);
         testOp(browser, "Bifid Cipher Decode", "qblb tfovy", "test input", ["pass"]);
         testOp(browser, "Bifid Cipher Encode", "test input", "qblb tfovy", ["pass"]);
-        testOp(browser, "Bit shift left", "test input", "\u00E8\u00CA\u00E6\u00E8@\u00D2\u00DC\u00E0\u00EA\u00E8");
-        testOp(browser, "Bit shift right", "test input", ":29:\u0010478::");
+        testOp(browser, "位左移", "test input", "\u00E8\u00CA\u00E6\u00E8@\u00D2\u00DC\u00E0\u00EA\u00E8");
+        testOp(browser, "位右移", "test input", ":29:\u0010478::");
         testOp(browser, "Blowfish Decrypt", "10884e15427dd84ec35204e9c8e921ae", "test_output", [{"option": "Hex", "string": "1234567801234567"}, {"option": "Hex", "string": "0011223344556677"}, "CBC", "Hex", "Raw"]);
         testOp(browser, "Blowfish Encrypt", "test input", "f0fadbd1d90d774f714248cf26b96410", [{"option": "Hex", "string": "1234567801234567"}, {"option": "Hex", "string": "0011223344556677"}, "CBC", "Raw", "Hex"]);
         testOp(browser, ["From Hex", "Blur Image", "To Base64"], Images.PNG_HEX, Images.PNG_BLUR_B64);
@@ -111,7 +111,7 @@ module.exports = {
         testOpHtml(browser, "Diff", "The cat sat on the mat\n\nThe mat cat on the sat", "ins:first-child", "mat", ["\\n\\n", "Word", true, true, false, false]);
         // testOp(browser, "Disassemble x86", "test input", "test_output");
         testOpImage(browser, "Dither Image", "files/Hitchhikers_Guide.jpeg");
-    // testOp(browser, "Divide", "test input", "test_output");
+    // testOp(browser, "除法", "test input", "test_output");
         // testOp(browser, "Drop bytes", "test input", "test_output");
         // testOp(browser, "Encode NetBIOS Name", "test input", "test_output");
         // testOp(browser, "Encode text", "test input", "test_output");
@@ -223,12 +223,12 @@ module.exports = {
         testOpHtml(browser, "Magic", "dGVzdF9vdXRwdXQ=", "tr:nth-of-type(1) th:nth-of-type(2)", "Result snippet");
         testOpHtml(browser, "Magic", "dGVzdF9vdXRwdXQ=", "tr:nth-of-type(2) td:nth-of-type(2)", "test_output");
         testOpHtml(browser, "Magic", "dGVzdF9vdXRwdXQ=", "tr:nth-of-type(2) td:nth-of-type(1)", /Base64/);
-        // testOp(browser, "Mean", "test input", "test_output");
+        // testOp(browser, "平均数", "test input", "test_output");
         // testOp(browser, "Median", "test input", "test_output");`
         // testOp(browser, "Merge", "test input", "test_output");`
         // testOp(browser, "Microsoft Script Decoder", "test input", "test_output");
         // testOp(browser, "Multiple Bombe", "test input", "test_output");
-        // testOp(browser, "Multiply", "test input", "test_output");
+        // testOp(browser, "乘法", "test input", "test_output");
         // testOp(browser, "NOT", "test input", "test_output");
         // testOp(browser, "Normalise Image", "test input", "test_output");
     // testOp(browser, "Normalise Unicode", "test input", "test_output");
@@ -326,8 +326,8 @@ module.exports = {
         // testOp(browser, "Strip HTTP headers", "test input", "test_output");
         // testOp(browser, "Subsection", "test input", "test_output");
         // testOp(browser, "Substitute", "test input", "test_output");
-        // testOp(browser, "Subtract", "test input", "test_output");
-    // testOp(browser, "Sum", "test input", "test_output");
+        // testOp(browser, "减法", "test input", "test_output");
+    // testOp(browser, "求和", "test input", "test_output");
         // testOp(browser, "Swap endianness", "test input", "test_output");
         // testOp(browser, "Symmetric Difference", "test input", "test_output");
         testOpHtml(browser, "Syntax highlighter", "var a = [4,5,6]", ".hljs-selector-attr", "[4,5,6]");

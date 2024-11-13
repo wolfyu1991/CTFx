@@ -170,7 +170,7 @@ Full hash: $2a$10$ODeP1.6fMsb.ENk2ngPUCO7qTGVPyHA9TqDVcyupyed8FjsiF65L6`;
         assert.strictEqual(result.toString(), "nmhs zmsdo");
     }),
 
-    it("bit shift left", () => {
+    it("位左移", () => {
         const result = chef.bitShiftLeft("Keep Your Eyes Peeled");
         assert.strictEqual(result.toString(), "ÊÊà@²Þêä@òÊæ@ ÊÊØÊÈ");
     }),
@@ -437,7 +437,7 @@ color: white;
         assert.strictEqual(result.toString(), expected);
     }),
 
-    it("Divide", () => {
+    it("除法", () => {
         assert.strictEqual(chef.divide("4\n7").toString(), "0.57142857142857142857");
     }),
 

@@ -22,9 +22,9 @@ class Multiply extends Operation {
     constructor() {
         super();
 
-        this.name = "Multiply";
+        this.name = "乘法";
         this.module = "Default";
-        this.description = "Multiplies a list of numbers. If an item in the string is not a number it is excluded from the list.<br><br>e.g. <code>0x0a 8 .5</code> becomes <code>40</code>";
+        this.description = "对数字列表进行乘法运算。如果字符串中的项不是数字，则将其从列表中排除。<br><br>例如： <code>0x0a 8 .5</code> 结果为 <code>40</code>";
         this.infoURL = "https://wikipedia.org/wiki/Multiplication";
         this.inputType = "string";
         this.outputType = "BigNumber";
