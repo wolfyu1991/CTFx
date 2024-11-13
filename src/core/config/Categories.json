@@ -45,6 +45,8 @@
             "From Base100",
             "To Base2048",
             "From Base2048",
+            "To Base32768",
+            "From Base32768",
             "To Base65536",
             "From Base65536",
             "To Base",
