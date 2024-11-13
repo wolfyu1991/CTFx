@@ -34,8 +34,7 @@ class CoreValues extends Operation {
         ];
         this.checks = [
             {
-                pattern: "^[富强|民主|文明|和谐|自由|平等|公正|法治|爱国|敬业|诚信|友善]*$",
-                flags: "g",
+                pattern: "^[富强民主文明和谐自由平等公正法治爱国敬业诚信友善]{4,}$",
                 args: ["Decode"]
             },
         ];
