@@ -39,6 +39,13 @@ class Malbolge extends Operation {
             }
             */
         ];
+        this.checks = [
+            {
+                pattern: "^D'`[!\"#$%&'()*+,\\-./0-9:;<=>?@A-Z[\\]^_`{|}~\\\\]{10,}$",
+                flags: "i",
+                args: []
+            }
+        ];
     }
 
     /**
