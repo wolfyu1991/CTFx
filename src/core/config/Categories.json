@@ -642,7 +642,8 @@
             "阴阳怪气",
             "JJencode",
             "Malbolge",
-            "RCE Payload"
+            "RCE Payload",
+            "JSFuck"
         ]
     }
 ]
