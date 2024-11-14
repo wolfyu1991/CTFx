@@ -17,7 +17,7 @@ class Decabit extends Operation {
     constructor() {
         super();
 
-        this.name = "Decabit 脉冲编码";
+        this.name = "Decabit";
         this.module = "CTF";
         this.description = "Decabit \u8109\u51b2\u7f16\u7801\u753110\u4e2a\u5b57\u7b26\u7684\u201c+\u201d\u548c\u201c-\u201d\u7ec4\u6210\uff0c\u53ef\u4ee5\u76f4\u63a5\u8f6c\u6362\u4e3a\u4ece0\u5230126\u7684\u6570\u5b57\u3002\u8fd9\u4e9b\u503c\u6620\u5c04\u5230\u76f8\u5e94\u7684ASCII\u5b57\u7b26/\u6570\u5b57\u3002Decabit \u8109\u51b2\u7f16\u7801\u662f\u4e00\u7cfb\u5217\u7535\u8109\u51b2\uff0c\u65e8\u5728\u901a\u8fc7\u7535\u529b\u7ebf\uff08\u4ea4\u6d41\u7535\uff09\u5bf9\u6570\u636e\u8fdb\u884c\u7f16\u7801\u3002\u4f8b\u5982\u7528\u4e8e\u4f20\u8f93\u4eea\u8868\u8bfb\u6570\u3002";
         this.infoURL = "https://www.cachesleuth.com/decabit.html"; // Usually a Wikipedia link. Remember to remove localisation (i.e. https://wikipedia.org/etc rather than https://en.wikipedia.org/etc)

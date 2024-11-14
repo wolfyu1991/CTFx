@@ -573,7 +573,7 @@
     {
         "name": "定制功能",
         "ops": [
-            "AAencode 颜文字",
+            "AAencode",
             "Base64隐写",
             "BrainFuck",
             "Cloacked Pixel",
@@ -598,7 +598,7 @@
             "BubbleBabble",
             "UUencode",
             "PixelJihad",
-            "Decabit 脉冲编码",
+            "Decabit",
             "阴阳怪气",
             "JJencode",
             "Malbolge",
