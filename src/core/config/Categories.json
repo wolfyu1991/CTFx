@@ -605,6 +605,7 @@
             "Long to Bytes",
             "Bytes to Long",
             "Rail Fence Brute Force",
+            "Affine Cipher Brute Force",
             "DNA Cipher",
             "XXencode",
             "BubbleBabble",
