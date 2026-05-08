@@ -670,7 +670,7 @@ class App {
 
         // const compareURL = `https://github.com/gchq/CyberChef/compare/v${prev.join(".")}...v${PKG_VERSION}`;
 
-        let compileInfo = `<a href='https://github.com/gchq/CyberChef/blob/master/CHANGELOG.md'>最新编译: ${timeSinceCompile.substr(0, 1).toUpperCase() + timeSinceCompile.substr(1)}之前</a>`;
+        let compileInfo = `<a href='https://github.com/gchq/CyberChef/blob/master/CHANGELOG.md'>最新编译: ${timeSinceCompile.substring(0, 1).toUpperCase() + timeSinceCompile.substring(1)}之前</a>`;
 
         if (window.compileMessage !== "") {
             compileInfo += " - " + window.compileMessage;
