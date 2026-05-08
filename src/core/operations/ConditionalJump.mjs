@@ -2,6 +2,8 @@
  * @author n1474335 [n1474335@gmail.com]
  * @copyright Crown Copyright 2018
  * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
  */
 
 import Operation from "../Operation.mjs";
@@ -22,27 +24,27 @@ class ConditionalJump extends Operation {
         this.name = "Conditional Jump";
         this.flowControl = true;
         this.module = "Default";
-        this.description = "Conditionally jump forwards or backwards to the specified Label  based on whether the data matches the specified regular expression.";
+        this.description = "按给定的条件（正则表达式）跳转到给定的标签位置。";
         this.inputType = "string";
         this.outputType = "string";
         this.args = [
             {
-                "name": "Match (regex)",
+                "name": "匹配规则",
                 "type": "string",
                 "value": ""
             },
             {
-                "name": "Invert match",
+                "name": "反向匹配",
                 "type": "boolean",
                 "value": false
             },
             {
-                "name": "Label name",
+                "name": "标签名称",
                 "type": "shortString",
                 "value": ""
             },
             {
-                "name": "Maximum jumps (if jumping backwards)",
+                "name": "最大跳转次数（如果向后跳转）",
                 "type": "number",
                 "value": 10
             }

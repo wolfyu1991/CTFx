@@ -6,7 +6,7 @@
 
 import Operation from "../Operation.mjs";
 import Utils from "../Utils.mjs";
-import {LETTER_DELIM_OPTIONS, WORD_DELIM_OPTIONS} from "../lib/Delim.mjs";
+import { LETTER_DELIM_OPTIONS, WORD_DELIM_OPTIONS } from "../lib/Delim.mjs";
 
 /**
  * From Morse Code operation
@@ -35,13 +35,23 @@ class FromMorseCode extends Operation {
                 "name": "Word delimiter",
                 "type": "option",
                 "value": WORD_DELIM_OPTIONS
+            },
+            {
+                name: "Dash format",
+                type: "string",
+                value: "-"
+            },
+            {
+                name: "Dot format",
+                type: "string",
+                value: "."
             }
         ];
         this.checks = [
             {
                 pattern: "(?:^[-. \\n]{5,}$|^[_. \\n]{5,}$|^(?:dash|dot| |\\n){5,}$)",
                 flags: "i",
-                args: ["Space", "Line feed"]
+                args: ["Space", "Line feed", "-", "."]
             }
         ];
     }
@@ -59,15 +69,21 @@ class FromMorseCode extends Operation {
         const letterDelim = Utils.charRep(args[0]);
         const wordDelim = Utils.charRep(args[1]);
 
+        const dashFormat = args[2];
+        const dotFormat = args[3];
+
+        input = input.split(dashFormat).join("dash"); // hyphen-minus|hyphen|minus-sign|undersore|en-dash|em-dash
+        input = input.split(dotFormat).join("dot");
+
         input = input.replace(/-|‐|−|_|–|—|dash/ig, "<dash>"); // hyphen-minus|hyphen|minus-sign|undersore|en-dash|em-dash
         input = input.replace(/\.|·|dot/ig, "<dot>");
 
         let words = input.split(wordDelim);
         const self = this;
-        words = Array.prototype.map.call(words, function(word) {
+        words = Array.prototype.map.call(words, function (word) {
             const signals = word.split(letterDelim);
 
-            const letters = signals.map(function(signal) {
+            const letters = signals.map(function (signal) {
                 return self.reversedTable[signal];
             });
 

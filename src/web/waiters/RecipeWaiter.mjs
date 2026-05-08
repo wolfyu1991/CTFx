@@ -235,7 +235,7 @@ class RecipeWaiter {
             icon.setAttribute("hide-args", "false");
             icon.innerText = "keyboard_arrow_up";
             icon.classList.remove("hide-args-selected");
-            icon.parentNode.previousElementSibling.style.display = "grid";
+            icon.parentNode.previousElementSibling.style.display = "block";
         }
 
         const icons = Array.from(document.getElementsByClassName("hide-args-icon"));
@@ -325,6 +325,18 @@ class RecipeWaiter {
      */
     operationChildDblclick(e) {
         e.target.parentNode.remove();
+        this.opRemove(e);
+    }
+
+    /**
+     * Handler for operation child doubleclick events.
+     * Removes the operation from the recipe.
+     *
+     * @fires Manager#statechange
+     * @param {event} e
+     */
+    operationremoveclick(e) {
+        e.target.parentNode.parentNode.remove();
         this.opRemove(e);
     }
 
@@ -628,7 +640,7 @@ class RecipeWaiter {
         const recList = document.getElementById("rec-list");
 
         // Hide Chef icon on Bake button if the page is compressed
-        const bakeIcon = document.querySelector("#bake img");
+        const bakeIcon = document.querySelector("#bake i");
 
         if (recList.clientWidth < 370) {
             // Hide Chef icon on Bake button

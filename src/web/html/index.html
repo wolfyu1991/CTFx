@@ -23,7 +23,7 @@
 <html lang="en" class="classic">
     <head>
         <meta charset="UTF-8">
-        <title>CyberChef</title>
+        <title>CTFx</title>
 
         <meta name="copyright" content="Crown Copyright 2016-<%= htmlWebpackPlugin.options.compileYear %>" />
         <meta name="description" content="The Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis" />
@@ -43,27 +43,7 @@
 
             // Define loading messages
             var loadingMsgs = [
-                "Proving P = NP...",
-                "Computing 6 x 9...",
-                "Mining bitcoin...",
-                "Dividing by 0...",
-                "Initialising Skynet...",
-                "[REDACTED]",
-                "Downloading more RAM...",
-                "Ordering 1s and 0s...",
-                "Navigating neural network...",
-                "Importing machine learning...",
-                "Issuing Alice and Bob one-time pads...",
-                "Mining bitcoin cash...",
-                "Generating key material by trying to escape vim...",
-                "for i in range(additional): Pylon()",
-                "(creating unresolved tension...",
-                "Symlinking emacs and vim to ed...",
-                "Training branch predictor...",
-                "Timing cache hits...",
-                "Speculatively executing recipes...",
-                "Adding LLM hallucinations...",
-                "Decompressing malware..."
+                "正在加载..."
             ];
 
             // Shuffle array using Durstenfeld algorithm
@@ -117,16 +97,16 @@
                     (e.colno ? "\nColumn: " + e.colno : "") +
                     (e.error ? "\nError: " + e.error : "") +
                     "\nUser-Agent: " + navigator.userAgent +
-                    "\nCyberChef version: <%= htmlWebpackPlugin.options.version %>";
+                    "\nCTFx version: <%= htmlWebpackPlugin.options.version %>";
 
                 clearInterval(window.loadingMsgsInt);
                 document.getElementById("preloader").remove();
                 document.getElementById("preloader-msg").remove();
                 document.getElementById("preloader-error").innerHTML =
                     "CyberChef encountered an error while loading.<br><br>" +
-                    "The following browser versions are supported:" +
+                    "仅支持以下版本的浏览器：" +
                     "<ul><li>Google Chrome 50+</li><li>Mozilla Firefox 38+</li></ul>" +
-                    "Your user agent is:<br>" + escapeHtml(navigator.userAgent) + "<br><br>" +
+                    "UserAgent :<br>" + escapeHtml(navigator.userAgent) + "<br><br>" +
                     "If your browser is supported, please <a href='https://github.com/gchq/CyberChef/issues/new/choose'>" +
                     "raise an issue</a> including the following details:<br><br>" +
                     "<pre>" + escapeHtml(msg) + "</pre>";
@@ -142,56 +122,46 @@
             <div id="preloader-error" class="loading-error"></div>
         </div>
         <!-- End preloader overlay -->
-        <button type="button" aria-label="Edit Favourites" class="btn btn-warning bmd-btn-icon" id="edit-favourites" data-toggle="tooltip" title="Edit favourites">
+        <button type="button" aria-label="Edit Favourites" class="btn btn-warning bmd-btn-icon" id="edit-favourites" data-toggle="tooltip" title="编辑收藏">
             <i class="material-icons" aria-hidden="true">star</i>
         </button>
         <div tabindex="0" id="content-wrapper">
-            <div id="banner" class="row">
-                <div class="col" style="text-align: left; padding-left: 10px;">
-                    <a href="#" data-toggle="modal" data-target="#download-modal" data-help-title="Downloading CyberChef" data-help="<p>CyberChef can be downloaded to run locally or hosted within your own network. It has no server-side component so all that is required is that the ZIP file is uncompressed and the files are accessible.</p><p>As a user, it is worth noting that unofficial versions of CyberChef could have been modified to introduce Input and/or Recipe exfiltration. We recommend always using the official, open source, up-to-date version of CyberChef hosted at <a href='https://gchq.github.io/CyberChef'>https://gchq.github.io/CyberChef</a> if accessible.</p><p>The Network tab in your browser's Developer console (F12) can be used to inspect the network requests made by a website. This can confirm that no data is uploaded when a CyberChef recipe is baked.</p>">Download CyberChef <i class="material-icons">file_download</i></a>
-                </div>
-                <div class="col-md-6" id="notice-wrapper">
-                    <span id="notice">
-                        <script type="text/javascript">
-                            // Must be text/javascript rather than application/javascript otherwise IE won't recognise it...
-                            if (navigator.userAgent && navigator.userAgent.match(/Trident/)) {
-                                document.getElementById("notice").innerHTML += "Internet Explorer is not supported, please use Firefox or Chrome instead";
-                                alert("Internet Explorer is not supported, please use Firefox or Chrome instead");
-                            }
-                        </script>
-                        <noscript>JavaScript is not enabled. Good luck.</noscript>
-                    </span>
-                </div>
-                <div class="col" style="text-align: right; padding-right: 0;">
-                    <a href="#" id="options" data-help-title="Options and Settings" data-help="Configurable options to change how CyberChef behaves. These settings are stored in your browser's local storage, meaning they will persist between sessions that use the same browser profile.">Options <i class="material-icons">settings</i></a>
-                    <a href="#" id="support" data-toggle="modal" data-target="#support-modal" data-help-title="About / Support" data-help="This pane provides information about the CyberChef web app, how to use some of the features, and how to raise bug reports.">About / Support <i class="material-icons">help</i></a>
-                </div>
-            </div>
             <div id="workspace-wrapper">
-                <div id="operations" class="split split-horizontal no-select">
-                    <div class="title no-select" data-help-title="Operations list" data-help="<p>The Operations list contains all the operations in CyberChef arranged into categories. Some operations may be present in multiple categories. You can search for operations using the search box.</p><p>To use an operation, either double click it, or drag it into the Recipe pane. You will then be able to configure its arguments (or 'Ingredients' in CyberChef terminology).</p>">
-                        Operations
-                        <span class="op-count"></span>
+                <div id="operations" class="split split-horizontal no-select"  data-help-title="Operations list" data-help="<p>The Operations list contains all the operations in CyberChef arranged into categories. Some operations may be present in multiple categories. You can search for operations using the search box.</p><p>To use an operation, either double click it, or drag it into the Recipe pane. You will then be able to configure its arguments (or 'Ingredients' in CyberChef terminology).</p>">
+                    <div class="title no-select">
+                        功能区
+                        <span class="pane-controls">
+                            <span class="op-count"></span>
+                            <button type="button" class="btn btn-primary bmd-btn-icon" id="options" data-toggle="tooltip" title="设置" data-help-title="Options and Settings" data-help="Configurable options to change how CyberChef behaves. These settings are stored in your browser's local storage, meaning they will persist between sessions that use the same browser profile.">
+                                <i class="material-icons">settings</i>
+                            </button>
+                            <button type="button" class="btn btn-primary bmd-btn-icon" id="support" data-toggle="modal" data-target="#support-modal" title="帮助" data-help-title="About / Support" data-help="This pane provides information about the CyberChef web app, how to use some of the features, and how to raise bug reports.">
+                                <i class="material-icons">help</i>
+                            </button>
+                        </span>
                     </div>
-                    <input id="search" type="search" class="form-control" placeholder="Search..." autocomplete="off" tabindex="0" data-help-title="Searching for operations" data-help="<p>Use the search box to find useful operations.</p><p>Both operation names and descriptions are queried using a fuzzy matching algorithm.</p>" aria-owns="search-results">
-                    <ul id="search-results" class="op-list"></ul>
-                    <div id="categories" class="panel-group no-select"></div>
+                    <input id="search" type="search" class="form-control" placeholder="搜索..." autocomplete="off" tabindex="2" data-help-title="Searching for operations" data-help="<p>Use the search box to find useful operations.</p><p>Both operation names and descriptions are queried using a fuzzy matching algorithm.</p>">
+                    <div class="categories-list">
+                        <ul id="search-results" class="op-list"></ul>
+                        <div id="categories" class="panel-group no-select"></div>
+                    </div>
+
                 </div>
 
                 <div id="recipe" class="split split-horizontal no-select" data-help-title="Recipe pane" data-help="<p>The Recipe pane is where your chosen Operations are configured. If you are a programmer, think of these as functions. If you are not a programmer, these are like steps in a cake recipe. The Input data will be processed based on the Operations in your Recipe.</p><ul><li>To reorder, simply drag and drop the Operations into the order your require</li><li>To remove an operation, either double click it, or drag it outside of the Recipe pane</li></ul><p>The arguments (or 'Ingredients' in CyberChef terminology) can be configured to change how an Operation processes the data.</p>">
                     <div class="title no-select">
-                        Recipe
+                        执行区
                         <span class="pane-controls hide-on-maximised-output">
-                            <button type="button" aria-label="Hide arguments" class="btn btn-primary bmd-btn-icon" id="hide-icon" data-toggle="tooltip" title="Hide arguments" hide-args="false" data-help-title="Hiding every Operation's argument view in a Recipe" data-help="Clicking 'Hide arguments' will hide all the argument views for every Operation in the Recipe, to save space when you have too many Operation in your Recipe">
+                            <button type="button" aria-label="Hide arguments" class="btn btn-primary bmd-btn-icon" id="hide-icon" data-toggle="tooltip" title="折叠" hide-args="false">
                                 <i class="material-icons">keyboard_arrow_up</i>
                             </button>
-                            <button type="button" aria-label="Save recipe" class="btn btn-primary bmd-btn-icon" id="save" data-toggle="tooltip" title="Save recipe" data-help-title="Saving a recipe" data-help="<p>Recipes can be represented in a few different formats and saved for use at a later date. You can either copy the Recipe configuration and save it somewhere offline for later use, or use your browser's local storage.</p><ul><li><b>Deep link:</b> The easiest way to share a CyberChef Recipe is to copy the deep link, either from the address bar (which is updated as the Recipe or Input changes), or from the 'Save recipe' pane. When you visit this link, the Recipe and Input will be populated from where you left off.</li><li><b>Chef format:</b> This custom format is designed to be compact and easily readable. It is the format used in CyberChef's URL, so it largely uses characters that do not have to be escaped in URL encoding, making it a little easier to understand what a CyberChef URL contains.</li><li><b>Clean JSON:</b> This JSON format uses whitespace and indentation in a way that makes the Recipe easy to read.</li><li><b>Compact JSON:</b> This is the most compact way that the Recipe can be represented in JSON.</li><li><b>Local storage:</b> Alternatively, you can enter a name into the 'Recipe name' field and save to your browser's local storage. The Recipe will then be available to load from the 'Load Recipe' pane as long as you are using the same browser profile. Be aware that if your browser profile is cleaned, you may lose this data.</li></ul>">
-                                <i class="material-icons" aria-hidden="true">save</i>
+                            <button type="button" aria-label="Save recipe" class="btn btn-primary bmd-btn-icon" id="save" data-toggle="tooltip" title="保存" data-help-title="保存操作流程" data-help="<p>操作流程可以用不同格式表示，然后保存留待后续使用。你可以把操作流程复制下来保存到文件里，或者存到浏览器的本地存储当中。</p><ul><li><b>直链：</b>最简单的方法是保存一个直链，可以直接从地址栏复制（当输入内容或流程改变时会自动更新），或者从“保存流程”框中复制。当你访问这个链接的时候，输入内容和操作流程会自动恢复。</li><li><b>流程文本：</b>特殊的文本格式，简短而且具有一定可读性。这是用在地址栏当中的格式。</li><li><b>JSON格式：</b>使用空格和缩进的JSON文本，比较可读。</li><li><b>精简JSON：</b>精简过的JSON，可读性差一些。</li><li><b>本地存储：</b>你可以给操作流程起个名字直接保存到浏览器的本地存储。不清理缓存的情况下，同一个浏览器可以直接从“载入流程”功能中载入之前保存的流程。注意：如果浏览器本地存储被清空了，这些流程和数据也没了。</li></ul>">
+                                <i class="material-icons">save</i>
                             </button>
-                            <button type="button" aria-label="Load recipe" class="btn btn-primary bmd-btn-icon" id="load" data-toggle="tooltip" title="Load recipe" data-help-title="Loading a recipe" data-help="<p>Saved recipes can be loaded using one of the following methods:</p><ul><li>If you have a CyberChef deep link, simply visit that link and the Recipe and Input will be populated automatically.</li><li>If you have a Recipe string in any of the accepted formats, paste it into the 'Load recipe' pane textbox and click 'Load'.</li><li>If you have saved a Recipe to your browser's local storage, it should be available in the dropdown menu in the 'Load recipe' pane. If it is not there, you may not be using the same browser profile, or your profile may have been cleared.</li></ul>">
+                            <button type="button" aria-label="Load recipe" class="btn btn-primary bmd-btn-icon" id="load" data-toggle="tooltip" title="载入" data-help-title="载入操作流程" data-help="<p>之前保存过的流程可以用以下方式载入：</p><ul><li>如果你保存了直链，直接在浏览器访问那个直链即可，数据和流程会自动恢复。</li><li>如果你有之前保存的文本格式，粘贴到“载入流程”框里然后点击“载入”即可。</li><li>如果你把流程保存到了浏览器本地存储，那么“载入流程”框的下拉列表里应该直接能选到。如果选不到，确认下是不是浏览器缓存被清空过，那样的话之前的数据就没了。</li></ul>">
                                 <i class="material-icons" aria-hidden="true">folder</i>
                             </button>
-                            <button type="button" aria-label="Clear recipe" class="btn btn-primary bmd-btn-icon" id="clr-recipe" data-toggle="tooltip" title="Clear recipe" data-help-title="Clearing a recipe" data-help="Clicking the 'Clear recipe' button will remove all operations from the Recipe. It will not clear the Input, but it will trigger a Bake if Auto-bake is turned on, which will change the value of the Output.">
+                            <button type="button" aria-label="Clear recipe" class="btn btn-primary bmd-btn-icon" id="clr-recipe" data-toggle="tooltip" title="清除" data-help-title="清除操作流程" data-help="点击“清除流程”按钮会把整个操作流程列表清空。不影响输入框的数据，但如果“自动执行”勾选上了，输出框的内容会因此改变。">
                                 <i class="material-icons" aria-hidden="true">delete</i>
                             </button>
                         </span>
@@ -204,16 +174,17 @@
                                 Step
                             </button>
 
-                            <button type="button" class="mx-2 btn btn-lg btn-success btn-raised btn-block" id="bake" data-help-title="Baking" data-help="<p>Baking causes CyberChef to run the Recipe against your data. This involves three steps:</p><ol><li>The data in the Input is encoded into bytes using the character encoding selected in the Input status bar.</li><li>The data is run through each of the operations in the Recipe in turn with the output of one operation being fed into the next operation as its input.</li><li>The outcome of the final operation in the Recipe is decoded into Output text using the character encoding selected in the Output status bar.</li></ol><p>If there are multiple Inputs, the Bake button causes every Input to be baked simultaneously.</p>">
-                                <img aria-hidden="true" src="<%- require('../static/images/cook_male-32x32.png') %>" alt="Chef Icon"/>
-                                <span>Bake!</span>
+                            <button type="button" class="btn btn-lg btn-success btn-raised btn-block" id="bake" data-help-title="Baking" data-help="<p>Baking causes CyberChef to run the Recipe against your data. This involves three steps:</p><ol><li>The data in the Input is encoded into bytes using the character encoding selected in the Input status bar.</li><li>The data is run through each of the operations in the Recipe in turn with the output of one operation being fed into the next operation as its input.</li><li>The outcome of the final operation in the Recipe is decoded into Output text using the character encoding selected in the Output status bar.</li></ol><p>If there are multiple Inputs, the Bake button causes every Input to be baked simultaneously.</p>">
+                                <!-- <img aria-hidden="true" src="<%- require('../static/images/cook_male-32x32.png') %>" alt="Chef Icon"/> -->
+                                <i class="material-icons" aria-hidden="true" style="vertical-align:middle;font-size: 24px;">play_circle</i>
+                                <span>立即执行</span>
                             </button>
 
                             <div class="form-group" style="display: contents;">
                                 <div class="mx-1 checkbox" data-help-title="Auto-bake" data-help="<p>When Auto-bake is turned on, CyberChef will bake the Input using the Recipe whenever anything in the Input or Recipe changes.</p>This includes:<ul><li>Adding or removing operations</li><li>Modifying operation arguments</li><li>Editing the Input</li><li>Changing the Input character encoding</li></ul><p>If there are multiple inputs, only the currently active tab will be baked when Auto-bake triggers. You can bake all inputs manually using the Bake button.</p>">
                                     <label id="auto-bake-label">
                                         <input type="checkbox" checked="checked" id="auto-bake">
-                                        <br>Auto Bake
+                                        自动执行
                                     </label>
                                 </div>
                             </div>
@@ -224,24 +195,24 @@
                 <div class="split split-horizontal" id="IO">
                     <div id="input" class="split no-select" data-help-title="Input pane" data-help="<p>Input data can be entered by typing it in, pasting it in, dragging it in, or using the 'Load file' or 'Load folder' buttons.</p><p>CyberChef does its best to represent data as accurately as possible to ensure you know exactly what you are working with. Non-printable characters are represented using control character pictures, for example a null byte (0x00) is displayed like this: <span title='Control character null' aria-label='Control character null' class='cm-specialChar'>␀</span>.</p>">
                         <div class="title no-select">
-                            <label for="input-text">Input</label>
+                            <label for="input-text">输入区</label>
                             <span class="pane-controls">
                                 <div class="io-info" id="input-files-info"></div>
-                                <button type="button" aria-label="Add new input tab" class="btn btn-primary bmd-btn-icon" id="btn-new-tab" data-toggle="tooltip" title="Add a new input tab" data-help-title="Tabs" data-help="<p>New tabs can be created to support multiple Inputs. These tabs have their own associated character encodings and EOL separators, as defined in their status bars.</p><p>The deep link in the URL bar only contains information about the currently active tab.</p>">
+                                <button type="button" aria-label="Add new input tab" class="btn btn-primary bmd-btn-icon" id="btn-new-tab" data-toggle="tooltip" title="新标签页" data-help-title="标签页" data-help="<p>你可以创建多个标签页来支持多个输入数据。这些标签有独立的字符编码和换行符设定。</p><p>地址栏的直链只会显示 当前选中标签页的内容。</p>">
                                     <i class="material-icons" aria-hidden="true">add</i>
                                 </button>
-                                <button type="button" aria-label="Open folder as input" class="btn btn-primary bmd-btn-icon" id="btn-open-folder" data-toggle="tooltip" title="Open folder as input" data-help-title="Opening a folder" data-help="<p>You can open a whole folder into CyberChef, which will result in each file being loaded into a separate Input tab.</p><p>CyberChef can handle lots of Input files, but be aware that performance may suffer, especially if the files are large in size.</p><p>Folders can also be loaded by dragging them over the Input pane and dropping them.</p>">
+                                <button type="button" aria-label="Open folder as input" class="btn btn-primary bmd-btn-icon" id="btn-open-folder" data-toggle="tooltip" title="打开文件夹" data-help-title="打开文件夹" data-help="<p>你可以打开一整个文件夹，当中的每个文件都会显示到独立的标签页中。</p><p>支持同时打开很多文件，但浏览器性能会受到影响，尤其是文件很大的时候。</p><p>文件夹也可以直接用鼠标拖进输入框。</p>">
                                     <i class="material-icons" aria-hidden="true">folder_open</i>
                                     <input type="file" id="open-folder" style="display: none" multiple directory webkitdirectory>
                                 </button>
-                                <button type="button" aria-label="Open file as input" class="btn btn-primary bmd-btn-icon" id="btn-open-file" data-toggle="tooltip" title="Open file as input" data-help-title="Opening a file" data-help="<p>Files can be loaded into CyberChef individually or in groups, either using the 'Open file as input' button, or by dragging and dropping them over the Input pane.</p><p>CyberChef can handle reasonably large files (at least 500MB, depending on hardware), but performance may be impacted and some Operations will run very slowly over large Inputs.</p>">
+                                <button type="button" aria-label="Open file as input" class="btn btn-primary bmd-btn-icon" id="btn-open-file" data-toggle="tooltip" title="打开文件" data-help-title="打开文件" data-help="<p>文件可以单独或者一起载入，使用打开文件按钮或者直接拖进输入框。</p><p>硬件足够给力的话，大文件（至少500MB）都是可以处理的，当然有些操作执行起来可能会变得超级慢。</p>">
                                     <i class="material-icons" aria-hidden="true">input</i>
                                     <input type="file" id="open-file" style="display: none" multiple>
                                 </button>
-                                <button type="button" aria-label="Clear input and output" class="btn btn-primary bmd-btn-icon" id="clr-io" data-toggle="tooltip" title="Clear input and output" data-help-title="Clearing the Input and Output" data-help="Clicking the 'Clear input and output' button will remove all Inputs and Outputs. It will not clear the Recipe.">
+                                <button type="button" aria-label="Clear input and output" class="btn btn-primary bmd-btn-icon" id="clr-io" data-toggle="tooltip" title="清空输入输出" data-help-title="清空输入输出" data-help="点击“清空输入输出”按钮会把输入和输出框的内容清空，不影响操作流程。">
                                     <i class="material-icons" aria-hidden="true">delete</i>
                                 </button>
-                                <button type="button" aria-label="Reset pane layout" class="btn btn-primary bmd-btn-icon" id="reset-layout" data-toggle="tooltip" title="Reset pane layout" data-help-title="Resetting the pane layout" data-help="CyberChef's panes can be resized to suit your area of focus. This button will reset the pane sizes to their default configuration.">
+                                <button type="button" aria-label="Reset pane layout" class="btn btn-primary bmd-btn-icon" id="reset-layout" data-toggle="tooltip" title="重置窗口布局" data-help-title="重置窗口布局" data-help="界面的每个框都是能拖拽调整大小的，这个按钮把每个框的大小恢复成默认状态。">
                                     <i class="material-icons" aria-hidden="true">view_compact</i>
                                 </button>
                             </span>
@@ -278,22 +249,22 @@
 
                     <div id="output" class="split" data-help-title="Output pane" data-help="<p>This pane displays the results of the Recipe after it has processed your Input.</p><p>CyberChef does its best to represent data as accurately as possible to ensure you know exactly what you are working with. Non-printable characters are represented using control character pictures, for example a null byte (0x00) is displayed like this: <span title='Control character null' aria-label='Control character null' class='cm-specialChar'>␀</span>.</p><p>When copying these characters from the Output, the original byte value will be copied into your clipboard, rather than the control character picture itself.</p>">
                         <div class="title no-select">
-                            <label for="output-text">Output</label>
+                            <label for="output-text">输出区</label>
                             <span class="pane-controls">
                                 <div class="io-info" id="bake-info"></div>
-                                <button type="button" class="btn btn-primary bmd-btn-icon" id="save-all-to-file" data-toggle="tooltip" title="Save all outputs to a zip file" style="display: none" data-help-title="Saving all outputs to a zip file" data-help="<p>When operating with multiple tabbed Inputs and Outputs, you can use this button to save off all the Outputs at once in a ZIP file.</p><p>Use the 'Bake' button to bake all Inputs at once.</p><p>You will be given the choice to specify the file extension for the Outputs, or you can let CyberChef attempt to detect the filetype of each one. If an Output's type is not clear, CyberChef will use the '.dat' extension.</p>">
+                                <button type="button" class="btn btn-primary bmd-btn-icon" id="save-all-to-file" data-toggle="tooltip" title="保存为压缩包" style="display: none" data-help-title="把所有的输出内容保存到ZIP压缩包" data-help="<p>当操作多个标签页的输入时，可以用这个按钮把处理结果打包成ZIP压缩包。</p><p>使用“执行”按钮来执行所有的输入内容。</p><p>你可以指定输出文件的扩展名，或者让程序自行检测，对于无法确定的类型，会使用“.dat”扩展名。</p>">
                                         <i class="material-icons">archive</i>
                                     </button>
-                                <button type="button" aria-label="save" class="btn btn-primary bmd-btn-icon" id="save-to-file" data-toggle="tooltip" title="Save output to file" data-help-title="Saving output to a file" data-help="The currently active Output can be saved to a file. You will be asked to specify a filename. CyberChef will attempt to guess the correct file extension based on the data. If a file type cannot be detected, the extension defaults to '.dat' but can be changed manually.">
+                                <button type="button" aria-label="save" class="btn btn-primary bmd-btn-icon" id="save-to-file" data-toggle="tooltip" title="保存到文件" data-help-title="保存输出内容到文件" data-help="将当前选中的输出数据储存到文件中。你可以指定文件名和扩展名。程序会尝试检测对应的扩展名，如果无法成功检测，则会默认使用“.dat”，可以手动修改。">
                                     <i class="material-icons" aria-hidden="true">save</i>
                                 </button>
-                                <button type="button" aria-label="copy content" class="btn btn-primary bmd-btn-icon" id="copy-output" data-toggle="tooltip" title="Copy raw output to the clipboard" data-help-title="Copying raw output to the clipboard" data-help="<p>Data can be copied from the Output in the normal way by selecting text and copying it. This button provides a quick way of copying the entire output to the clipboard without having to select it. It directly copies the raw data rather than selecting text in the Output editor. Each method will have the same result, but the button may be more efficient for large Outputs as it does not require any DOM interaction.</p>">
+                                <button type="button" aria-label="copy content" class="btn btn-primary bmd-btn-icon" id="copy-output" data-toggle="tooltip" title="复制到剪贴板" data-help-title="复制输出的原始内容到剪贴板" data-help="<p>数据可以直接选中复制，这个按钮可以节省一步选中。会将输出框的完整原始内容直接复制到剪贴板，对于较长的输出可能会节省时间，因为不需要选中特别长的内容。</p>">
                                     <i class="material-icons" aria-hidden="true">content_copy</i>
                                 </button>
-                                <button type="button" aria-label="replace input with output" class="btn btn-primary bmd-btn-icon" id="switch" data-toggle="tooltip" title="Replace input with output" data-help-title="Replacing input with output" data-help="<p>This button moves the currently active Output data into the currently active Input tab, overwriting whatever data was already there.</p><p>The Input character encoding and EOL sequence will be changed to match the current Output values, so that the data is interpreted correctly.</p>">
+                                <button type="button" aria-label="replace input with output" class="btn btn-primary bmd-btn-icon" id="switch" data-toggle="tooltip" title="填写到输入框" data-help-title="将输出内容填写到输入框" data-help="<p>此按钮将当前选中的输出框内容覆盖到输入框中。</p><p>输入框的字符编码和换行符会自动调整为输出框的当前设定。</p>">
                                     <i class="material-icons" aria-hidden="true">open_in_browser</i>
                                 </button>
-                                <button type="button" aria-label="maximise output pane" class="btn btn-primary bmd-btn-icon" id="maximise-output" data-toggle="tooltip" title="Maximise output pane" data-help-title="Maximising the Output pane" data-help="This button allows you to view the Output pane at maximum size, hiding the Operations, Recipe and Input panes. You can restore the pane to its normal size by clicking the same button again.">
+                                <button type="button" aria-label="maximise output pane" class="btn btn-primary bmd-btn-icon" id="maximise-output" data-toggle="tooltip" title="最大化" data-help-title="最大化输出框" data-help="这个按钮会让输出框最大化，把可用操作栏、操作流程栏和输入框都隐藏掉。再点击一次会还原。">
                                     <i class="material-icons" aria-hidden="true">fullscreen</i>
                                 </button>
                             </span>
@@ -434,13 +405,13 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content" data-help-proxy="#options">
                     <div class="modal-header">
-                        <h5 class="modal-title">Options</h5>
+                        <h5 class="modal-title">设置</h5>
                     </div>
                     <div class="modal-body" id="options-body">
-                        <p style="font-weight: bold">Please note that these options will persist between sessions.</p>
+                        <p style="font-weight: bold">注意：以下设置在你清理浏览器缓存之前会一直生效。</p>
 
                         <div class="form-group option-item">
-                            <label for="theme" class="bmd-label-floating"> Theme (only supported in modern browsers)</label>
+                            <label for="theme" class="bmd-label-floating">主题</label>
                             <select class="form-control" option="theme" id="theme">
                                 <option value="classic">Classic</option>
                                 <option value="dark">Dark</option>
@@ -451,7 +422,7 @@
                         </div>
 
                         <div class="form-group option-item">
-                            <label for="logLevel" class="bmd-label-floating">Console logging level</label>
+                            <label for="logLevel" class="bmd-label-floating">日志输出级别</label>
                             <select class="form-control" option="logLevel" id="logLevel">
                                 <option value="silent">Silent</option>
                                 <option value="error">Error</option>
@@ -465,74 +436,80 @@
                         <div class="checkbox option-item">
                             <label for="updateUrl">
                                 <input type="checkbox" option="updateUrl" id="updateUrl" checked>
-                                Update the URL when the input or recipe changes
+                                流程或输入改变时自动更新URL
                             </label>
                         </div>
 
                         <div class="checkbox option-item">
                             <label for="showHighlighter">
                                 <input type="checkbox" option="showHighlighter" id="showHighlighter" checked>
-                                Highlight selected bytes in output and input (when possible)
+                                高亮显示输入输出框中被选中的字节
+                            </label>
+                        </div>
+
+                        <div class="checkbox option-item">
+                            <label for="outputUTF8">
+                                <input type="checkbox" option="outputUTF8" id="outputUTF8">
+                                输出框默认使用UTF-8编码
                             </label>
                         </div>
 
                         <div class="checkbox option-item">
                             <label for="wordWrap">
                                 <input type="checkbox" option="wordWrap" id="wordWrap" checked>
-                                Word wrap the input and output
+                                对输入输出自动换行
                             </label>
                         </div>
 
                         <div class="checkbox option-item mb-0">
                             <label for="showErrors">
                                 <input type="checkbox" option="showErrors" id="showErrors" checked>
-                                Show errors from operations (recommended)
+                                显示操作运行时的报错信息（推荐）
                             </label>
                         </div>
 
                         <div class="form-group option-item">
-                            <label for="errorTimeout" class="bmd-label-floating">Operation error timeout in ms (0 for never)</label>
+                            <label for="errorTimeout" class="bmd-label-floating">操作运行错误超时毫秒数（0为不限制）</label>
                             <input type="number" class="form-control" option="errorTimeout" id="errorTimeout">
                         </div>
 
                         <div class="checkbox option-item">
                             <label for="useMetaKey">
                                 <input type="checkbox" option="useMetaKey" id="useMetaKey">
-                                Use meta key for keybindings (Windows ⊞/Command ⌘)
+                                使用系统功能键 (Windows ⊞/Command ⌘)
                             </label>
                         </div>
 
                         <div class="checkbox option-item">
                             <label for="autoMagic">
                                 <input type="checkbox" option="autoMagic" id="autoMagic">
-                                Attempt to detect encoded data automagically
+                                尝试自动解码输入
                             </label>
                         </div>
 
                         <div class="checkbox option-item">
                             <label for="imagePreview">
                                 <input type="checkbox" option="imagePreview" id="imagePreview">
-                                Render a preview of the input if it's detected to be an image
+                                如果检测到输入的内容是图像格式，显示图像
                             </label>
                         </div>
 
                         <div class="checkbox option-item">
                             <label for="syncTabs">
                                 <input type="checkbox" option="syncTabs" id="syncTabs">
-                                Keep the current tab in sync between the input and output
+                                同步选中输入输出标签
                             </label>
                         </div>
-
                         <div class="checkbox option-item">
                             <label for="showCatCount">
                                 <input type="checkbox" option="showCatCount" id="showCatCount">
-                                Show the number of operations in each category
+                                展示每个分类功能数量
                             </label>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" id="reset-options">Reset options to default</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" id="reset-options">恢复默认</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
                     </div>
                 </div>
             </div>
@@ -542,13 +519,13 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content" data-help-proxy="a[data-target='#catFavourites']">
                     <div class="modal-header">
-                        <h5 class="modal-title">Edit Favourites</h5>
+                        <h5 class="modal-title">编辑收藏工具</h5>
                     </div>
                     <div class="modal-body" id="favourites-body">
                         <ul>
-                            <li><span style="font-weight: bold">To add:</span> drag the operation over the favourites category and drop it</li>
-                            <li><span style="font-weight: bold">To reorder:</span> drag up and down in the list below</li>
-                            <li><span style="font-weight: bold">To remove:</span> hit the delete button or drag out of the list below</li>
+                            <li><span style="font-weight: bold">添加:</span> 把操作直接拖动到收藏分类上面</li>
+                            <li><span style="font-weight: bold">调整:</span> 直接在列表里上下拖动调整位置</li>
+                            <li><span style="font-weight: bold">移除:</span> 点击删除按钮或者直接拖动出去</li>
                         </ul>
                         <br>
                         <ul id="edit-favourites-list" class="op-list"></ul>
@@ -556,9 +533,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="reset-favourites">Reset favourites to default</button>
-                        <button type="button" class="btn btn-success" data-dismiss="modal" id="save-favourites">Save</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="reset-favourites">恢复默认</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal" id="save-favourites">保存</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
                     </div>
                 </div>
             </div>
@@ -568,7 +545,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content" data-help-proxy="#support">
                     <div class="modal-header">
-                        <h5 class="modal-title">CyberChef - The Cyber Swiss Army Knife</h5>
+                        <h5 class="modal-title">CTFx：CyberChef For CTF 个人优化版</h5>
                     </div>
                     <div class="modal-body">
                         <img aria-hidden="true" class="about-img-left" src="<%- require('../static/images/cyberchef-128x128.png') %>" alt="CyberChef Logo"/>
@@ -578,9 +555,6 @@
                         </p>
                         <p>&copy; Crown Copyright 2016-<%= htmlWebpackPlugin.options.compileYear %>.</p>
                         <p>Released under the Apache Licence, Version 2.0.</p>
-                        <p><a href="https://gitter.im/gchq/CyberChef">
-                            <img src="<%- require('../static/images/gitter-badge.svg') %>">
-                        </a></p>
 
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item" role="presentation">
@@ -590,17 +564,17 @@
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a id="tab-2" class="nav-link" href="#report-bug" aria-controls="messages" role="tab" data-toggle="tab">
-                                    Report a bug
+                                    上报BUG
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a id="tab-3" class="nav-link" href="#about" aria-controls="messages" role="tab" data-toggle="tab">
-                                    About
+                                    关于
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a id="tab-4" class="nav-link" href="#keybindings" aria-controls="messages" role="tab" data-toggle="tab">
-                                    Keybindings
+                                    快捷键
                                 </a>
                             </li>
                         </ul>
@@ -608,90 +582,92 @@
                             <div role="tabpanel" class="tab-pane active" id="faqs" data-help-title="FAQ pane" data-help="The Frequently Asked Questions pane provides answers to some of the most common queries people have about CyberChef.">
                                 <br>
                                 <a class="btn btn-primary" data-toggle="collapse" data-target="#faq-contextual-help">
-                                    How does X feature work?
+                                    X功能是如何工作的？
                                 </a>
                                 <div class="collapse" id="faq-contextual-help">
-                                    <p>CyberChef has a contextual help feature. Just hover your cursor over a feature that you want to learn more about and press <code>F1</code> on your keyboard to get some information about it. Give it a try by hovering over this text and pressing <code>F1</code> now!</code></p>
+                                    <p>CyberChef具有上下文帮助功能。只需将光标悬停在您想了解更多信息的功能上，然后在键盘上按<code>F1</code>，即可获取有关该功能的一些信息。现在，请尝试将光标悬停在此文本上，并按<code>F1</code>！</p>
                                 </div>
                                 <br>
 
                                 <a class="btn btn-primary" data-toggle="collapse" data-target="#faq-examples">
-                                    What sort of things can I do with CyberChef?
+                                    可以用CyberChef做哪些事情？
                                 </a>
                                 <div class="collapse" id="faq-examples">
-                                    <p>There are <span class="num-ops">hundreds of</span> operations in CyberChef allowing you to carry out simple and complex tasks easily. Here are some examples:</p>
+                                    <p>CyberChef中有大约300种操作，让您可以轻松地执行简单和复杂的任务。以下是一些示例：</p>
                                     <ul>
-                                        <li><a href="#recipe=From_Base64('A-Za-z0-9%2B/%3D',true)&input=VTI4Z2JHOXVaeUJoYm1RZ2RHaGhibXR6SUdadmNpQmhiR3dnZEdobElHWnBjMmd1">Decode a Base64-encoded string</a></li>
-                                        <li><a href="#recipe=Translate_DateTime_Format('Standard%20date%20and%20time','DD/MM/YYYY%20HH:mm:ss','UTC','dddd%20Do%20MMMM%20YYYY%20HH:mm:ss%20Z%20z','Australia/Queensland')&input=MTUvMDYvMjAxNSAyMDo0NTowMA">Convert a date and time to a different time zone</a></li>
-                                        <li><a href="#recipe=Parse_IPv6_address()&input=MjAwMTowMDAwOjQxMzY6ZTM3ODo4MDAwOjYzYmY6M2ZmZjpmZGQy">Parse a Teredo IPv6 address</a></li>
-                                        <li><a href="#recipe=From_Hexdump()Gunzip()&input=MDAwMDAwMDAgIDFmIDhiIDA4IDAwIDEyIGJjIGYzIDU3IDAwIGZmIDBkIGM3IGMxIDA5IDAwIDIwICB8Li4uLi6881cu/y7HwS4uIHwKMDAwMDAwMTAgIDA4IDA1IGQwIDU1IGZlIDA0IDJkIGQzIDA0IDFmIGNhIDhjIDQ0IDIxIDViIGZmICB8Li7QVf4uLdMuLsouRCFb/3wKMDAwMDAwMjAgIDYwIGM3IGQ3IDAzIDE2IGJlIDQwIDFmIDc4IDRhIDNmIDA5IDg5IDBiIDlhIDdkICB8YMfXLi6%2BQC54Sj8uLi4ufXwKMDAwMDAwMzAgIDRlIGM4IDRlIDZkIDA1IDFlIDAxIDhiIDRjIDI0IDAwIDAwIDAwICAgICAgICAgICB8TshObS4uLi5MJC4uLnw">Convert data from a hexdump, then decompress</a></li>
-                                        <li><a href="#recipe=RC4(%7B'option':'UTF8','string':'secret'%7D,'Hex','Hex')Disassemble_x86('64','Full%20x86%20architecture',16,0,true,true)&input=MjFkZGQyNTQwMTYwZWU2NWZlMDc3NzEwM2YyYTM5ZmJlNWJjYjZhYTBhYWJkNDE0ZjkwYzZjYWY1MzEyNzU0YWY3NzRiNzZiM2JiY2QxOTNjYjNkZGZkYmM1YTI2NTMzYTY4NmI1OWI4ZmVkNGQzODBkNDc0NDIwMWFlYzIwNDA1MDcxMzhlMmZlMmIzOTUwNDQ2ZGIzMWQyYmM2MjliZTRkM2YyZWIwMDQzYzI5M2Q3YTVkMjk2MmMwMGZlNmRhMzAwNzJkOGM1YTZiNGZlN2Q4NTlhMDQwZWVhZjI5OTczMzYzMDJmNWEwZWMxOQ">Decrypt and disassemble shellcode</a></li>
-                                        <li><a href="#recipe=Fork('%5C%5Cn','%5C%5Cn',false)From_UNIX_Timestamp('Seconds%20(s)')&input=OTc4MzQ2ODAwCjEwMTI2NTEyMDAKMTA0NjY5NjQwMAoxMDgxMDg3MjAwCjExMTUzMDUyMDAKMTE0OTYwOTYwMA">Display multiple timestamps as full dates</a></li>
-                                        <li><a href="#recipe=Fork('%5C%5Cn','%5C%5Cn',false)Conditional_Jump('1',false,'base64',10)To_Hex('Space')Return()Label('base64')To_Base64('A-Za-z0-9%2B/%3D')&input=U29tZSBkYXRhIHdpdGggYSAxIGluIGl0ClNvbWUgZGF0YSB3aXRoIGEgMiBpbiBpdA">Carry out different operations on data of different types</a></li>
-                                        <li><a href="#recipe=Register('key%3D(%5B%5C%5Cda-f%5D*)',true,false)Find_/_Replace(%7B'option':'Regex','string':'.*data%3D(.*)'%7D,'$1',true,false,true)RC4(%7B'option':'Hex','string':'$R0'%7D,'Hex','Latin1')&input=aHR0cDovL21hbHdhcmV6LmJpei9iZWFjb24ucGhwP2tleT0wZTkzMmE1YyZkYXRhPThkYjdkNWViZTM4NjYzYTU0ZWNiYjMzNGUzZGIxMQ">Use parts of the input as arguments to operations</a></li>
+                                        <li><a href="#recipe=From_Base64('A-Za-z0-9%2B/%3D',true)&input=VTI4Z2JHOXVaeUJoYm1RZ2RHaGhibXR6SUdadmNpQmhiR3dnZEdobElHWnBjMmd1">解码一个Base64编码的字符串</a></li>
+                                        <li><a href="#recipe=Translate_DateTime_Format('Standard%20date%20and%20time','DD/MM/YYYY%20HH:mm:ss','UTC','dddd%20Do%20MMMM%20YYYY%20HH:mm:ss%20Z%20z','Australia/Queensland')&input=MTUvMDYvMjAxNSAyMDo0NTowMA">将日期和时间转换为不同的时区</a></li>
+                                        <li><a href="#recipe=Parse_IPv6_address()&input=MjAwMTowMDAwOjQxMzY6ZTM3ODo4MDAwOjYzYmY6M2ZmZjpmZGQy">解析一个Teredo IPv6地址</a></li>
+                                        <li><a href="#recipe=From_Hexdump()Gunzip()&input=MDAwMDAwMDAgIDFmIDhiIDA4IDAwIDEyIGJjIGYzIDU3IDAwIGZmIDBkIGM3IGMxIDA5IDAwIDIwICB8Li4uLi6881cu/y7HwS4uIHwKMDAwMDAwMTAgIDA4IDA1IGQwIDU1IGZlIDA0IDJkIGQzIDA0IDFmIGNhIDhjIDQ0IDIxIDViIGZmICB8Li7QVf4uLdMuLsouRCFb/3wKMDAwMDAwMjAgIDYwIGM3IGQ3IDAzIDE2IGJlIDQwIDFmIDc4IDRhIDNmIDA5IDg5IDBiIDlhIDdkICB8YMfXLi6%2BQC54Sj8uLi4ufXwKMDAwMDAwMzAgIDRlIGM4IDRlIDZkIDA1IDFlIDAxIDhiIDRjIDI0IDAwIDAwIDAwICAgICAgICAgICB8TshObS4uLi5MJC4uLnw">从十六进制转储中转换数据，然后解压</a></li>
+                                        <li><a href="#recipe=RC4(%7B'option':'UTF8','string':'secret'%7D,'Hex','Hex')Disassemble_x86('64','Full%20x86%20architecture',16,0,true,true)&input=MjFkZGQyNTQwMTYwZWU2NWZlMDc3NzEwM2YyYTM5ZmJlNWJjYjZhYTBhYWJkNDE0ZjkwYzZjYWY1MzEyNzU0YWY3NzRiNzZiM2JiY2QxOTNjYjNkZGZkYmM1YTI2NTMzYTY4NmI1OWI4ZmVkNGQzODBkNDc0NDIwMWFlYzIwNDA1MDcxMzhlMmZlMmIzOTUwNDQ2ZGIzMWQyYmM2MjliZTRkM2YyZWIwMDQzYzI5M2Q3YTVkMjk2MmMwMGZlNmRhMzAwNzJkOGM1YTZiNGZlN2Q4NTlhMDQwZWVhZjI5OTczMzYzMDJmNWEwZWMxOQ">解密并反汇编Shellcode</a></li>
+                                        <li><a href="#recipe=Fork('%5C%5Cn','%5C%5Cn',false)From_UNIX_Timestamp('Seconds%20(s)')&input=OTc4MzQ2ODAwCjEwMTI2NTEyMDAKMTA0NjY5NjQwMAoxMDgxMDg3MjAwCjExMTUzMDUyMDAKMTE0OTYwOTYwMA">将多个时间戳显示为完整日期</a></li>
+                                        <li><a href="#recipe=Fork('%5C%5Cn','%5C%5Cn',false)Conditional_Jump('1',false,'base64',10)To_Hex('Space')Return()Label('base64')To_Base64('A-Za-z0-9%2B/%3D')&input=U29tZSBkYXRhIHdpdGggYSAxIGluIGl0ClNvbWUgZGF0YSB3aXRoIGEgMiBpbiBpdA">对不同类型的数据执行不同的操作</a></li>
+                                        <li><a href="#recipe=Register('key%3D(%5B%5C%5Cda-f%5D*)',true,false)Find_/_Replace(%7B'option':'Regex','string':'.*data%3D(.*)'%7D,'$1',true,false,true)RC4(%7B'option':'Hex','string':'$R0'%7D,'Hex','Latin1')&input=aHR0cDovL21hbHdhcmV6LmJpei9iZWFjb24ucGhwP2tleT0wZTkzMmE1YyZkYXRhPThkYjdkNWViZTM4NjYzYTU0ZWNiYjMzNGUzZGIxMQ">使用输入的部分作为操作的参数</a></li>
                                     </ul>
                                 </div>
                                 <br>
 
                                 <a class="btn btn-primary" data-toggle="collapse" data-target="#faq-load-files">
-                                    Can I load input directly from files?
+                                    可以直接从文件中加载输入吗？
                                 </a>
                                 <div class="collapse" id="faq-load-files">
-                                    <p>Yes! Just drag your file over the input box and drop it.</p>
-                                    <p>CyberChef can handle files up to around 2GB (depending on your browser), however some of the operations may take a very long time to run over this much data.</p>
-                                    <p>If the output is larger than a certain threshold (default <a href="#recipe=Multiply('Line%20feed')Convert_data_units('Bytes%20(B)','Mebibytes%20(MiB)')&input=MTAyNAoxMDI0">1MiB</a>), it will be presented to you as a file available for download. Slices of the file can be viewed in the output if you need to inspect them.</p>
+                                    <p>是的！只需将您的文件拖放到输入框上即可。</p>
+                                    <p>CyberChef可以处理大约2GB大小的文件（取决于您的浏览器），然而在这么大的数据量上，一些操作可能需要很长时间才能完成。</p>
+                                    <p>如果输出超过一定阈值（默认为<a href="#recipe=Multiply('Line%20feed')Convert_data_units('Bytes%20(B)','Mebibytes%20(MiB)')&input=MTAyNAoxMDI0">1MiB</a>），它将被呈现为可供下载的文件。如果需要检查，可以在输出中查看文件的片段。</p>
                                 </div>
                                 <br>
 
                                 <a class="btn btn-primary" data-toggle="collapse" data-target="#faq-fork">
-                                    How do I run operation X over multiple inputs at once?
+                                    我如何一次对多个输入运行操作X？
                                 </a>
                                 <div class="collapse" id="faq-fork">
-                                    <p>Maybe you have 10 timestamps that you want to parse or 16 encoded strings that all have the same key.</p>
-                                    <p>The 'Fork' operation (found in the 'Flow control' category) splits up the input line by line and runs all subsequent operations on each line separately. Each output is then displayed on a separate line. These delimiters can be changed, so if your inputs are separated by commas, you can change the split delimiter to a comma instead.</p>
-                                    <p><a href="#recipe=Fork('%5C%5Cn','%5C%5Cn',false)From_UNIX_Timestamp('Seconds%20(s)')&input=OTc4MzQ2ODAwCjEwMTI2NTEyMDAKMTA0NjY5NjQwMAoxMDgxMDg3MjAwCjExMTUzMDUyMDAKMTE0OTYwOTYwMA">Click here</a> for an example.</p>
+                                    <p>也许您有10个时间戳需要解析，或者有16个经过编码的字符串，它们都使用相同的密钥。</p>
+                                    <p>“Fork”操作（位于“流程控制”类别中）将输入逐行分割，并分别对每一行运行所有后续操作。然后，每个输出将显示在单独的行上。这些分隔符可以更改，因此如果您的输入是由逗号分隔的，您可以将分割分隔符更改为逗号。</p>
+                                    <p>
+                                        <a href="#recipe=Fork('%5C%5Cn','%5C%5Cn',false)From_UNIX_Timestamp('Seconds%20(s)')&input=OTc4MzQ2ODAwCjEwMTI2NTEyMDAKMTA0NjY5NjQwMAoxMDgxMDg3MjAwCjExMTUzMDUyMDAKMTE0OTYwOTYwMA">点击这里</a>查看示例。</p>
                                 </div>
                                 <br>
 
                                 <a class="btn btn-primary" data-toggle="collapse" data-target="#faq-magic">
-                                    How does the 'Magic' operation work?
+                                    "Magic"操作是如何工作的？
                                 </a>
                                 <div class="collapse" id="faq-magic">
-                                    <p>The 'Magic' operation uses a number of methods to detect encoded data and the operations which can be used to make sense of it. A technical description of these methods can be found <a href="https://github.com/gchq/CyberChef/wiki/Automatic-detection-of-encoded-data-using-CyberChef-Magic">here</a>.</p>
+                                    <p>
+                                        "Magic"操作使用多种方法来检测编码数据以及可以解读它的操作。您可以在<a href="https://github.com/gchq/CyberChef/wiki/Automatic-detection-of-encoded-data-using-CyberChef-Magic">这里</a>找到对这些方法的技术描述。</p>
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="report-bug">
                                 <br>
-                                <p>If you find a bug in CyberChef, please raise an issue in our GitHub repository explaining it in as much detail as possible. Copy and include the following information if relevant.</p>
+                                <p>如果您在CyberChef中发现了错误，请在我们的GitHub存储库中提出问题，并尽可能详细地解释。如果相关，请复制并包含以下信息：</p>
                                 <br>
                                 <pre id="report-bug-info"></pre>
                                 <br>
-                                <a class="btn btn-primary" href="https://github.com/gchq/CyberChef/issues/new/choose" role="button">Raise issue on GitHub</a>
+                                <a class="btn btn-primary" href="https://github.com/gchq/CyberChef/issues/new/choose" role="button">GitHub上反馈</a>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="about" style="padding: 20px;">
                                 <h5><strong>What</strong></h5>
-                                <p>A simple, intuitive web app for analysing and decoding data without having to deal with complex tools or programming languages. CyberChef encourages both technical and non-technical people to explore data formats, encryption and compression.</p><br>
+                                <p>一款简单直观的网络应用，可分析和解码数据，无需处理复杂的工具或编程语言。CyberChef鼓励技术和非技术人员都能探索数据格式、加密和压缩。</p><br>
 
                                 <h5><strong>Why</strong></h5>
-                                <p>Digital data comes in all shapes, sizes and formats in the modern world – CyberChef helps to make sense of this data all on one easy-to-use platform.</p><br>
+                                <p>在现代世界中，数字数据以各种形状、大小和格式存在——CyberChef帮助您在一个易于使用的平台上理清这些数据。</p><br>
 
 
                                 <h5><strong>How</strong></h5>
-                                <p>The interface is designed with simplicity at its heart. Complex techniques are now as trivial as drag-and-drop. Simple functions can be combined to build up a "recipe", potentially resulting in complex analysis, which can be shared with other users and used with their input.</p>
-                                <p>For those comfortable writing code, CyberChef is a quick and efficient way to prototype solutions to a problem which can then be scripted once proven to work.</p><br>
+                                <p>该界面以简洁为核心设计。现在，复杂的技术已经变得像拖放一样简单。简单的功能可以组合成一个“配方”，从而可能产生复杂的分析，这些分析可以与其他用户共享，并且可以使用他们的输入。</p>
+                                <p>对于那些习惯于编写代码的人来说，CyberChef是一种快速高效的方法，可以原型化解决问题的方案，一旦被证明有效，就可以编写脚本。</p><br>
 
 
                                 <h5><strong>Who</strong></h5>
-                                <p>It is expected that CyberChef will be useful for cybersecurity and antivirus companies. It should also appeal to the academic world and any individuals or companies involved in the analysis of digital data, be that software developers, analysts, mathematicians or casual puzzle solvers.</p><br>
+                                <p>预计CyberChef将对网络安全和防病毒公司有所帮助。它还应该吸引学术界以及参与数字数据分析的任何个人或公司，包括软件开发人员、分析师、数学家或偶尔解谜者。</p><br>
 
 
                                 <h5><strong>Aim</strong></h5>
-                                <p>It is hoped that by releasing CyberChef through <a href="https://github.com/gchq/CyberChef">GitHub</a>, contributions can be added which can be rolled out into future versions of the tool.</p><br>
+                                <p>希望通过在<a href="https://github.com/gchq/CyberChef">GitHub</a>上发布CyberChef，可以添加贡献，这些贡献可以在将来的工具版本中推出。</p><br>
 
 
                                 <br>
-                                <p>There are <span class="num-ops">hundreds of</span> useful operations in CyberChef for anyone working on anything vaguely Internet-related, whether you just want to convert a timestamp to a different format, decompress gzipped data, create a SHA3 hash, or parse an X.509 certificate to find out who issued it.</p>
-                                <p>It’s the Cyber Swiss Army Knife.</p>
+                                <p>CyberChef中有大约200种有用的操作，适用于任何涉及互联网的工作。无论您只是想将时间戳转换为不同的格式，解压缩gzip数据，创建SHA3哈希，还是解析X.509证书以查找发布者，CyberChef都能帮助您。</p>
+                                <p>它就像是网络的瑞士军刀。</p>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="keybindings" style="padding: 20px;">
                                 <table class="table table-condensed table-bordered table-hover" id="keybList"></table>
@@ -699,11 +675,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
                     </div>
-                    <a href="https://github.com/gchq/CyberChef">
-                        <img aria-hidden="true" style="position: absolute; top: 0; right: 0; border: 0;" src="<%- require('../static/images/fork_me.png') %>" alt="Fork me on GitHub">
-                    </a>
                 </div>
             </div>
         </div>

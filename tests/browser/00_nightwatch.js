@@ -235,14 +235,15 @@ module.exports = {
         browser
             .waitForElementNotVisible("#snackbar-container")
             .click("#copy-output")
-            .waitForElementVisible("#snackbar-container .snackbar-content")
-            .expect.element("#snackbar-container .snackbar-content").text.to.equal("Copied raw output successfully.");
+            .waitForElementVisible("#toast-container")
+            .waitForElementVisible("#toast-container .toast .toast-message")
+            .expect.element("#toast-container .toast .toast-message").text.to.equal("原始数据复制成功。");
 
         // Alert bar disappears after the correct amount of time
         // Should disappear after 2000ms
         browser
-            .waitForElementNotPresent("#snackbar-container .snackbar-content", 2500)
-            .waitForElementNotVisible("#snackbar-container");
+            .waitForElementNotPresent("#toast-container .toast .toast-message", 2500)
+            .waitForElementNotPresent("#toast-container");
     },
 
     after: browser => {

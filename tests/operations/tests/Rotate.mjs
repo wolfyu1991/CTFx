@@ -20,7 +20,7 @@ TestRegister.addTests([
                 args: ["Space"]
             },
             {
-                op: "Rotate left",
+                op: "循环左移",
                 args: [1, false],
             },
             {
@@ -39,7 +39,7 @@ TestRegister.addTests([
                 args: ["Space"]
             },
             {
-                op: "Rotate left",
+                op: "循环左移",
                 args: [1, false],
             },
             {
@@ -58,7 +58,7 @@ TestRegister.addTests([
                 args: ["Space"]
             },
             {
-                op: "Rotate left",
+                op: "循环左移",
                 args: [2, true],
             },
             {
@@ -77,7 +77,7 @@ TestRegister.addTests([
                 args: ["Space"]
             },
             {
-                op: "Rotate right",
+                op: "循环右移",
                 args: [1, false],
             },
             {
@@ -96,7 +96,7 @@ TestRegister.addTests([
                 args: ["Space"]
             },
             {
-                op: "Rotate right",
+                op: "循环右移",
                 args: [1, false],
             },
             {
@@ -115,7 +115,7 @@ TestRegister.addTests([
                 args: ["Space"]
             },
             {
-                op: "Rotate right",
+                op: "循环右移",
                 args: [2, true],
             },
             {

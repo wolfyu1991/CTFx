@@ -2,6 +2,8 @@
  * @author n1474335 [n1474335@gmail.com]
  * @copyright Crown Copyright 2016
  * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
  */
 
 import HTMLIngredient from "./HTMLIngredient.mjs";
@@ -89,6 +91,7 @@ class HTMLOperation {
 
         html += `</div>
         <div class="recip-icons">
+            <i class="material-icons remove-icon" style="color: #9e9e9e;">delete</i>
             <i class="material-icons breakpoint" title="Set breakpoint" break="false" data-help-title="Setting breakpoints" data-help="Setting a breakpoint on an operation will cause execution of the Recipe to pause when it reaches that operation.">pause</i>
             <i class="material-icons disable-icon" title="Disable operation" disabled="false" data-help-title="Disabling operations" data-help="Disabling an operation will prevent it from being executed when the Recipe is baked. Execution will skip over the disabled operation and continue with subsequent operations.">not_interested</i>
             <i class="material-icons hide-args-icon" title="Hide operation's arguments" hide-args="false" data-help-title="Hide operation's arguments" data-help="Hiding an operation's argument will save space in the Recipe window. Execution will still take place with the selected argument options.">keyboard_arrow_up</i>
@@ -174,10 +177,10 @@ function titleFromWikiLink(urlStr) {
             break;
         default:
             // Not a wiki link, return full URL
-            return `<a href='${urlStr}' target='_blank'>More Information<i class='material-icons inline-icon'>open_in_new</i></a>`;
+            return `<a href='${urlStr}' target='_blank'>更多信息<i class='material-icons inline-icon'>open_in_new</i></a>`;
     }
 
-    return `<a href='${urlObj.href}' target='_blank'>${pageTitle}<i class='material-icons inline-icon'>open_in_new</i></a> on ${wikiName}`;
+    return `${wikiName}页面：<a href='${urlObj.href}' target='_blank'>${pageTitle}<i class='material-icons inline-icon'>open_in_new</i></a>`;
 }
 
 export default HTMLOperation;

@@ -7,7 +7,7 @@
 import Operation from "../Operation.mjs";
 import OperationError from "../errors/OperationError.mjs";
 import Utils from "../Utils.mjs";
-import {ALPHABET_OPTIONS} from "../lib/Base85.mjs";
+import { ALPHABET_OPTIONS } from "../lib/Base85.mjs";
 
 /**
  * From Base85 operation
@@ -35,7 +35,7 @@ class FromBase85 extends Operation {
             {
                 name: "Remove non-alphabet chars",
                 type: "boolean",
-                value: true
+                value: false
             },
             {
                 name: "All-zero group char",
@@ -61,7 +61,7 @@ class FromBase85 extends Operation {
                     "[0-9a-zA-Z.\\-:+=^!/*?&<>()[\\]{}@%$#]{15}" + // At least 15 continoues base85 characters without whitespace
                     "[\\s0-9a-zA-Z.\\-:+=^!/*?&<>()[\\]{}@%$#]*" +
                     "$",
-                args: ["0-9a-zA-Z.\\-:+=^!/*?&<>()[]{}@%$#"],
+                args: ["0-9a-zA-Z.\\-:+=^!/*?&<>()[]{}@%$#", false, ""],
             },
             {
                 pattern:
@@ -70,7 +70,7 @@ class FromBase85 extends Operation {
                     "[0-9A-Za-z!#$%&()*+\\-;<=>?@^_`{|}~]{15}" + // At least 15 continoues base85 characters without whitespace
                     "[\\s0-9A-Za-z!#$%&()*+\\-;<=>?@^_`{|}~]*" +
                     "$",
-                args: ["0-9A-Za-z!#$%&()*+\\-;<=>?@^_`{|}~"],
+                args: ["0-9A-Za-z!#$%&()*+\\-;<=>?@^_`{|}~", false, ""],
             },
         ];
     }
@@ -92,7 +92,8 @@ class FromBase85 extends Operation {
         }
 
         if (allZeroGroupChar && alphabet.includes(allZeroGroupChar)) {
-            throw new OperationError("The all-zero group char cannot appear in the alphabet");
+            // throw new OperationError("The all-zero group char cannot appear in the alphabet");
+            throw new OperationError("全零组字符不能出现在字母表中。");
         }
 
         // Remove delimiters if present
@@ -101,7 +102,7 @@ class FromBase85 extends Operation {
 
         // Remove non-alphabet characters
         if (removeNonAlphChars) {
-            const re = new RegExp("[^~" + allZeroGroupChar +alphabet.replace(/[[\]\\\-^$]/g, "\\$&") + "]", "g");
+            const re = new RegExp("[^~" + allZeroGroupChar + alphabet.replace(/[[\]\\\-^$]/g, "\\$&") + "]", "g");
             input = input.replace(re, "");
             // Remove delimiters again if present (incase of non-alphabet characters in front/behind delimiters)
             const matches = input.match(/^<~(.+?)~>$/);

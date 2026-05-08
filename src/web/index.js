@@ -9,7 +9,7 @@ import "./stylesheets/index.js";
 
 // Libs
 import "arrive";
-import "snackbarjs";
+// import "snackbarjs";
 import "bootstrap-material-design/js/index";
 import "bootstrap-colorpicker";
 import moment from "moment-timezone";
@@ -53,6 +53,7 @@ function main() {
         imagePreview:        true,
         syncTabs:            true,
         showCatCount:        false,
+        outputUTF8:          false
     };
 
     document.removeEventListener("DOMContentLoaded", main, false);

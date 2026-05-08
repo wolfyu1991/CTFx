@@ -164,7 +164,7 @@ class OutputWaiter {
 
         if (this.eolState === 1) {
             // Alert
-            this.app.alert(`Output end of line separator has been detected and changed to ${eolCodeToName[eol]}`, 5000);
+            this.app.alert(`输出行尾分隔符已识别并更改为 ${eolCodeToName[eol]}`, 5000);
         }
 
         const currentTabNum = this.manager.tabs.getActiveTab("output");
@@ -232,7 +232,7 @@ class OutputWaiter {
             this.app.updateURL(true);
         } else if (currentEnc !== chrEncVal) {
             // Alert
-            this.app.alert(`Output character encoding has been detected and changed to ${CHR_ENC_SIMPLE_REVERSE_LOOKUP[chrEncVal] || "Raw Bytes"}`, 5000);
+            this.app.alert(`输出字符编码已被识别并更改为 ${CHR_ENC_SIMPLE_REVERSE_LOOKUP[chrEncVal] || "Raw Bytes"}`, 5000);
         }
     }
 
@@ -522,6 +522,9 @@ class OutputWaiter {
         // Remove the output (will only get removed if it already exists)
         this.removeOutput(inputNum);
 
+        // Option to make output use UTF-8 as default for showing Chinese characters
+        const defaultEnc = this.app.options.outputUTF8 ? 65001 : 0;
+
         const newOutput = {
             data: null,
             inputNum: inputNum,
@@ -530,7 +533,7 @@ class OutputWaiter {
             status: "inactive",
             bakeId: -1,
             progress: false,
-            encoding: 0,
+            encoding: defaultEnc,
             eolSequence: "\u000a"
         };
 
@@ -1384,7 +1387,7 @@ class OutputWaiter {
         const dish = this.getOutputDish(this.manager.tabs.getActiveTab("output"));
         if (!this.app.options.autoMagic || dish === null) return;
         const buffer = await this.getDishBuffer(dish);
-        const sample = buffer.slice(0, 1000) || "";
+        const sample = buffer.slice(0, 2000) || "";
 
         if (sample.length || sample.byteLength) {
             this.manager.background.magic(sample);
@@ -1533,19 +1536,19 @@ class OutputWaiter {
     maximiseOutputClick(e) {
         const el = e.target.id === "maximise-output" ? e.target : e.target.parentNode;
 
-        if (el.getAttribute("data-original-title").indexOf("Maximise") === 0) {
+        if (el.getAttribute("data-original-title").indexOf("最大化") === 0) {
             document.body.classList.add("output-maximised");
             this.app.initialiseSplitter(true);
             this.app.columnSplitter.collapse(0);
             this.app.columnSplitter.collapse(1);
             this.app.ioSplitter.collapse(0);
 
-            $(el).attr("data-original-title", "Restore output pane");
+            $(el).attr("data-original-title", "恢复");
             $(el).attr("aria-label", "Restore output pane");
             el.querySelector("i").innerHTML = "fullscreen_exit";
         } else {
             document.body.classList.remove("output-maximised");
-            $(el).attr("data-original-title", "Maximise output pane");
+            $(el).attr("data-original-title", "最大化");
             $(el).attr("aria-label", "Maximise output pane");
             el.querySelector("i").innerHTML = "fullscreen";
             this.app.initialiseSplitter(false);

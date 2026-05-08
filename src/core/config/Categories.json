@@ -1,10 +1,10 @@
 [
     {
-        "name": "Favourites",
+        "name": "收藏工具",
         "ops": []
     },
     {
-        "name": "Data format",
+        "name": "编码解码",
         "ops": [
             "To Hexdump",
             "From Hexdump",
@@ -14,6 +14,8 @@
             "From Charcode",
             "To Decimal",
             "From Decimal",
+            "To Float",
+            "From Float",
             "To Float",
             "From Float",
             "To Binary",
@@ -33,10 +35,22 @@
             "To Base64",
             "From Base64",
             "Show Base64 offsets",
-            "To Base92",
-            "From Base92",
             "To Base85",
             "From Base85",
+            "To Base91",
+            "From Base91",
+            "To Base92",
+            "From Base92",
+            "To Base94",
+            "From Base94",
+            "To Base100",
+            "From Base100",
+            "To Base2048",
+            "From Base2048",
+            "To Base32768",
+            "From Base32768",
+            "To Base65536",
+            "From Base65536",
             "To Base",
             "From Base",
             "To BCD",
@@ -86,7 +100,7 @@
         ]
     },
     {
-        "name": "Encryption / Encoding",
+        "name": "加密解密",
         "ops": [
             "AES Encrypt",
             "AES Decrypt",
@@ -174,7 +188,7 @@
         ]
     },
     {
-        "name": "Public Key",
+        "name": "公钥密码",
         "ops": [
             "Parse X.509 certificate",
             "Parse X.509 CRL",
@@ -209,7 +223,7 @@
         ]
     },
     {
-        "name": "Arithmetic / Logic",
+        "name": "算数逻辑",
         "ops": [
             "Set Union",
             "Set Intersection",
@@ -224,26 +238,26 @@
             "AND",
             "ADD",
             "SUB",
-            "Sum",
-            "Subtract",
-            "Multiply",
-            "Divide",
+            "求和",
+            "减法",
+            "乘法",
+            "除法",
             "Modular Exponentiation",
             "Modular Inverse",
             "Extended GCD",
-            "Mean",
-            "Median",
-            "Standard Deviation",
-            "Bit shift left",
-            "Bit shift right",
-            "Rotate left",
-            "Rotate right",
+            "平均数",
+            "中位数",
+            "标准差",
+            "位左移",
+            "位右移",
+            "循环左移",
+            "循环右移",
             "ROT13",
             "ROT8000"
         ]
     },
     {
-        "name": "Networking",
+        "name": "网络工具",
         "ops": [
             "HTTP request",
             "DNS over HTTPS",
@@ -286,7 +300,7 @@
         ]
     },
     {
-        "name": "Language",
+        "name": "语言转换",
         "ops": [
             "Encode text",
             "Decode text",
@@ -298,7 +312,7 @@
         ]
     },
     {
-        "name": "Utils",
+        "name": "基础功能",
         "ops": [
             "Diff",
             "Remove whitespace",
@@ -353,7 +367,7 @@
         ]
     },
     {
-        "name": "Date / Time",
+        "name": "日期时间",
         "ops": [
             "Parse DateTime",
             "Translate DateTime Format",
@@ -368,7 +382,7 @@
         ]
     },
     {
-        "name": "Extractors",
+        "name": "提取工具",
         "ops": [
             "Strings",
             "Extract IP addresses",
@@ -393,7 +407,7 @@
         ]
     },
     {
-        "name": "Compression",
+        "name": "压缩解压",
         "ops": [
             "Raw Deflate",
             "Raw Inflate",
@@ -417,7 +431,7 @@
         ]
     },
     {
-        "name": "Hashing",
+        "name": "哈希算法",
         "ops": [
             "Analyse hash",
             "Generate all checksums",
@@ -470,7 +484,7 @@
         ]
     },
     {
-        "name": "Code tidy",
+        "name": "代码美化",
         "ops": [
             "Syntax highlighter",
             "Generic Code Beautify",
@@ -505,7 +519,7 @@
         ]
     },
     {
-        "name": "Forensics",
+        "name": "取证工具",
         "ops": [
             "Detect File Type",
             "Scan for Embedded Files",
@@ -522,7 +536,7 @@
         ]
     },
     {
-        "name": "Multimedia",
+        "name": "媒体工具",
         "ops": [
             "Render Image",
             "Play Media",
@@ -556,7 +570,7 @@
         ]
     },
     {
-        "name": "Other",
+        "name": "其他工具",
         "ops": [
             "Entropy",
             "Frequency distribution",
@@ -582,7 +596,7 @@
         ]
     },
     {
-        "name": "Flow control",
+        "name": "流程控制",
         "ops": [
             "Magic",
             "Fork",
@@ -593,7 +607,45 @@
             "Jump",
             "Conditional Jump",
             "Return",
-            "Comment"
+            "Comment",
+            "Sleep"
+        ]
+    },
+    {
+        "name": "定制功能",
+        "ops": [
+            "AAencode",
+            "Base64隐写",
+            "BrainFuck",
+            "Cloacked Pixel",
+            "Emoji AES",
+            "PBE",
+            "Vigenere Solver",
+            "百家姓编码",
+            "短信PDU编码",
+            "核心价值观编码",
+            "零宽隐写",
+            "兽音译者",
+            "与佛论禅",
+            "中文电码",
+            "词频分析",
+            "Ook!",
+            "TapCode",
+            "Long to Bytes",
+            "Bytes to Long",
+            "Rail Fence Brute Force",
+            "Affine Cipher Brute Force",
+            "DNA Cipher",
+            "XXencode",
+            "BubbleBabble",
+            "UUencode",
+            "PixelJihad",
+            "Decabit",
+            "阴阳怪气",
+            "JJencode",
+            "Malbolge",
+            "RCE Payload",
+            "JSFuck"
         ]
     }
 ]

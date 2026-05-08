@@ -144,7 +144,7 @@ class BackgroundWorkerWaiter {
         ], {}, 0, false, this.magicComplete);
 
         // Cancel this bake if it takes too long.
-        this.timeout = setTimeout(this.cancelBake.bind(this), 3000);
+        this.timeout = setTimeout(this.cancelBake.bind(this), 10000);
     }
 
 

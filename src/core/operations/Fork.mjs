@@ -2,6 +2,8 @@
  * @author n1474335 [n1474335@gmail.com]
  * @copyright Crown Copyright 2018
  * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
  */
 
 import Operation from "../Operation.mjs";
@@ -22,22 +24,22 @@ class Fork extends Operation {
         this.name = "Fork";
         this.flowControl = true;
         this.module = "Default";
-        this.description = "Split the input data up based on the specified delimiter and run all subsequent operations on each branch separately.<br><br>For example, to decode multiple Base64 strings, enter them all on separate lines then add the 'Fork' and 'From Base64' operations to the recipe. Each string will be decoded separately.";
+        this.description = "将输入数据按照给定的分隔符分割，并对分割后的每条数据单独执行下面的所有操作。<br><br>例如：解码多个Base64字符串，将所有的字符串每行一个放置在输入框，然后使用“Fork”和“Base64解码”操作。每个字符串都会被单独解码。";
         this.inputType = "string";
         this.outputType = "string";
         this.args = [
             {
-                "name": "Split delimiter",
+                "name": "分割字符",
                 "type": "binaryShortString",
                 "value": "\\n"
             },
             {
-                "name": "Merge delimiter",
+                "name": "合并字符",
                 "type": "binaryShortString",
                 "value": "\\n"
             },
             {
-                "name": "Ignore errors",
+                "name": "忽略报错",
                 "type": "boolean",
                 "value": false
             }

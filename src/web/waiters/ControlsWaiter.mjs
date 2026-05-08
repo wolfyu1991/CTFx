@@ -190,7 +190,7 @@ class ControlsWaiter {
         try {
             const recipeConfig = Utils.parseRecipeConfig(e.target.value);
             this.initialiseSaveLink(recipeConfig);
-        } catch (err) {}
+        } catch (err) { }
     }
 
 
@@ -246,17 +246,17 @@ class ControlsWaiter {
     saveButtonClick() {
         if (!this.app.isLocalStorageAvailable()) {
             this.app.alert(
-                "Your security settings do not allow access to local storage so your recipe cannot be saved.",
+                "您的安全设置不允许访问本地存储，因此您的Recipe无法保存。",
                 5000
             );
             return false;
         }
 
         const recipeName = Utils.escapeHtml(document.getElementById("save-name").value);
-        const recipeStr  = document.querySelector("#save-texts .tab-pane.active textarea").value;
+        const recipeStr = document.querySelector("#save-texts .tab-pane.active textarea").value;
 
         if (!recipeName) {
-            this.app.alert("Please enter a recipe name", 3000);
+            this.app.alert("请输入Recipe名称", 3000);
             return;
         }
 
@@ -386,7 +386,7 @@ class ControlsWaiter {
                 item.setAttribute("hide-args", "false");
                 item.innerText = "keyboard_arrow_up";
                 item.classList.remove("hide-args-selected");
-                item.parentNode.previousElementSibling.style.display = "grid";
+                item.parentNode.previousElementSibling.style.display = "block";
             });
         }
     }
@@ -516,21 +516,21 @@ ${navigator.userAgent}
 
         switch (func) {
             case "cancel":
-                btnText.innerText = "Cancel";
+                btnText.innerText = "取消操作";
                 bakeButton.classList.remove("btn-success");
                 bakeButton.classList.remove("btn-warning");
                 bakeButton.classList.add("btn-danger");
                 break;
             case "loading":
                 bakeButton.style.background = "";
-                btnText.innerText = "Loading...";
+                btnText.innerText = "加载中...";
                 bakeButton.classList.remove("btn-success");
                 bakeButton.classList.remove("btn-danger");
                 bakeButton.classList.add("btn-warning");
                 break;
             default:
                 bakeButton.style.background = "";
-                btnText.innerText = "Bake!";
+                btnText.innerText = "立即执行";
                 bakeButton.classList.remove("btn-danger");
                 bakeButton.classList.remove("btn-warning");
                 bakeButton.classList.add("btn-success");
