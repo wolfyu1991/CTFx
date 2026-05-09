@@ -217,6 +217,7 @@ module.exports = function (grunt) {
                     }
                 },
                 devServer: {
+                    host: "0.0.0.0",
                     port: grunt.option("port") || 8080,
                     client: {
                         logging: "error",
