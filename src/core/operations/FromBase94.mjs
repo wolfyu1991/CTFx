@@ -38,7 +38,7 @@ class FromBase94 extends Operation {
             {
                 pattern: "^[-!\"#$%&'()*+,./0-9:;<=>?@A-Z[\\]^_`{|}~]{20,}$",
                 flags: "i",
-                args: [true, false]
+                args: [false, false]
             }
         ];
 
