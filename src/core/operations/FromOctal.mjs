@@ -6,7 +6,7 @@
 
 import Operation from "../Operation.mjs";
 import Utils from "../Utils.mjs";
-import {DELIM_OPTIONS} from "../lib/Delim.mjs";
+import {LETTER_DELIM_OPTIONS} from "../lib/Delim.mjs";
 
 /**
  * From Octal operation
@@ -29,7 +29,7 @@ class FromOctal extends Operation {
             {
                 "name": "Delimiter",
                 "type": "option",
-                "value": DELIM_OPTIONS
+                "value": LETTER_DELIM_OPTIONS
             }
         ];
         this.checks = [
@@ -62,6 +62,11 @@ class FromOctal extends Operation {
                 pattern: "^(?:[0-7]{1,2}|[123][0-7]{2})(?:\\r\\n(?:[0-7]{1,2}|[123][0-7]{2}))*$",
                 flags: "",
                 args: ["CRLF"]
+            },
+            {
+                pattern: "^\\\\(?:[0-7]{1,2}|[123][0-7]{2})(?:\\\\(?:[0-7]{1,2}|[123][0-7]{2}))*$",
+                flags: "",
+                args: ["Backslash"]
             }
         ];
     }
@@ -73,6 +78,9 @@ class FromOctal extends Operation {
      */
     run(input, args) {
         const delim = Utils.charRep(args[0] || "Space");
+        if (input[0] === delim) {
+            input = input.slice(1);
+        }
         if (input.length === 0) return [];
         return input.split(delim).map(val => parseInt(val, 8));
     }

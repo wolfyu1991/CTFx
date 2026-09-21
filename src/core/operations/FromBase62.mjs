@@ -33,6 +33,13 @@ class FromBase62 extends Operation {
                 value: "0-9A-Za-z"
             }
         ];
+        this.checks = [
+            {
+                pattern: "^[0-9A-Z]{20,}$",
+                flags: "i",
+                args: ["0-9A-Za-z"]
+            }
+        ];
     }
 
     /**

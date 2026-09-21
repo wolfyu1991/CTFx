@@ -2,6 +2,8 @@
  * @author n1474335 [n1474335@gmail.com]
  * @copyright Crown Copyright 2018
  * @license Apache-2.0
+ *
+ * Modified by Raka-loah@github for zh-CN i18n
  */
 
 import Operation from "../Operation.mjs";
@@ -20,7 +22,7 @@ class Comment extends Operation {
         this.name = "Comment";
         this.flowControl = true;
         this.module = "Default";
-        this.description = "Provides a place to write comments within the flow of the recipe. This operation has no computational effect.";
+        this.description = "提供在流程中写注释的地方。此流程没有任何输出结果。";
         this.inputType = "string";
         this.outputType = "string";
         this.args = [

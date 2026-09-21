@@ -43,6 +43,18 @@ class ROT47BruteForce extends Operation {
                 name: "Crib (known plaintext string)",
                 type: "string",
                 value: ""
+            },
+            {
+                name: "Check flag",
+                type: "boolean",
+                value: false
+            }
+        ];
+        this.checks = [
+            {
+                pattern: "^[\x20-\x7E]{8,}$",
+                flags: "i",
+                args: [100, 0, false, "", true]
             }
         ];
     }
@@ -53,7 +65,7 @@ class ROT47BruteForce extends Operation {
      * @returns {string}
      */
     run(input, args) {
-        const [sampleLength, sampleOffset, printAmount, crib] = args;
+        const [sampleLength, sampleOffset, printAmount, crib, flag] = args;
         const sample = input.slice(sampleOffset, sampleOffset + sampleLength);
         const cribLower = crib.toLowerCase();
         const result = [];
@@ -65,15 +77,29 @@ class ROT47BruteForce extends Operation {
                 }
             }
             const rotatedString = Utils.byteArrayToUtf8(rotated);
-            if (rotatedString.toLowerCase().indexOf(cribLower) >= 0) {
+            if (flag === true) {
+                const regex = /^[a-z]{3,6}{.*?}$/i;
                 const rotatedStringEscaped = Utils.escapeWhitespace(rotatedString);
-                if (printAmount) {
-                    const amountStr = "Amount = " + (" " + amount).slice(-2) + ": ";
-                    result.push(amountStr + rotatedStringEscaped);
-                } else {
-                    result.push(rotatedStringEscaped);
+                if (regex.test(rotatedStringEscaped)) {
+                    if (printAmount) {
+                        const amountStr = "Amount = " + (" " + amount).slice(-2) + ": ";
+                        result.push(amountStr + rotatedStringEscaped);
+                    } else {
+                        result.push(rotatedStringEscaped);
+                    }
+                }
+            } else {
+                if (rotatedString.toLowerCase().indexOf(cribLower) >= 0) {
+                    const rotatedStringEscaped = Utils.escapeWhitespace(rotatedString);
+                    if (printAmount) {
+                        const amountStr = "Amount = " + (" " + amount).slice(-2) + ": ";
+                        result.push(amountStr + rotatedStringEscaped);
+                    } else {
+                        result.push(rotatedStringEscaped);
+                    }
                 }
             }
+
         }
         return result.join("\n");
     }

@@ -60,6 +60,13 @@ class ROT13BruteForce extends Operation {
                 value: ""
             }
         ];
+        this.checks = [
+            {
+                pattern: "^[a-z]{3,6}\\{.*\\}$",
+                flags: "i",
+                args: [true, true, false, 100, 0, false, "flag{"]
+            }
+        ];
     }
 
     /**
