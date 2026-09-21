@@ -10,7 +10,6 @@ import "./stylesheets/index.js";
 // Libs
 import "arrive";
 import "snackbarjs";
-import "bootstrap-colorpicker";
 import moment from "moment-timezone";
 import * as CanvasComponents from "../core/lib/CanvasComponents.mjs";
 

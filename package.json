@@ -109,7 +109,6 @@
     "bignumber.js": "^11.1.5",
     "blakejs": "^1.2.1",
     "bootstrap": "4.6.2",
-    "bootstrap-colorpicker": "^3.4.0",
     "browserify-zlib": "^0.2.0",
     "bson": "^7.3.3",
     "buffer": "^6.0.3",
