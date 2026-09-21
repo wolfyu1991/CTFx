@@ -73,7 +73,7 @@ class App {
         this.manager.setup();
         this.manager.output.saveBombe();
         this.adjustComponentSizes();
-        this.setCompileMessage();
+        // this.setCompileMessage();
         this.uriParams = this.getURIParams();
 
         log.debug("App loaded");
@@ -377,14 +377,14 @@ class App {
         }
 
         const favCat = this.categories.filter(function(c) {
-            return c.name === "Favourites";
+            return c.name === "收藏工具";
         })[0];
 
         if (favCat) {
             favCat.ops = favourites;
         } else {
             this.categories.unshift({
-                name: "Favourites",
+                name: "收藏工具",
                 ops: favourites
             });
         }
@@ -655,7 +655,7 @@ class App {
         // Display time since last build and compile message
         const now = new Date(),
             msSinceCompile = now.getTime() - window.compileTime,
-            timeSinceCompile = moment.duration(msSinceCompile, "milliseconds").humanize();
+            timeSinceCompile = moment.duration(msSinceCompile, "milliseconds").locale("zh-CN").humanize();
 
         // Calculate previous version to compare to
         const prev = PKG_VERSION.split(".").map(n => {
@@ -667,7 +667,7 @@ class App {
 
         // const compareURL = `https://github.com/gchq/CyberChef/compare/v${prev.join(".")}...v${PKG_VERSION}`;
 
-        let compileInfo = `<a href='https://github.com/gchq/CyberChef/blob/master/CHANGELOG.md'>Last build: ${timeSinceCompile.substring(0, 1).toUpperCase() + timeSinceCompile.substring(1)} ago</a>`;
+        let compileInfo = `<a href='https://github.com/gchq/CyberChef/blob/master/CHANGELOG.md'>最新编译: ${timeSinceCompile.substring(0, 1).toUpperCase() + timeSinceCompile.substring(1)}之前</a>`;
 
         if (window.compileMessage !== "") {
             compileInfo += " - " + window.compileMessage;
@@ -807,7 +807,7 @@ class App {
     updateURL(includeInput, input=null, changeUrl=true) {
         // Set title
         const recipeConfig = this.getRecipeConfig();
-        let title = "CyberChef";
+        let title = "CTFx";
         if (recipeConfig.length === 1) {
             title = `${recipeConfig[0].op} - ${title}`;
         } else if (recipeConfig.length > 1) {

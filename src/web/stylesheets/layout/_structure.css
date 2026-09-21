@@ -20,7 +20,7 @@ body {
 
 #workspace-wrapper {
     position: absolute;
-    top: 30px;
+    top: 0;
     bottom: 0;
     width: 100%;
 }
@@ -45,11 +45,14 @@ div#output {
     position: relative;
 }
 
-#operations.split {
+.categories-list {
     overflow: auto;
+    width: 100%;
+    height: calc(100% - 88px);
 }
 
-.split.split-horizontal, .gutter.gutter-horizontal {
+.split.split-horizontal,
+.gutter.gutter-horizontal {
     height: 100%;
     float: left;
 }
