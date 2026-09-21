@@ -113,7 +113,7 @@ module.exports = function (grunt) {
         compileTime = grunt.template.today("UTC:dd/mm/yyyy HH:MM:ss") + " UTC",
         pkg = grunt.file.readJSON("package.json"),
         version = process.env.GITHUB_SHA || `v${pkg.version}`,
-        downloadZipFilename = `CyberChef_${version}.zip`,
+        downloadZipFilename = `CTFx_${version}.zip`,
         webpackConfig = require("./webpack.config.js"),
         BUILD_CONSTANTS = {
             COMPILE_YEAR: JSON.stringify(compileYear),
@@ -122,7 +122,7 @@ module.exports = function (grunt) {
             PKG_VERSION: JSON.stringify(pkg.version),
         },
         moduleEntryPoints = listEntryModules(),
-        nodeConsumerTestPath = "~/tmp-cyberchef",
+        nodeConsumerTestPath = "~/tmp-ctfx",
         /**
          * Configuration for Webpack production build. Defined as a function so that it
          * can be recalculated when new modules are generated.
@@ -217,7 +217,7 @@ module.exports = function (grunt) {
             node: ["build/node/*"],
             config: ["src/core/config/OperationConfig.json", "src/core/config/modules/*", "src/code/operations/index.mjs"],
             nodeConfig: ["src/node/index.mjs", "src/node/config/OperationConfig.json"],
-            standalone: ["build/prod/CyberChef*.html"]
+            standalone: ["build/prod/CTFx*.html"]
         },
         eslint: {
             configs: ["*.{js,mjs}"],
@@ -245,6 +245,7 @@ module.exports = function (grunt) {
                     }
                 },
                 devServer: {
+                    host: "0.0.0.0",
                     port: grunt.option("port") || 8080,
                     client: {
                         logging: "error",
@@ -317,8 +318,8 @@ module.exports = function (grunt) {
                     process: function (content, srcpath) {
                         if (srcpath.indexOf("index.html") >= 0) {
                             // Replace download link with version number
-                            content = content.replace(/<a [^>]+>Download CyberChef.+?<\/a>/,
-                                `<span>Version ${pkg.version}</span>`);
+                            content = content.replace(/<a [^>]+>下载离线版.+?<\/a>/,
+                                `<span>版本 ${pkg.version}</span>`);
 
                             return grunt.template.process(content, srcpath);
                         } else {
@@ -330,7 +331,7 @@ module.exports = function (grunt) {
                 files: [
                     {
                         src: ["build/prod/index.html"],
-                        dest: `build/prod/CyberChef_v${pkg.version}.html`
+                        dest: `build/prod/CTFx_v${pkg.version}.html`
                     }
                 ]
             }
@@ -399,7 +400,7 @@ module.exports = function (grunt) {
                     `mkdir ${nodeConsumerTestPath}`,
                     `cp tests/node/consumers/* ${nodeConsumerTestPath}`,
                     `cd ${nodeConsumerTestPath}`,
-                    "npm link cyberchef"
+                    "npm link ctfx"
                 ]),
                 sync: true
             },
