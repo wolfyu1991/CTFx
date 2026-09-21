@@ -14,7 +14,7 @@ TestRegister.addTests([
         expectedOutput: "2",
         recipeConfig: [
             {
-                op: "Median",
+                op: "中位数",
                 args: ["Space"],
             },
         ],
@@ -25,7 +25,7 @@ TestRegister.addTests([
         expectedOutput: "3.5",
         recipeConfig: [
             {
-                op: "Median",
+                op: "中位数",
                 args: ["Space"],
             },
         ],

@@ -14,7 +14,7 @@ TestRegister.addTests([
         expectedOutput: "198",
         recipeConfig: [
             {
-                "op": "Subtract",
+                "op": "减法",
                 "args": ["Comma"]
             },
         ],
@@ -25,7 +25,7 @@ TestRegister.addTests([
         expectedOutput: "NaN",
         recipeConfig: [
             {
-                "op": "Subtract",
+                "op": "减法",
                 "args": ["Comma"]
             },
         ],
