@@ -63,8 +63,6 @@ module.exports = {
     },
     plugins: [
         new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery",
             log: "loglevel",
             // process and Buffer are no longer polyfilled in webpack 5 but
             // many of our dependencies expect them, so it is easiest to just
@@ -136,9 +134,6 @@ module.exports = {
     ],
     resolve: {
         extensions: [".mjs", ".js", ".json"], // Allows importing files without extensions
-        alias: {
-            jquery: "jquery/src/jquery",
-        },
         fallback: {
             "assert": require.resolve("assert/"),
             "buffer": require.resolve("buffer/"),

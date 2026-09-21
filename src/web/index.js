@@ -8,7 +8,6 @@
 import "./stylesheets/index.js";
 
 // Libs
-import "arrive";
 import moment from "moment-timezone";
 import * as CanvasComponents from "../core/lib/CanvasComponents.mjs";
 
