@@ -219,7 +219,7 @@ Full hash: $2a$10$ODeP1.6fMsb.ENk2ngPUCO7qTGVPyHA9TqDVcyupyed8FjsiF65L6`;
 
     it("bitShiftRight: number and option", () => {
         const result = bitShiftRight("some bits to shift", {
-            type: "Arithmetic shift",
+            type: "算术右移",
             amount: 1,
         });
         assert.strictEqual(result.toString(), "9762\u001014:9\u0010:7\u00109443:");

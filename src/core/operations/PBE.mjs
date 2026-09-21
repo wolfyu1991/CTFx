@@ -98,17 +98,10 @@ class PBE extends Operation {
      * @returns {html}
      */
     buildTable(encodings) {
-        // 正则表达式匹配所有非打印字符（控制字符）
-        const regex = /[\x00-\x08\x0E-\x1F\x7F-\x9F]/u;
         const table = [];
 
         for (const enc in encodings) {
-            const value = encodings[enc];
-            if (regex.test(value)) {
-                table.push(`${enc.padEnd(12, " ")}:${value}`);
-            } else {
-                table.push(`${enc.padEnd(12, " ")}:${value}`);
-            }
+            table.push(`${enc.padEnd(12, " ")}:${encodings[enc]}`);
         }
 
         return table.join("\r\n");

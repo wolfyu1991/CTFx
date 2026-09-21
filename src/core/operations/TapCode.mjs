@@ -5,7 +5,6 @@
  */
 
 import Operation from "../Operation.mjs";
-// import OperationError from "../errors/OperationError.mjs";
 
 /**
  * TapCode operation
@@ -21,7 +20,7 @@ class TapCode extends Operation {
         this.name = "TapCode";
         this.module = "CTF";
         this.description = "Tap code\uff08\u6572\u51fb\u7801\uff09\u662f\u4e00\u79cd\u4ee5\u975e\u5e38\u7b80\u5355\u7684\u65b9\u5f0f\u5bf9\u6587\u672c\u4fe1\u606f\u8fdb\u884c\u7f16\u7801\u7684\u65b9\u6cd5\u3002\u56e0\u8be5\u7f16\u7801\u5bf9\u4fe1\u606f\u901a\u8fc7\u4f7f\u7528\u4e00\u7cfb\u5217\u7684\u70b9\u51fb\u58f0\u97f3\u6765\u7f16\u7801\u800c\u547d\u540d\uff0c\u6572\u51fb\u7801\u662f\u57fa\u4e8e5\xd75\u65b9\u683c\u6ce2\u5229\u6bd4\u5965\u65af\u65b9\u9635\u6765\u5b9e\u73b0\u7684\uff0c\u4e0d\u540c\u70b9\u662f\u662f\u7528K\u5b57\u6bcd\u88ab\u6574\u5408\u5230C\u4e2d\u3002\u6572\u51fb\u7801\u8868:<br>  1  2  3  4  5<br>1 A  B C/K D  E<br>2 F  G  H  I  J <br>3 L  M  N  O  P<br>4 Q  R  S  T  U<br>5 V  W  X  Y  Z";
-        this.infoURL = ""; // Usually a Wikipedia link. Remember to remove localisation (i.e. https://wikipedia.org/etc rather than https://en.wikipedia.org/etc)
+        this.infoURL = "https://wikipedia.org/wiki/Tap_code";
         this.inputType = "string";
         this.outputType = "string";
         this.args = [
@@ -86,7 +85,8 @@ class TapCode extends Operation {
             let words = input.split(wordDelim);
             words = Array.prototype.map.call(words, function (word) {
                 word = word.toUpperCase();
-                word.replace(/\\K/g, "");
+                // 敲击码表中没有字母 K，按惯例将其并入 C
+                word = word.replace(/K/g, "C");
                 const letters = Array.prototype.map.call(word, function (character) {
                     const letter = character.toUpperCase();
                     if (typeof tapCodeTable[letter] == "undefined") {

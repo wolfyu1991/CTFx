@@ -98,22 +98,23 @@ export function fromBase94(data, strictLength = true, removeInvalidChars = false
 
     if (typeof data == "string") {
 
+        const re = new RegExp("[^\x20-\x7e]", "g");
+
+        // 必须在转字节数组之前校验, 否则正则作用在数组的逗号分隔十进制串上恒为 false
+        if (re.test(data)) {
+            if (removeInvalidChars) {
+                data = data.replace(re, "");
+            } else {
+                throw new OperationError(`Invalid content in Base94 string.`);
+            }
+        }
+
         data = Utils.strToByteArray(data);
 
     } else {
 
         throw new OperationError(`Invalid - typeof base94 input is not a string.`);
 
-    }
-
-    const re = new RegExp("[^\x20-\x7e]", "g");
-
-    if (re.test(data)) {
-        if (removeInvalidChars) {
-            data = data.replace(re, "");
-        } else {
-            throw new OperationError(`Invalid content in Base94 string.`);
-        }
     }
 
     let stringModLen = data.length % 5;

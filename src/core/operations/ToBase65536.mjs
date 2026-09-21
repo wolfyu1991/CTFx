@@ -20,7 +20,7 @@ class ToBase65536 extends Operation {
 
         this.name = "To Base65536";
         this.module = "CTF";
-        this.description = "Base65536\u89e3\u7801";
+        this.description = "Base65536\u7F16\u7801";
         this.infoURL = "https://github.com/qntm/base65536"; // Usually a Wikipedia link. Remember to remove localisation (i.e. https://wikipedia.org/etc rather than https://en.wikipedia.org/etc)
         this.inputType = "byteArray";
         this.outputType = "string";

@@ -21,7 +21,7 @@ class FromBase100 extends Operation {
 
         this.name = "From Base100";
         this.module = "CTF";
-        this.description = "Encode things into Emoji.";
+        this.description = "Decode Emoji to string.";
         this.infoURL = "https://github.com/AdamNiederer/base100"; // Usually a Wikipedia link. Remember to remove localisation (i.e. https://wikipedia.org/etc rather than https://en.wikipedia.org/etc)
         this.inputType = "string";
         this.outputType = "byteArray";

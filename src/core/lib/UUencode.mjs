@@ -83,6 +83,11 @@ export function decode(inString) {
     let outIndex = 0;
     let totalLen = 0;
 
+    // CRLF 数据若不归一化, \r 会被误当成下一行的长度字符
+    if (typeof inString === "string") {
+        inString = inString.replace(/\r\n/g, "\n");
+    }
+
     const inBytes = new Buffer(inString);
     const buffLen = inBytes.length;
     const outBytes = [];

@@ -222,8 +222,9 @@ export function jjdecode(t) {
                 data = data.substr(strUpper.length); // skip sig
 
                 let chStr = "";
-                // shouldn't be more than 2 hex chars
-                for (let j = 0; j < 2; j++) {
+                // hex digits are 2 (0x80-0xFF), 3 (0x100-0xFFF) or 4 (0x1000-0xFFFF); each is
+                // prefixed by gvsig, so greedy reading stops at the next char's own sig
+                for (let j = 0; j < 4; j++) {
                     // gv + "."+b[ c ]
                     if (0 === data.indexOf(gvsig)) {
                         data = data.substr(gvsig.length); // skip gvsig

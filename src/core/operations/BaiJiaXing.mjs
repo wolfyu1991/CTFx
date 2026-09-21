@@ -34,7 +34,7 @@ class BaiJiaXing extends Operation {
         this.checks = [
             {
                 pattern: "^[赵钱孙李周吴郑王冯陈褚卫蒋沈韩杨朱秦尤许何吕施张孔曹严华金魏陶姜戚谢邹喻福水窦章云苏潘葛奚范彭郎鲁韦昌马苗凤花方俞任袁柳唐罗薛伍余米贝姚孟顾尹江钟]+$",
-                flags: "g",
+                flags: "",
                 args: ["Decode"]
             },
         ];

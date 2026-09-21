@@ -35,7 +35,7 @@ class Subsection extends Operation {
                 "value": ""
             },
             {
-                "name": "忽略大小写（i）",
+                "name": "区分大小写",
                 "type": "boolean",
                 "value": true
             },

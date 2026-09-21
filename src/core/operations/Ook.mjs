@@ -70,7 +70,7 @@ class Ook extends Operation {
             "!?": "[",
             "?!": "]"
         };
-        input = input.replace(/[^\\.?!]+/g, "");
+        input = input.replace(/[^.?!]+/g, "");
         const len = input.length;
         let output = "";
         for (let i = 0; i < len - 1; i += 2) {

@@ -139,8 +139,8 @@ class ZeroWidth extends Operation {
         ];
         this.checks = [
             {
-                pattern: "^[‌|‍|​|﻿|‎|‏]*$",
-                flags: "g",
+                pattern: "^[\\u200b\\u200c\\u200d\\ufeff\\u200e\\u200f]+$",
+                flags: "",
                 args: ["zero-width-lib"]
             },
         ];

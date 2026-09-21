@@ -57,61 +57,68 @@ class VigenereSolver extends Operation {
             keyLen = args[1],
             bestKey = "";
 
-        if (keyLen === 0) {
-            // 猜测key长度3————12
-            for (let bestLen = 3; bestLen < 13; bestLen++) {
-                let sum = 0;
-                for (let j = 0; j < bestLen; j++) {
-                    for (let i = 0; i < 26; i++) {
-                        count[i] = 0;
-                    }
-                    for (let i = j; i < cipherMin.length; i += bestLen) {
-                        count[cipherMin[i].charCodeAt(0) - 97] += 1;
-                    }
-                    let ic = 0;
-                    const num = cipherMin.length / bestLen;
-                    for (let i = 0; i < count.length; i++) {
-                        ic += Math.pow(count[i] / num, 2);
-                    }
-                    sum += ic;
-                    // console.log(keyLen,ic);
-                }
-                // 确定密钥长度
-                if (sum / bestLen > 0.065) {
-                    keyLen = bestLen;
-                    break;
-                }
-            }
+        if (key && !/^[a-z]+$/.test(key)) {
+            throw new OperationError("密钥只能由字母组成");
         }
 
-        // console.log(bestLen)
-        for (let j = 0; j < keyLen; j++) {
-            for (let i = 0; i < 26; i++) {
-                count[i] = 0;
+        if (key) {
+            // 用户提供了密钥：直接按给定密钥解密
+            keyLen = key.length;
+            bestKey = key;
+        } else {
+            if (keyLen === 0) {
+                // 猜测key长度3————12
+                for (let bestLen = 3; bestLen < 13; bestLen++) {
+                    let sum = 0;
+                    for (let j = 0; j < bestLen; j++) {
+                        for (let i = 0; i < 26; i++) {
+                            count[i] = 0;
+                        }
+                        for (let i = j; i < cipherMin.length; i += bestLen) {
+                            count[cipherMin[i].charCodeAt(0) - 97] += 1;
+                        }
+                        let ic = 0;
+                        const num = cipherMin.length / bestLen;
+                        for (let i = 0; i < count.length; i++) {
+                            ic += Math.pow(count[i] / num, 2);
+                        }
+                        sum += ic;
+                    }
+                    // 确定密钥长度
+                    if (sum / bestLen > 0.065) {
+                        keyLen = bestLen;
+                        break;
+                    }
+                }
+                if (keyLen === 0) throw new OperationError("未能猜测出密钥长度，请指定 KeyLen 后重试");
             }
-            for (let i = j; i < cipherMin.length; i += keyLen) {
-                count[cipherMin[i].charCodeAt(0) - 97] += 1;
-            }
-            let maxDp = -1000000;
-            let besti = 0;
 
-            for (let i = 0; i < 26; i++) {
-                let curDp = 0.0;
-                for (let k = 0; k < 26; k++) {
-                    // 这里要找出频率分布匹配的key
-                    curDp += freq[k] * count[(k + i) % 26];
+            for (let j = 0; j < keyLen; j++) {
+                for (let i = 0; i < 26; i++) {
+                    count[i] = 0;
                 }
-                if (curDp > maxDp) {
-                    maxDp = curDp;
-                    besti = i;
+                for (let i = j; i < cipherMin.length; i += keyLen) {
+                    count[cipherMin[i].charCodeAt(0) - 97] += 1;
                 }
+                let maxDp = -1000000;
+                let besti = 0;
+
+                for (let i = 0; i < 26; i++) {
+                    let curDp = 0.0;
+                    for (let k = 0; k < 26; k++) {
+                        // 这里要找出频率分布匹配的key
+                        curDp += freq[k] * count[(k + i) % 26];
+                    }
+                    if (curDp > maxDp) {
+                        maxDp = curDp;
+                        besti = i;
+                    }
+                }
+                bestKey += String.fromCharCode(besti + 97);
             }
-            bestKey += String.fromCharCode(besti + 97);
+            key = bestKey;
+            if (!key) throw new OperationError("未能自动破译出密钥，请填写 Key 后重试");
         }
-        key = bestKey;
-
-        if (!key) throw new OperationError("No key entered");
-        if (!/^[a-zA-Z]+$/.test(key)) throw new OperationError("The key must consist only of letters");
 
         for (let i = 0; i < input.length; i++) {
             if (alphabet.indexOf(input[i]) >= 0) {
@@ -131,8 +138,6 @@ class VigenereSolver extends Operation {
                 fail++;
             }
         }
-        // this.args[0].value = bestKey;
-        // this.args[1].value = keyLen;
         const result = `Key:${bestKey}\nKeylen:${keyLen}\nMessage:\n`;
         return result + output;
     }

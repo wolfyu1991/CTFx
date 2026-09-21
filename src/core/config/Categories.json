@@ -175,7 +175,9 @@
             "SIGABA",
             "Flask Session Decode",
             "Flask Session Sign",
-            "Flask Session Verify"
+            "Flask Session Verify",
+            "Vigenère Decode",
+            "Vigenère Encode"
         ]
     },
     {

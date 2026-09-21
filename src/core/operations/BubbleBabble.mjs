@@ -34,7 +34,7 @@ class BubbleBabble extends Operation {
         ];
         this.checks = [
             {
-                pattern: "^x([aeiouy][bcdfghklmnprstvzx]){2}(-([bcdfghklmnprstvzx][aeiouy]){2}[bcdfghklmnprstvzx])*-([bcdfghklmnprstvzx][aeiouy]){2}x$",
+                pattern: "^x([aeiouy][bcdfghklmnprstvzx][aeiouy][bcdfghklmnprstvzx]-[bcdfghklmnprstvzx])*([aeiouy][bcdfghklmnprstvzx][aeiouy]|[aeiouy]-[aeiouy])x$",
                 flags: "i",
                 args: ["Decode"]
             },

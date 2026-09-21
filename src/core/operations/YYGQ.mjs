@@ -5,6 +5,7 @@
  */
 
 import Operation from "../Operation.mjs";
+import OperationError from "../errors/OperationError.mjs";
 
 /**
  * YYGQ operation
@@ -67,7 +68,9 @@ class YYGQ extends Operation {
         const regList = wordList.map(x => x.replace(/\s/g, ""));
         let src = input.replace(/\s/g, "");
         src = [...src].filter(x => wordList.join("").split(" ").includes(x)).join("");
-        src = src.match(RegExp(regList.join("|"), "g")).map(i => regList.indexOf(i)).join("");
+        const matched = src.match(RegExp(regList.join("|"), "g"));
+        if (!matched) throw new OperationError("输入不是有效的阴阳怪气文本");
+        src = matched.map(i => regList.indexOf(i)).join("");
         for (let i = 0; i + 8 < src.length; i++) {
             if (src[i] === "0") {
                 retval += String.fromCharCode(parseInt(src.substr(i + 1, 8), 2));

@@ -41,7 +41,7 @@ class FromBase2048 extends Operation {
         ];
         this.checks = [
             {
-                pattern: "^[\xb5\xba\xc0-\xff\u0100-\u{ffff}]{8,}$",
+                pattern: "^[\xb5\xba\xc0-\xff\u0100-\u{ffff}89AZaz07]{8,}$",
                 flags: "",
                 args: []
             },

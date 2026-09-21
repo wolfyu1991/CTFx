@@ -24,8 +24,8 @@ class LongToBytes extends Operation {
         this.outputType = "byteArray";
         this.checks = [
             {
-                pattern: "^[0-9]*$",
-                flags: "g",
+                pattern: "^[0-9]+$",
+                flags: "",
                 args: []
             }
         ];

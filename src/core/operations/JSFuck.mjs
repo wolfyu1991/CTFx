@@ -47,10 +47,9 @@ class JSFuck extends Operation {
      * @returns {string}
      */
     run(input, args) {
-        // const [firstArg, secondArg] = args;
-        if (!input) throw new OperationError("");
+        if (!input) throw new OperationError("请输入内容");
         if (args[0] === "Encode") {
-            return encode(input);
+            return encode(input, true);
         }
         return this.decode(input);
 
@@ -119,6 +118,7 @@ class JSFuck extends Operation {
             }
         }
 
+        throw new OperationError("无法识别的 JSFuck payload（仅支持 [][…][constructor](\"return eval\") 方言）");
     }
 
 }
