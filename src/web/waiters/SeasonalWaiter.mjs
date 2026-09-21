@@ -48,7 +48,7 @@ class SeasonalWaiter {
                 break;
             }
             if (i === konami.length - 1) {
-                $("body").children().toggleClass("konami");
+                [...document.body.children].forEach(el => el.classList.toggle("konami"));
                 this.kkeys = [];
             }
         }

@@ -149,7 +149,7 @@ class RecipeWaiter {
             enableOpsElement = evt.clone;
         } else {
             enableOpsElement = evt.item;
-            $(evt.item).attr("data-toggle", "popover");
+            evt.item.setAttribute("data-toggle", "popover");
         }
         this.manager.ops.enableOpsListPopovers(enableOpsElement);
 
