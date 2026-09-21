@@ -16,10 +16,10 @@ jobs:
       contents: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set node version
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24
           registry-url: "https://registry.npmjs.org"
@@ -40,14 +40,20 @@ jobs:
       - name: Production Build
         run: npx grunt prod
 
+      - name: Setup Chrome
+        id: setup-chrome
+        if: success()
+        uses: ./.github/actions/setup-chrome
+
       - name: UI Tests
+        if: success()
         run: |
           sudo apt-get install xvfb
           xvfb-run --server-args="-screen 0 1200x800x24" npx grunt testui
 
       - name: Upload Release Assets
         id: upload-release-assets
-        uses: svenstaro/upload-release-action@v2
+        uses: svenstaro/upload-release-action@29e53e917877a24fad85510ded594ab3c9ca12de # v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: build/prod/*.zip
