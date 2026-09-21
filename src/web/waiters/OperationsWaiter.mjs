@@ -7,6 +7,10 @@
 import HTMLOperation from "../HTMLOperation.mjs";
 import Sortable from "sortablejs";
 import {fuzzyMatch, calcMatchRanges} from "../../core/lib/FuzzyMatch.mjs";
+import { Collapse, Modal, Popover } from "bootstrap";
+
+// 每个操作元素的原生事件监听控制器, 供拖拽销毁时统一移除
+const opPopoverControllers = new WeakMap();
 
 
 /**
@@ -55,7 +59,7 @@ class OperationsWaiter {
         const _selectOperation = (element) => {
             element.classList.add("selected-op");
             element.scrollIntoView({block: "nearest"});
-            $(element).popover("show");
+            Popover.getOrCreateInstance(element).show();
             e.target.setAttribute("aria-activedescendant", element.id);
         };
 
@@ -65,7 +69,7 @@ class OperationsWaiter {
          */
         const _deselectOperation = (element) => {
             element.classList.remove("selected-op");
-            $(element).popover("hide");
+            Popover.getInstance(element)?.hide();
         };
 
         if (e.keyCode === 40) { // Down
@@ -93,14 +97,15 @@ class OperationsWaiter {
 
             while (searchResultsEl.firstChild) {
                 try {
-                    $(searchResultsEl.firstChild).popover("dispose");
+                    Popover.getOrCreateInstance(searchResultsEl.firstChild).dispose();
                 } catch (err) {}
                 searchResultsEl.removeChild(searchResultsEl.firstChild);
             }
 
             document.querySelector("#search").removeAttribute("aria-activedescendant");
 
-            $("#categories .show").collapse("hide");
+            document.querySelectorAll("#categories .show")
+                .forEach(el => Collapse.getInstance(el)?.hide());
             if (str) {
                 const matchedOps = this.filterOperations(str, true);
                 const matchedOpsHtml = matchedOps
@@ -201,25 +206,47 @@ class OperationsWaiter {
      */
     enableOpsListPopovers(el) {
         const self = this;
-        $(el).find("[data-toggle=popover]").addBack("[data-toggle=popover]")
-            .popover({trigger: "manual"})
-            .on("mouseenter", function(e) {
+        const targets = [...el.querySelectorAll("[data-toggle=popover]")];
+        if (el.matches("[data-toggle=popover]")) targets.unshift(el);
+
+        targets.forEach(opEl => {
+            Popover.getOrCreateInstance(opEl, {trigger: "manual"});
+            const ac = new AbortController();
+            opPopoverControllers.set(opEl, ac);
+
+            opEl.addEventListener("mouseenter", e => {
                 if (e.buttons > 0 || self.manager.recipe.dragInProgress) return; // Mouse button held down - likely dragging an operation
-                const _this = this;
-                $(this).popover("show");
-                $(".popover").on("mouseleave", function () {
-                    $(_this).popover("hide");
-                });
-            }).on("mouseleave", function () {
-                const _this = this;
-                setTimeout(function() {
-                    // Determine if the popover associated with this element is being hovered over
-                    if ($(_this).data("bs.popover") &&
-                        ($(_this).data("bs.popover").tip && !$($(_this).data("bs.popover").tip).is(":hover"))) {
-                        $(_this).popover("hide");
+                const popover = Popover.getOrCreateInstance(opEl);
+                popover.show();
+                // 悬停在弹出框本身上时保持其打开
+                const tip = popover.tip;
+                if (tip && !tip.dataset.popoverHoverBound) {
+                    tip.dataset.popoverHoverBound = "1";
+                    tip.addEventListener("mouseleave", () => popover.hide(), {signal: ac.signal});
+                }
+            }, {signal: ac.signal});
+
+            opEl.addEventListener("mouseleave", () => {
+                setTimeout(() => {
+                    // 判断该元素关联的弹出框是否正被悬停
+                    const popover = Popover.getInstance(opEl);
+                    const tip = popover?.tip;
+                    if (tip && !tip.matches(":hover")) {
+                        popover.hide();
                     }
                 }, 50);
-            });
+            }, {signal: ac.signal});
+        });
+    }
+
+    /**
+     * 销毁操作元素上的 popover 及其事件监听(拖拽等场景使用)
+     * @param {HTMLElement} el
+     */
+    disposeOpPopover(el) {
+        Popover.getInstance(el)?.dispose();
+        opPopoverControllers.get(el)?.abort();
+        opPopoverControllers.delete(el);
     }
 
 
@@ -267,13 +294,13 @@ class OperationsWaiter {
             onFilter: function (evt) {
                 const el = editableList.closest(evt.item);
                 if (el && el.parentNode) {
-                    $(el).popover("dispose");
+                    Popover.getOrCreateInstance(el).dispose();
                     el.parentNode.removeChild(el);
                 }
             },
             onEnd: function(evt) {
                 if (this.removeIntent) {
-                    $(evt.item).popover("dispose");
+                    Popover.getOrCreateInstance(evt.item).dispose();
                     evt.item.remove();
                 }
             }.bind(this),
@@ -287,8 +314,9 @@ class OperationsWaiter {
             this.removeIntent = false;
         }.bind(this));
 
-        $("#edit-favourites-list [data-toggle=popover]").popover();
-        $("#favourites-modal").modal();
+        editFavouritesList.querySelectorAll("[data-toggle=popover]")
+            .forEach(el => Popover.getOrCreateInstance(el));
+        Modal.getOrCreateInstance(document.querySelector("#favourites-modal")).show();
     }
 
 

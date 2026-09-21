@@ -7,6 +7,7 @@
 import Utils from "../../core/Utils.mjs";
 import { eolSeqToCode } from "../utils/editorUtils.mjs";
 import initFormState from "../utils/formState.mjs";
+import { Modal, Popover, Tooltip } from "bootstrap";
 
 
 /**
@@ -31,11 +32,13 @@ class ControlsWaiter {
      */
     initComponents() {
         initFormState();
-        $("[data-toggle=tooltip]").tooltip({
-            animation: false,
-            container: "body",
-            boundary: "viewport",
-            trigger: "hover"
+        document.querySelectorAll("[data-bs-toggle=tooltip]").forEach(el => {
+            Tooltip.getOrCreateInstance(el, {
+                animation: false,
+                container: "body",
+                boundary: "viewport",
+                trigger: "hover"
+            });
         });
 
         // Set number of operations in various places in the DOM
@@ -212,7 +215,7 @@ class ControlsWaiter {
         document.getElementById("save-text-compact").value = recipeStr;
 
         this.initialiseSaveLink(recipeConfig);
-        $("#save-modal").modal();
+        Modal.getOrCreateInstance(document.querySelector("#save-modal")).show();
     }
 
 
@@ -237,7 +240,7 @@ class ControlsWaiter {
      */
     loadClick() {
         this.populateLoadRecipesList();
-        $("#load-modal").modal();
+        Modal.getOrCreateInstance(document.querySelector("#load-modal")).show();
     }
 
 
@@ -356,7 +359,8 @@ class ControlsWaiter {
             this.app.setRecipeConfig(recipeConfig);
             this.app.autoBake();
 
-            $("#rec-list [data-toggle=popover]").popover();
+            document.querySelectorAll("#rec-list [data-toggle=popover]")
+                .forEach(el => Popover.getOrCreateInstance(el));
         } catch (e) {
             this.app.alert("Invalid recipe", 2000);
         }

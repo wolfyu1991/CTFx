@@ -9,6 +9,7 @@ import Sortable from "sortablejs";
 import Utils from "../../core/Utils.mjs";
 import {escapeControlChars} from "../utils/editorUtils.mjs";
 import DOMPurify from "dompurify";
+import { Popover, Tooltip } from "bootstrap";
 
 
 /**
@@ -109,18 +110,10 @@ class RecipeWaiter {
             },
             onStart: function(evt) {
                 self.dragInProgress = true;
-                // Removes popover element and event bindings from the dragged operation but not the
-                // event bindings from the one left in the operations list. Without manually removing
-                // these bindings, we cannot re-initialise the popover on the stub operation.
-                $(evt.item)
-                    .popover("dispose")
-                    .removeData("bs.popover")
-                    .off("mouseenter")
-                    .off("mouseleave")
-                    .attr("data-toggle", "popover-disabled");
-                $(evt.clone)
-                    .off(".popover")
-                    .removeData("bs.popover");
+                // 移除被拖拽操作上的 popover 及事件监听(克隆节点由 cloneNode 生成, 天然无监听),
+                // 否则无法在留下的 stub 操作上重新初始化 popover
+                self.manager.ops.disposeOpPopover(evt.item);
+                evt.item.setAttribute("data-toggle", "popover-disabled");
             },
             onEnd: this.opSortEnd.bind(this)
         });
@@ -440,7 +433,8 @@ class RecipeWaiter {
             el.classList.add("flow-control-op");
         }
 
-        $(el).find("[data-toggle='tooltip']").tooltip();
+        el.querySelectorAll("[data-bs-toggle='tooltip']")
+                .forEach(t => Tooltip.getOrCreateInstance(t));
 
         // Disable auto-bake if this is a manual op
         if (op.manualBake && this.app.autoBake_) {

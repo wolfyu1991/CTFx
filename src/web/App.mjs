@@ -6,6 +6,8 @@
 
 import Utils, { debounce } from "../core/Utils.mjs";
 import {fromBase64} from "../core/lib/Base64.mjs";
+import { Modal } from "bootstrap";
+import snackbar from "./utils/snackbar.mjs";
 import Manager from "./Manager.mjs";
 import HTMLCategory from "./HTMLCategory.mjs";
 import HTMLOperation from "./HTMLOperation.mjs";
@@ -720,7 +722,7 @@ class App {
         log.info("[" + time.toLocaleString() + "] " + str);
         if (silent) return;
 
-        this.snackbars.push($.snackbar({
+        this.snackbars.push(snackbar({
             content: str,
             timeout: timeout,
             htmlAllowed: true,
@@ -755,25 +757,33 @@ class App {
         document.getElementById("confirm-modal").style.display = "block";
 
         this.confirmClosed = false;
-        $("#confirm-modal").modal()
-            .one("show.bs.modal", function(e) {
-                this.confirmClosed = false;
-            }.bind(this))
-            .one("click", "#confirm-yes", function() {
-                this.confirmClosed = true;
-                callback.bind(scope)(true);
-                $("#confirm-modal").modal("hide");
-            }.bind(this))
-            .one("click", "#confirm-no", function() {
-                this.confirmClosed = true;
-                callback.bind(scope)(false);
-            }.bind(this))
-            .one("hide.bs.modal", function(e) {
-                if (!this.confirmClosed) {
-                    callback.bind(scope)(undefined);
-                }
-                this.confirmClosed = true;
-            }.bind(this));
+        const modalEl = document.getElementById("confirm-modal");
+        const modal = Modal.getOrCreateInstance(modalEl);
+        const once = (event, target, handler) => {
+            target.addEventListener(event, function h(e) {
+                target.removeEventListener(event, h);
+                handler(e);
+            });
+        };
+        once("show.bs.modal", modalEl, () => {
+            this.confirmClosed = false;
+        });
+        once("click", document.getElementById("confirm-yes"), () => {
+            this.confirmClosed = true;
+            callback.bind(scope)(true);
+            modal.hide();
+        });
+        once("click", document.getElementById("confirm-no"), () => {
+            this.confirmClosed = true;
+            callback.bind(scope)(false);
+        });
+        once("hide.bs.modal", modalEl, () => {
+            if (!this.confirmClosed) {
+                callback.bind(scope)(undefined);
+            }
+            this.confirmClosed = true;
+        });
+        modal.show();
     }
 
 

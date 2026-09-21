@@ -344,21 +344,21 @@ class StatusBarPanel {
      */
     constructLHS() {
         return `
-            <span data-toggle="tooltip" title="字符" data-help-title="字符" data-help="这个数字代表${this.label}框中的字符数。<br><br>CRLF换行符算作两个字符，会影响总数。">
+            <span data-bs-toggle="tooltip" title="字符" data-help-title="字符" data-help="这个数字代表${this.label}框中的字符数。<br><br>CRLF换行符算作两个字符，会影响总数。">
                 <i class="material-icons">abc</i>
                 <span class="stats-length-value"></span>
             </span>
-            <span data-toggle="tooltip" title="行数"  data-help-title="行数" data-help="这个数字代表${this.label}框中文本的行数。换行符类型可在状态栏最右侧手工切换。">
+            <span data-bs-toggle="tooltip" title="行数"  data-help-title="行数" data-help="这个数字代表${this.label}框中文本的行数。换行符类型可在状态栏最右侧手工切换。">
                 <i class="material-icons">sort</i>
                 <span class="stats-lines-value"></span>
             </span>
 
-            <span class="sel-info" data-toggle="tooltip" title="选中区域" data-help-title="选中区域" data-help="这些数字代表当前选择范围的开头和结尾偏移量以及选择了多少个字符。如果有多个选择区域，这些数字代表最近选择的那个区域。 ">
+            <span class="sel-info" data-bs-toggle="tooltip" title="选中区域" data-help-title="选中区域" data-help="这些数字代表当前选择范围的开头和结尾偏移量以及选择了多少个字符。如果有多个选择区域，这些数字代表最近选择的那个区域。 ">
                 <i class="material-icons">highlight_alt</i>
                 <span class="sel-start-value"></span>\u279E<span class="sel-end-value"></span>
                 (<span class="sel-length-value"></span> 选中)
             </span>
-            <span class="cur-offset-info" data-toggle="tooltip" title="光标偏移量" data-help-title="光标偏移量" data-help="这个数字代表目前光标所在的${this.label}字符位置。<br><br>CRLF换行符算作两个字符，会影响总数。">
+            <span class="cur-offset-info" data-bs-toggle="tooltip" title="光标偏移量" data-help-title="光标偏移量" data-help="这个数字代表目前光标所在的${this.label}字符位置。<br><br>CRLF换行符算作两个字符，会影响总数。">
                 <i class="material-icons">location_on</i>
                 <span class="cur-offset-value"></span>
             </span>`;
@@ -386,13 +386,13 @@ class StatusBarPanel {
         }
 
         return `
-            <span class="baking-time-info" style="display: none" data-toggle="tooltip" data-html="true" title="处理时间" data-help-title="处理时间" data-help="处理时间指从输入框中读取、处理，到显示在输出框中的总计用时。<br><br>“线程开销”值指数据在处理线程间传递以及垃圾回收消耗的时间。此时间不计入处理时间，由于受操作系统和浏览器影响，此时间上下浮动范围较大。">
+            <span class="baking-time-info" style="display: none" data-bs-toggle="tooltip" data-bs-html="true" title="处理时间" data-help-title="处理时间" data-help="处理时间指从输入框中读取、处理，到显示在输出框中的总计用时。<br><br>“线程开销”值指数据在处理线程间传递以及垃圾回收消耗的时间。此时间不计入处理时间，由于受操作系统和浏览器影响，此时间上下浮动范围较大。">
                 <i class="material-icons">schedule</i>
                 <span class="baking-time-value"></span>ms
             </span>
 
             <div class="cm-status-bar-select chr-enc-select" data-help-title="${this.label} character encoding" data-help="${chrEncHelpText}">
-                <span class="cm-status-bar-select-btn" data-toggle="tooltip" data-html="true" data-placement="left" title="${this.label} character encoding">
+                <span class="cm-status-bar-select-btn" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="left" title="${this.label} character encoding">
                     <i class="material-icons">text_fields</i> <span class="chr-enc-value">Raw Bytes</span>
                 </span>
                 <div class="cm-status-bar-select-content">
@@ -412,7 +412,7 @@ class StatusBarPanel {
             </div>
 
             <div class="cm-status-bar-select eol-select" data-help-title="${this.label} EOL sequence" data-help="${eolHelpText}">
-                <span class="cm-status-bar-select-btn" data-toggle="tooltip" data-html="true" data-placement="left" title="End of line sequence">
+                <span class="cm-status-bar-select-btn" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="left" title="End of line sequence">
                     <i class="material-icons">keyboard_return</i> <span class="eol-value"></span>
                 </span>
                 <div class="cm-status-bar-select-content no-select">

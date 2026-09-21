@@ -7,6 +7,7 @@
 /**
  * Waiter to handle keybindings to CyberChef functions (i.e. Bake, Step, Save, Load etc.)
  */
+import { Modal } from "bootstrap";
 class BindingsWaiter {
 
     /**
@@ -300,7 +301,7 @@ class BindingsWaiter {
         document.querySelector("#help-modal .modal-body").innerHTML = helpText;
         document.querySelector("#help-modal #help-title").innerHTML = helpTitle;
 
-        $("#help-modal").modal();
+        Modal.getOrCreateInstance(document.querySelector("#help-modal")).show();
     }
 
 }

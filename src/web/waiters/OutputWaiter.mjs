@@ -40,6 +40,7 @@ import {statusBar} from "../utils/statusBar.mjs";
 import {htmlPlugin} from "../utils/htmlWidget.mjs";
 import {copyOverride} from "../utils/copyOverride.mjs";
 import {eolCodeToSeq, eolCodeToName, renderSpecialChar} from "../utils/editorUtils.mjs";
+import { Modal, Tooltip } from "bootstrap";
 
 
 /**
@@ -1511,7 +1512,7 @@ class OutputWaiter {
         switchButton.classList.add("spin");
         switchButton.disabled = true;
         switchButton.firstElementChild.innerHTML = "autorenew";
-        $(switchButton).tooltip("hide");
+        Tooltip.getInstance(switchButton)?.hide();
 
         const activeData = await this.getDishBuffer(this.getOutputDish(activeTab));
 
@@ -1543,12 +1544,12 @@ class OutputWaiter {
             this.app.columnSplitter.collapse(1);
             this.app.ioSplitter.collapse(0);
 
-            el.setAttribute("data-original-title", "恢复");
+            Tooltip.getOrCreateInstance(el).setContent({ ".tooltip-inner": "恢复" });
             el.setAttribute("aria-label", "Restore output pane");
             el.querySelector("i").innerHTML = "fullscreen_exit";
         } else {
             document.body.classList.remove("output-maximised");
-            el.setAttribute("data-original-title", "最大化");
+            Tooltip.getOrCreateInstance(el).setContent({ ".tooltip-inner": "最大化" });
             el.setAttribute("aria-label", "Maximise output pane");
             el.querySelector("i").innerHTML = "fullscreen";
             this.app.initialiseSplitter(false);
@@ -1561,7 +1562,7 @@ class OutputWaiter {
      */
     findTab() {
         this.filterTabSearch();
-        $("#output-tab-modal").modal();
+        Modal.getOrCreateInstance(document.querySelector("#output-tab-modal")).show();
     }
 
     /**
@@ -1672,7 +1673,7 @@ class OutputWaiter {
         const inputNum = parseInt(e.target.getAttribute("inputNum"), 10);
         if (inputNum <= 0) return;
 
-        $("#output-tab-modal").modal("hide");
+        Modal.getOrCreateInstance(document.querySelector("#output-tab-modal")).hide();
         this.changeTab(inputNum, this.app.options.syncTabs);
     }
 

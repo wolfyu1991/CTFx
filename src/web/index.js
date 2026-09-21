@@ -9,17 +9,6 @@ import "./stylesheets/index.js";
 
 // Libs
 import "arrive";
-import "snackbarjs";
-// Bootstrap 4 组件(modal/tooltip/popover/collapse/tab/dropdown 等)。
-// 原先由 bootstrap-material-design 的入口顺带加载, 移除该库后需显式导入。
-import "bootstrap/js/src/alert";
-import "bootstrap/js/src/button";
-import "bootstrap/js/src/collapse";
-import "bootstrap/js/src/dropdown";
-import "bootstrap/js/src/modal";
-import "bootstrap/js/src/popover";
-import "bootstrap/js/src/tab";
-import "bootstrap/js/src/tooltip";
 import moment from "moment-timezone";
 import * as CanvasComponents from "../core/lib/CanvasComponents.mjs";
 

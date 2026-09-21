@@ -7,6 +7,7 @@
 /**
  * Waiter to handle events related to the CyberChef options.
  */
+import { Modal } from "bootstrap";
 class OptionsWaiter {
 
     /**
@@ -62,7 +63,7 @@ class OptionsWaiter {
      */
     optionsClick(e) {
         e.preventDefault();
-        $("#options-modal").modal();
+        Modal.getOrCreateInstance(document.querySelector("#options-modal")).show();
     }
 
 

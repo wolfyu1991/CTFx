@@ -122,7 +122,7 @@
             <div id="preloader-error" class="loading-error"></div>
         </div>
         <!-- End preloader overlay -->
-        <button type="button" aria-label="Edit Favourites" class="btn btn-warning bmd-btn-icon" id="edit-favourites" data-toggle="tooltip" title="编辑收藏">
+        <button type="button" aria-label="Edit Favourites" class="btn btn-warning bmd-btn-icon" id="edit-favourites" data-bs-toggle="tooltip" title="编辑收藏">
             <i class="material-icons" aria-hidden="true">star</i>
         </button>
         <div tabindex="0" id="content-wrapper">
@@ -132,10 +132,10 @@
                         功能区
                         <span class="pane-controls">
                             <span class="op-count"></span>
-                            <button type="button" class="btn btn-primary bmd-btn-icon" id="options" data-toggle="tooltip" title="设置" data-help-title="Options and Settings" data-help="Configurable options to change how CyberChef behaves. These settings are stored in your browser's local storage, meaning they will persist between sessions that use the same browser profile.">
+                            <button type="button" class="btn btn-primary bmd-btn-icon" id="options" data-bs-toggle="tooltip" title="设置" data-help-title="Options and Settings" data-help="Configurable options to change how CyberChef behaves. These settings are stored in your browser's local storage, meaning they will persist between sessions that use the same browser profile.">
                                 <i class="material-icons">settings</i>
                             </button>
-                            <button type="button" class="btn btn-primary bmd-btn-icon" id="support" data-toggle="modal" data-target="#support-modal" title="帮助" data-help-title="About / Support" data-help="This pane provides information about the CyberChef web app, how to use some of the features, and how to raise bug reports.">
+                            <button type="button" class="btn btn-primary bmd-btn-icon" id="support" data-bs-toggle="modal" data-bs-target="#support-modal" title="帮助" data-help-title="About / Support" data-help="This pane provides information about the CyberChef web app, how to use some of the features, and how to raise bug reports.">
                                 <i class="material-icons">help</i>
                             </button>
                         </span>
@@ -153,16 +153,16 @@
                     <div class="title no-select">
                         执行区
                         <span class="pane-controls hide-on-maximised-output">
-                            <button type="button" aria-label="Hide arguments" class="btn btn-primary bmd-btn-icon" id="hide-icon" data-toggle="tooltip" title="折叠" hide-args="false" data-help-title="Hiding every Operation's argument view in a Recipe" data-help="Clicking 'Hide arguments' will hide all the argument views for every Operation in the Recipe, to save space when you have too many Operation in your Recipe">
+                            <button type="button" aria-label="Hide arguments" class="btn btn-primary bmd-btn-icon" id="hide-icon" data-bs-toggle="tooltip" title="折叠" hide-args="false" data-help-title="Hiding every Operation's argument view in a Recipe" data-help="Clicking 'Hide arguments' will hide all the argument views for every Operation in the Recipe, to save space when you have too many Operation in your Recipe">
                                 <i class="material-icons">keyboard_arrow_up</i>
                             </button>
-                            <button type="button" aria-label="Save recipe" class="btn btn-primary bmd-btn-icon" id="save" data-toggle="tooltip" title="保存" data-help-title="保存操作流程" data-help="<p>操作流程可以用不同格式表示，然后保存留待后续使用。你可以把操作流程复制下来保存到文件里，或者存到浏览器的本地存储当中。</p><ul><li><b>直链：</b>最简单的方法是保存一个直链，可以直接从地址栏复制（当输入内容或流程改变时会自动更新），或者从“保存流程”框中复制。当你访问这个链接的时候，输入内容和操作流程会自动恢复。</li><li><b>流程文本：</b>特殊的文本格式，简短而且具有一定可读性。这是用在地址栏当中的格式。</li><li><b>JSON格式：</b>使用空格和缩进的JSON文本，比较可读。</li><li><b>精简JSON：</b>精简过的JSON，可读性差一些。</li><li><b>本地存储：</b>你可以给操作流程起个名字直接保存到浏览器的本地存储。不清理缓存的情况下，同一个浏览器可以直接从“载入流程”功能中载入之前保存的流程。注意：如果浏览器本地存储被清空了，这些流程和数据也没了。</li></ul>">
+                            <button type="button" aria-label="Save recipe" class="btn btn-primary bmd-btn-icon" id="save" data-bs-toggle="tooltip" title="保存" data-help-title="保存操作流程" data-help="<p>操作流程可以用不同格式表示，然后保存留待后续使用。你可以把操作流程复制下来保存到文件里，或者存到浏览器的本地存储当中。</p><ul><li><b>直链：</b>最简单的方法是保存一个直链，可以直接从地址栏复制（当输入内容或流程改变时会自动更新），或者从“保存流程”框中复制。当你访问这个链接的时候，输入内容和操作流程会自动恢复。</li><li><b>流程文本：</b>特殊的文本格式，简短而且具有一定可读性。这是用在地址栏当中的格式。</li><li><b>JSON格式：</b>使用空格和缩进的JSON文本，比较可读。</li><li><b>精简JSON：</b>精简过的JSON，可读性差一些。</li><li><b>本地存储：</b>你可以给操作流程起个名字直接保存到浏览器的本地存储。不清理缓存的情况下，同一个浏览器可以直接从“载入流程”功能中载入之前保存的流程。注意：如果浏览器本地存储被清空了，这些流程和数据也没了。</li></ul>">
                                 <i class="material-icons" aria-hidden="true">save</i>
                             </button>
-                            <button type="button" aria-label="Load recipe" class="btn btn-primary bmd-btn-icon" id="load" data-toggle="tooltip" title="载入" data-help-title="载入操作流程" data-help="<p>之前保存过的流程可以用以下方式载入：</p><ul><li>如果你保存了直链，直接在浏览器访问那个直链即可，数据和流程会自动恢复。</li><li>如果你有之前保存的文本格式，粘贴到“载入流程”框里然后点击“载入”即可。</li><li>如果你把流程保存到了浏览器本地存储，那么“载入流程”框的下拉列表里应该直接能选到。如果选不到，确认下是不是浏览器缓存被清空过，那样的话之前的数据就没了。</li></ul>">
+                            <button type="button" aria-label="Load recipe" class="btn btn-primary bmd-btn-icon" id="load" data-bs-toggle="tooltip" title="载入" data-help-title="载入操作流程" data-help="<p>之前保存过的流程可以用以下方式载入：</p><ul><li>如果你保存了直链，直接在浏览器访问那个直链即可，数据和流程会自动恢复。</li><li>如果你有之前保存的文本格式，粘贴到“载入流程”框里然后点击“载入”即可。</li><li>如果你把流程保存到了浏览器本地存储，那么“载入流程”框的下拉列表里应该直接能选到。如果选不到，确认下是不是浏览器缓存被清空过，那样的话之前的数据就没了。</li></ul>">
                                 <i class="material-icons" aria-hidden="true">folder</i>
                             </button>
-                            <button type="button" aria-label="Clear recipe" class="btn btn-primary bmd-btn-icon" id="clr-recipe" data-toggle="tooltip" title="清除" data-help-title="清除操作流程" data-help="点击“清除流程”按钮会把整个操作流程列表清空。不影响输入框的数据，但如果“自动执行”勾选上了，输出框的内容会因此改变。">
+                            <button type="button" aria-label="Clear recipe" class="btn btn-primary bmd-btn-icon" id="clr-recipe" data-bs-toggle="tooltip" title="清除" data-help-title="清除操作流程" data-help="点击“清除流程”按钮会把整个操作流程列表清空。不影响输入框的数据，但如果“自动执行”勾选上了，输出框的内容会因此改变。">
                                 <i class="material-icons" aria-hidden="true">delete</i>
                             </button>
                         </span>
@@ -171,7 +171,7 @@
 
                     <div id="controls" class="no-select hide-on-maximised-output">
                         <div id="controls-content">
-                            <button type="button" class="mx-2 btn btn-lg btn-secondary" id="step" data-toggle="tooltip" title="Step through the recipe" data-help-title="Stepping through the Recipe" data-help="<p>The Step button allows you to execute one operation at a time, rather than running the whole Recipe from beginning to end.</p><p>Step allows you to inspect the data at each stage of the Recipe and understand what is being passed to the next operation.</p>">
+                            <button type="button" class="mx-2 btn btn-lg btn-secondary" id="step" data-bs-toggle="tooltip" title="Step through the recipe" data-help-title="Stepping through the Recipe" data-help="<p>The Step button allows you to execute one operation at a time, rather than running the whole Recipe from beginning to end.</p><p>Step allows you to inspect the data at each stage of the Recipe and understand what is being passed to the next operation.</p>">
                                 Step
                             </button>
 
@@ -199,21 +199,21 @@
                             <label for="input-text">输入区</label>
                             <span class="pane-controls">
                                 <div class="io-info" id="input-files-info"></div>
-                                <button type="button" aria-label="Add new input tab" class="btn btn-primary bmd-btn-icon" id="btn-new-tab" data-toggle="tooltip" title="新标签页" data-help-title="标签页" data-help="<p>你可以创建多个标签页来支持多个输入数据。这些标签有独立的字符编码和换行符设定。</p><p>地址栏的直链只会显示 当前选中标签页的内容。</p>">
+                                <button type="button" aria-label="Add new input tab" class="btn btn-primary bmd-btn-icon" id="btn-new-tab" data-bs-toggle="tooltip" title="新标签页" data-help-title="标签页" data-help="<p>你可以创建多个标签页来支持多个输入数据。这些标签有独立的字符编码和换行符设定。</p><p>地址栏的直链只会显示 当前选中标签页的内容。</p>">
                                     <i class="material-icons" aria-hidden="true">add</i>
                                 </button>
-                                <button type="button" aria-label="Open folder as input" class="btn btn-primary bmd-btn-icon" id="btn-open-folder" data-toggle="tooltip" title="打开文件夹" data-help-title="打开文件夹" data-help="<p>你可以打开一整个文件夹，当中的每个文件都会显示到独立的标签页中。</p><p>支持同时打开很多文件，但浏览器性能会受到影响，尤其是文件很大的时候。</p><p>文件夹也可以直接用鼠标拖进输入框。</p>">
+                                <button type="button" aria-label="Open folder as input" class="btn btn-primary bmd-btn-icon" id="btn-open-folder" data-bs-toggle="tooltip" title="打开文件夹" data-help-title="打开文件夹" data-help="<p>你可以打开一整个文件夹，当中的每个文件都会显示到独立的标签页中。</p><p>支持同时打开很多文件，但浏览器性能会受到影响，尤其是文件很大的时候。</p><p>文件夹也可以直接用鼠标拖进输入框。</p>">
                                     <i class="material-icons" aria-hidden="true">folder_open</i>
                                     <input type="file" id="open-folder" style="display: none" multiple directory webkitdirectory>
                                 </button>
-                                <button type="button" aria-label="Open file as input" class="btn btn-primary bmd-btn-icon" id="btn-open-file" data-toggle="tooltip" title="打开文件" data-help-title="打开文件" data-help="<p>文件可以单独或者一起载入，使用打开文件按钮或者直接拖进输入框。</p><p>硬件足够给力的话，大文件（至少500MB）都是可以处理的，当然有些操作执行起来可能会变得超级慢。</p>">
+                                <button type="button" aria-label="Open file as input" class="btn btn-primary bmd-btn-icon" id="btn-open-file" data-bs-toggle="tooltip" title="打开文件" data-help-title="打开文件" data-help="<p>文件可以单独或者一起载入，使用打开文件按钮或者直接拖进输入框。</p><p>硬件足够给力的话，大文件（至少500MB）都是可以处理的，当然有些操作执行起来可能会变得超级慢。</p>">
                                     <i class="material-icons" aria-hidden="true">input</i>
                                     <input type="file" id="open-file" style="display: none" multiple>
                                 </button>
-                                <button type="button" aria-label="Clear input and output" class="btn btn-primary bmd-btn-icon" id="clr-io" data-toggle="tooltip" title="清空输入输出" data-help-title="清空输入输出" data-help="点击“清空输入输出”按钮会把输入和输出框的内容清空，不影响操作流程。">
+                                <button type="button" aria-label="Clear input and output" class="btn btn-primary bmd-btn-icon" id="clr-io" data-bs-toggle="tooltip" title="清空输入输出" data-help-title="清空输入输出" data-help="点击“清空输入输出”按钮会把输入和输出框的内容清空，不影响操作流程。">
                                     <i class="material-icons" aria-hidden="true">delete</i>
                                 </button>
-                                <button type="button" aria-label="Reset pane layout" class="btn btn-primary bmd-btn-icon" id="reset-layout" data-toggle="tooltip" title="重置窗口布局" data-help-title="重置窗口布局" data-help="界面的每个框都是能拖拽调整大小的，这个按钮把每个框的大小恢复成默认状态。">
+                                <button type="button" aria-label="Reset pane layout" class="btn btn-primary bmd-btn-icon" id="reset-layout" data-bs-toggle="tooltip" title="重置窗口布局" data-help-title="重置窗口布局" data-help="界面的每个框都是能拖拽调整大小的，这个按钮把每个框的大小恢复成默认状态。">
                                     <i class="material-icons" aria-hidden="true">view_compact</i>
                                 </button>
                             </span>
@@ -224,7 +224,7 @@
                                 <span id="btn-previous-input-tab" class="input-tab-buttons">
                                     &lt;
                                 </span>
-                                <span id="btn-input-tab-dropdown" class="input-tab-buttons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span id="btn-input-tab-dropdown" class="input-tab-buttons" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     ···
                                 </span>
                                 <div class="dropdown-menu" aria-labelledby="btn-input-tab-dropdown">
@@ -253,29 +253,29 @@
                             <label for="output-text">输出区</label>
                             <span class="pane-controls">
                                 <div class="io-info" id="bake-info"></div>
-                                <button type="button" class="btn btn-primary bmd-btn-icon" id="save-all-to-file" data-toggle="tooltip" title="保存为压缩包" style="display: none" data-help-title="把所有的输出内容保存到ZIP压缩包" data-help="<p>当操作多个标签页的输入时，可以用这个按钮把处理结果打包成ZIP压缩包。</p><p>使用“执行”按钮来执行所有的输入内容。</p><p>你可以指定输出文件的扩展名，或者让程序自行检测，对于无法确定的类型，会使用“.dat”扩展名。</p>">
+                                <button type="button" class="btn btn-primary bmd-btn-icon" id="save-all-to-file" data-bs-toggle="tooltip" title="保存为压缩包" style="display: none" data-help-title="把所有的输出内容保存到ZIP压缩包" data-help="<p>当操作多个标签页的输入时，可以用这个按钮把处理结果打包成ZIP压缩包。</p><p>使用“执行”按钮来执行所有的输入内容。</p><p>你可以指定输出文件的扩展名，或者让程序自行检测，对于无法确定的类型，会使用“.dat”扩展名。</p>">
                                         <i class="material-icons">archive</i>
                                     </button>
-                                <button type="button" aria-label="save" class="btn btn-primary bmd-btn-icon" id="save-to-file" data-toggle="tooltip" title="保存到文件" data-help-title="保存输出内容到文件" data-help="将当前选中的输出数据储存到文件中。你可以指定文件名和扩展名。程序会尝试检测对应的扩展名，如果无法成功检测，则会默认使用“.dat”，可以手动修改。">
+                                <button type="button" aria-label="save" class="btn btn-primary bmd-btn-icon" id="save-to-file" data-bs-toggle="tooltip" title="保存到文件" data-help-title="保存输出内容到文件" data-help="将当前选中的输出数据储存到文件中。你可以指定文件名和扩展名。程序会尝试检测对应的扩展名，如果无法成功检测，则会默认使用“.dat”，可以手动修改。">
                                     <i class="material-icons" aria-hidden="true">save</i>
                                 </button>
-                                <button type="button" aria-label="copy content" class="btn btn-primary bmd-btn-icon" id="copy-output" data-toggle="tooltip" title="Copy raw output to the clipboard" data-help-title="Copying raw output to the clipboard" data-help="<p>Data can be copied from the Output in the normal way by selecting text and copying it. This button provides a quick way of copying the entire output to the clipboard without having to select it. It directly copies the raw data rather than selecting text in the Output editor. Each method will have the same result, but the button may be more efficient for large Outputs as it does not require any DOM interaction.</p>">
+                                <button type="button" aria-label="copy content" class="btn btn-primary bmd-btn-icon" id="copy-output" data-bs-toggle="tooltip" title="Copy raw output to the clipboard" data-help-title="Copying raw output to the clipboard" data-help="<p>Data can be copied from the Output in the normal way by selecting text and copying it. This button provides a quick way of copying the entire output to the clipboard without having to select it. It directly copies the raw data rather than selecting text in the Output editor. Each method will have the same result, but the button may be more efficient for large Outputs as it does not require any DOM interaction.</p>">
                                     <i class="material-icons" aria-hidden="true">content_copy</i>
                                 </button>
-                                <button type="button" aria-label="replace input with output" class="btn btn-primary bmd-btn-icon" id="switch" data-toggle="tooltip" title="填写到输入框" data-help-title="将输出内容填写到输入框" data-help="<p>此按钮将当前选中的输出框内容覆盖到输入框中。</p><p>输入框的字符编码和换行符会自动调整为输出框的当前设定。</p>">
+                                <button type="button" aria-label="replace input with output" class="btn btn-primary bmd-btn-icon" id="switch" data-bs-toggle="tooltip" title="填写到输入框" data-help-title="将输出内容填写到输入框" data-help="<p>此按钮将当前选中的输出框内容覆盖到输入框中。</p><p>输入框的字符编码和换行符会自动调整为输出框的当前设定。</p>">
                                     <i class="material-icons" aria-hidden="true">open_in_browser</i>
                                 </button>
-                                <button type="button" aria-label="maximise output pane" class="btn btn-primary bmd-btn-icon" id="maximise-output" data-toggle="tooltip" title="最大化" data-help-title="最大化输出框" data-help="这个按钮会让输出框最大化，把可用操作栏、操作流程栏和输入框都隐藏掉。再点击一次会还原。">
+                                <button type="button" aria-label="maximise output pane" class="btn btn-primary bmd-btn-icon" id="maximise-output" data-bs-toggle="tooltip" title="最大化" data-help-title="最大化输出框" data-help="这个按钮会让输出框最大化，把可用操作栏、操作流程栏和输入框都隐藏掉。再点击一次会还原。">
                                     <i class="material-icons" aria-hidden="true">fullscreen</i>
                                 </button>
                             </span>
 
-                            <button type="button" class="btn btn-primary bmd-btn-icon hidden" id="magic" data-toggle="tooltip" title="Magic!" data-html="true" data-help-title="CyberChef Magic!" data-help="<p>One of CyberChef's best features is its ability to automatically detect which Operations might make more sense of your data. The Magic button appears when CyberChef has a suggested Operation for you based on the data in the Output.</p><p>Clicking on the button will add the suggested Operation(s) to your Recipe.</p><p>This background Magic detection will inspect your Output up to three levels deep and attempt to unwrap it using a range of techniques. For more control, use the 'Magic' operation, which allows you to configure greater depth and filter based on various parameters.</p><p>Further information about CyberChef Magic can be found <a href='https://github.com/gchq/CyberChef/wiki/Automatic-detection-of-encoded-data-using-CyberChef-Magic'>here</a>.</p>">
+                            <button type="button" class="btn btn-primary bmd-btn-icon hidden" id="magic" data-bs-toggle="tooltip" title="Magic!" data-bs-html="true" data-help-title="CyberChef Magic!" data-help="<p>One of CyberChef's best features is its ability to automatically detect which Operations might make more sense of your data. The Magic button appears when CyberChef has a suggested Operation for you based on the data in the Output.</p><p>Clicking on the button will add the suggested Operation(s) to your Recipe.</p><p>This background Magic detection will inspect your Output up to three levels deep and attempt to unwrap it using a range of techniques. For more control, use the 'Magic' operation, which allows you to configure greater depth and filter based on various parameters.</p><p>Further information about CyberChef Magic can be found <a href='https://github.com/gchq/CyberChef/wiki/Automatic-detection-of-encoded-data-using-CyberChef-Magic'>here</a>.</p>">
                                 <svg width="22" height="22" viewBox="0 0 24 24">
                                     <path d="M7.5,5.6L5,7L6.4,4.5L5,2L7.5,3.4L10,2L8.6,4.5L10,7L7.5,5.6M19.5,15.4L22,14L20.6,16.5L22,19L19.5,17.6L17,19L18.4,16.5L17,14L19.5,15.4M22,2L20.6,4.5L22,7L19.5,5.6L17,7L18.4,4.5L17,2L19.5,3.4L22,2M13.34,12.78L15.78,10.34L13.66,8.22L11.22,10.66L13.34,12.78M14.37,7.29L16.71,9.63C17.1,10 17.1,10.65 16.71,11.04L5.04,22.71C4.65,23.1 4,23.1 3.63,22.71L1.29,20.37C0.9,20 0.9,19.35 1.29,18.96L12.96,7.29C13.35,6.9 14,6.9 14.37,7.29Z" />
                                 </svg>
                             </button>
-                            <span id="stale-indicator" class="hidden" data-toggle="tooltip" title="The output is stale. The input or recipe has changed since this output was generated. Bake again to get the new value." data-help-title="Staleness indicator" data-help="The staleness indicator is displayed when the Recipe or Input has changed but the Output has not yet been updated to reflect this. It is most commonly displayed when Auto-bake is turned off and indicates that you need to Bake in order to see an accurate Output.">
+                            <span id="stale-indicator" class="hidden" data-bs-toggle="tooltip" title="The output is stale. The input or recipe has changed since this output was generated. Bake again to get the new value." data-help-title="Staleness indicator" data-help="The staleness indicator is displayed when the Recipe or Input has changed but the Output has not yet been updated to reflect this. It is most commonly displayed when Auto-bake is turned off and indicates that you need to Bake in order to see an accurate Output.">
                                 <i class="material-icons">access_time</i>
                             </span>
                         </div>
@@ -285,7 +285,7 @@
                                 <span id="btn-previous-output-tab" class="output-tab-buttons">
                                     &lt;
                                 </span>
-                                <span id="btn-output-tab-dropdown" class="output-tab-buttons" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
+                                <span id="btn-output-tab-dropdown" class="output-tab-buttons" data-bs-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
                                     ···
                                 </span>
                                 <div class="dropdown-menu" aria-labelledby="btn-input-tab-dropdown">
@@ -325,13 +325,13 @@
                         <div class="form-group">
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="#chef-format" role="tab" data-toggle="tab">Chef format</a>
+                                    <a class="nav-link active" href="#chef-format" role="tab" data-bs-toggle="tab">Chef format</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#clean-json" role="tab" data-toggle="tab">Clean JSON</a>
+                                    <a class="nav-link" href="#clean-json" role="tab" data-bs-toggle="tab">Clean JSON</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#compact-json" role="tab" data-toggle="tab">Compact JSON</a>
+                                    <a class="nav-link" href="#compact-json" role="tab" data-bs-toggle="tab">Compact JSON</a>
                                 </li>
                             </ul>
                             <div class="tab-content" id="save-texts">
@@ -353,8 +353,8 @@
                         </div>
                     </div>
                     <div class="modal-footer" id="save-footer">
-                        <button type="button" class="btn btn-primary" id="save-button" data-dismiss="modal">Save</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>
+                        <button type="button" class="btn btn-primary" id="save-button" data-bs-dismiss="modal">Save</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Done</button>
                     </div>
                     <div class="modal-body">
                         <div class="form-group" id="save-link-group">
@@ -394,9 +394,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="load-button" data-dismiss="modal">Load</button>
+                        <button type="button" class="btn btn-primary" id="load-button" data-bs-dismiss="modal">Load</button>
                         <button type="button" class="btn btn-danger" id="load-delete-button">Delete</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     </div>
                 </div>
             </div>
@@ -511,7 +511,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" id="reset-options">恢复默认</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
                     </div>
                 </div>
             </div>
@@ -519,7 +519,7 @@
 
         <div class="modal fade" id="favourites-modal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content" data-help-proxy="a[data-target='#catFavourites']">
+                <div class="modal-content" data-help-proxy="a[data-bs-target='#catFavourites']">
                     <div class="modal-header">
                         <h5 class="modal-title">编辑收藏工具</h5>
                     </div>
@@ -535,9 +535,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="reset-favourites">恢复默认</button>
-                        <button type="button" class="btn btn-success" data-dismiss="modal" id="save-favourites">保存</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="reset-favourites">恢复默认</button>
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="save-favourites">保存</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">取消</button>
                     </div>
                 </div>
             </div>
@@ -560,22 +560,22 @@
 
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <a id="tab-1" class="nav-link active" href="#faqs" aria-controls="profile" role="tab" data-toggle="tab">
+                                <a id="tab-1" class="nav-link active" href="#faqs" aria-controls="profile" role="tab" data-bs-toggle="tab">
                                     FAQs
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a id="tab-2" class="nav-link" href="#report-bug" aria-controls="messages" role="tab" data-toggle="tab">
+                                <a id="tab-2" class="nav-link" href="#report-bug" aria-controls="messages" role="tab" data-bs-toggle="tab">
                                     上报BUG
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a id="tab-3" class="nav-link" href="#about" aria-controls="messages" role="tab" data-toggle="tab">
+                                <a id="tab-3" class="nav-link" href="#about" aria-controls="messages" role="tab" data-bs-toggle="tab">
                                     关于
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a id="tab-4" class="nav-link" href="#keybindings" aria-controls="messages" role="tab" data-toggle="tab">
+                                <a id="tab-4" class="nav-link" href="#keybindings" aria-controls="messages" role="tab" data-bs-toggle="tab">
                                     快捷键
                                 </a>
                             </li>
@@ -583,7 +583,7 @@
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="faqs" data-help-title="FAQ pane" data-help="The Frequently Asked Questions pane provides answers to some of the most common queries people have about CyberChef.">
                                 <br>
-                                <a class="btn btn-primary" data-toggle="collapse" data-target="#faq-contextual-help">
+                                <a class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#faq-contextual-help">
                                     X功能是如何工作的？
                                 </a>
                                 <div class="collapse" id="faq-contextual-help">
@@ -591,7 +591,7 @@
                                 </div>
                                 <br>
 
-                                <a class="btn btn-primary" data-toggle="collapse" data-target="#faq-examples">
+                                <a class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#faq-examples">
                                     可以用CyberChef做哪些事情？
                                 </a>
                                 <div class="collapse" id="faq-examples">
@@ -609,7 +609,7 @@
                                 </div>
                                 <br>
 
-                                <a class="btn btn-primary" data-toggle="collapse" data-target="#faq-load-files">
+                                <a class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#faq-load-files">
                                     可以直接从文件中加载输入吗？
                                 </a>
                                 <div class="collapse" id="faq-load-files">
@@ -619,7 +619,7 @@
                                 </div>
                                 <br>
 
-                                <a class="btn btn-primary" data-toggle="collapse" data-target="#faq-fork">
+                                <a class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#faq-fork">
                                     我如何一次对多个输入运行操作X？
                                 </a>
                                 <div class="collapse" id="faq-fork">
@@ -630,7 +630,7 @@
                                 </div>
                                 <br>
 
-                                <a class="btn btn-primary" data-toggle="collapse" data-target="#faq-magic">
+                                <a class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#faq-magic">
                                     "Magic"操作是如何工作的？
                                 </a>
                                 <div class="collapse" id="faq-magic">
@@ -677,7 +677,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
                     </div>
                 </div>
             </div>
@@ -694,7 +694,7 @@
                         <button type="button" class="btn btn-success" id="confirm-yes">
                             Yes
                         </button>
-                        <button type="button" class="btn btn-danger" id="confirm-no" data-dismiss="modal">
+                        <button type="button" class="btn btn-danger" id="confirm-no" data-bs-dismiss="modal">
                             No
                         </button>
                     </div>
@@ -738,7 +738,7 @@
                                 <input type="text" class="form-control toggle-string" id="input-filter">
                             </div>
                             <div class="input-group-append">
-                                <button class="btn btn-secondary dropdown-toggle" id="input-filter-button" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CONTENT</button>
+                                <button class="btn btn-secondary dropdown-toggle" id="input-filter-button" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CONTENT</button>
                                 <div class="dropdown-menu toggle-dropdown">
                                     <a class="dropdown-item" id="input-filter-content">Content</a>
                                     <a class="dropdown-item" id="input-filter-filename">Filename</a>
@@ -755,7 +755,7 @@
                     </div>
                     <div class="modal-footer">
                             <button type="button" class="btn btn-primary" id="input-filter-refresh">Refresh</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -817,7 +817,7 @@
                     </div>
                     <div class="modal-footer">
                             <button type="button" class="btn btn-primary" id="output-filter-refresh">Refresh</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -825,7 +825,7 @@
 
         <div class="modal fade" id="download-modal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content" data-help-proxy="a[data-target='#download-modal']">
+                <div class="modal-content" data-help-proxy="a[data-bs-target='#download-modal']">
                     <div class="modal-header">
                         <h5 class="modal-title">Download CyberChef</h5>
                     </div>
@@ -854,7 +854,7 @@
                         <a href="<%= htmlWebpackPlugin.options.downloadZipFilename %>" download class="btn btn-outline-primary">Download ZIP file</a>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ok</button>
                     </div>
                 </div>
             </div>
@@ -874,7 +874,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="help-ok" data-dismiss="modal">Ok</button>
+                        <button type="button" class="btn btn-primary" id="help-ok" data-bs-dismiss="modal">Ok</button>
                     </div>
                 </div>
             </div>

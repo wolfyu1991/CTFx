@@ -43,6 +43,7 @@ import {
 import {statusBar} from "../utils/statusBar.mjs";
 import {fileDetailsPanel} from "../utils/fileDetails.mjs";
 import {eolCodeToSeq, eolCodeToName, renderSpecialChar} from "../utils/editorUtils.mjs";
+import { Modal, Tooltip } from "bootstrap";
 
 
 /**
@@ -719,7 +720,8 @@ class InputWaiter {
      * @param {event} e
      */
     toggleFileDetails(e) {
-        $("[data-toggle='tooltip']").tooltip("hide");
+        document.querySelectorAll("[data-bs-toggle='tooltip']")
+            .forEach(el => Tooltip.getInstance(el)?.hide());
         this.fileDetails.hidden = !this.fileDetails.hidden;
         this.inputEditorView.dispatch({
             effects: this.inputEditorConf.fileDetailsPanel.reconfigure(
@@ -1600,7 +1602,7 @@ class InputWaiter {
      */
     findTab() {
         this.filterTabSearch();
-        $("#input-tab-modal").modal();
+        Modal.getOrCreateInstance(document.querySelector("#input-tab-modal")).show();
     }
 
     /**
@@ -1671,7 +1673,7 @@ class InputWaiter {
         const inputNum = parseInt(e.target.getAttribute("inputNum"), 10);
         if (inputNum <= 0) return;
 
-        $("#input-tab-modal").modal("hide");
+        Modal.getOrCreateInstance(document.querySelector("#input-tab-modal")).hide();
         this.changeTab(inputNum, this.app.options.syncTabs);
     }
 
