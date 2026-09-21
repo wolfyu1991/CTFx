@@ -189,13 +189,6 @@ module.exports = {
                 type: "asset/source"
             },
             {
-                test: /bootstrap-material-design/,
-                loader: "imports-loader",
-                options: {
-                    imports: "default popper.js/dist/umd/popper.js Popper"
-                }
-            },
-            {
                 test: /blueimp-load-image/,
                 loader: "imports-loader",
                 options: {

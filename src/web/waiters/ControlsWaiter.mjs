@@ -6,6 +6,7 @@
 
 import Utils from "../../core/Utils.mjs";
 import { eolSeqToCode } from "../utils/editorUtils.mjs";
+import initFormState from "../utils/formState.mjs";
 
 
 /**
@@ -29,7 +30,7 @@ class ControlsWaiter {
      * Initialise Bootstrap components
      */
     initComponents() {
-        $("body").bootstrapMaterialDesign();
+        initFormState();
         $("[data-toggle=tooltip]").tooltip({
             animation: false,
             container: "body",
