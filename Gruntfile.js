@@ -26,7 +26,11 @@ module.exports = function (grunt) {
     // Tasks
     grunt.registerTask("dev",
         "A persistent task which creates a development build whenever source files are modified.",
-        ["clean:dev", "clean:config", "exec:generateConfig", "concurrent:dev"]);
+        function () {
+            // 标记开发模式, 使 webpack 跳过生产压缩等仅发布需要的步骤
+            process.env.NODE_ENV = "development";
+            grunt.task.run(["clean:dev", "clean:config", "exec:generateConfig", "concurrent:dev"]);
+        });
 
     grunt.registerTask("prod",
         "Creates a production-ready build. Use the --msg flag to add a compile message.",

@@ -6,6 +6,10 @@ const { ModifySourcePlugin, ReplaceOperation } = require("modify-source-webpack-
 const path = require("path");
 const zlib = require("zlib");
 
+// 开发模式跳过生产压缩(gzip/brotli 对 118MB 开发产物压缩需数十秒且与缓存无关),
+// 由 Gruntfile 的 dev 任务设置 NODE_ENV=development
+const isDev = process.env.NODE_ENV === "development";
+
 /**
  * Webpack configuration details for use with Grunt.
  *
@@ -38,6 +42,20 @@ const zlib = require("zlib");
 
 
 module.exports = {
+    // webpack 5 持久化缓存: 二次启动与热更新大幅提速
+    // 出问题时删除 node_modules/.cache 目录即可强制全量重建
+    cache: {
+        type: "filesystem",
+        buildDependencies: {
+            config: [__filename, path.resolve(__dirname, "babel.config.js")]
+        }
+    },
+    // grunt dev 每次启动会重新生成配置文件(内容不变, mtime 变化),
+    // 默认按时间戳校验会导致缓存整链失效, 这里改为按内容哈希校验
+    snapshot: {
+        module: { hash: true, timestamp: false },
+        resolve: { hash: true, timestamp: false }
+    },
     output: {
         publicPath: "",
         globalObject: "this",
@@ -66,21 +84,23 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: "assets/[name].css"
         }),
-        new CompressionPlugin({
-            filename: "[path][base].gz",
-            algorithm: "gzip",
-            test: /\.(js|css|html)$/,
-        }),
-        new CompressionPlugin({
-            filename: "[path][base].br",
-            algorithm: "brotliCompress",
-            test: /\.(js|css|html)$/,
-            compressionOptions: {
-                params: {
-                    [zlib.constants.BROTLI_PARAM_QUALITY]: 11,
+        ...(isDev ? [] : [
+            new CompressionPlugin({
+                filename: "[path][base].gz",
+                algorithm: "gzip",
+                test: /\.(js|css|html)$/,
+            }),
+            new CompressionPlugin({
+                filename: "[path][base].br",
+                algorithm: "brotliCompress",
+                test: /\.(js|css|html)$/,
+                compressionOptions: {
+                    params: {
+                        [zlib.constants.BROTLI_PARAM_QUALITY]: 11,
+                    },
                 },
-            },
-        }),
+            }),
+        ]),
         new CopyWebpackPlugin({
             patterns: [
                 {
