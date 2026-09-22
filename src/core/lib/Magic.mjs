@@ -15,6 +15,22 @@ import chiSquared from "chi-squared";
  * @license Apache-2.0
  */
 class Magic {
+    /**
+     * 一次顶层推测执行允许的总烘焙次数上限。
+     * 匹配操作数可达 20+(如 base64 字符集同时命中十余种编码字母表),
+     * depth=3 的组合爆炸理论可达数十万次烘焙, 此配额将总开销钉在常数级。
+     */
+    static BAKE_BUDGET = 200;
+
+    /**
+     * 将整个输入当作一个大整数处理的操作: 对长输入是平方级开销,
+     * Magic 试探时对这类操作只用 2KB 样本执行。
+     */
+    static BIG_NUMBER_OPS = new Set([
+        "From Base32", "From Base58", "From Base62", "From Base85",
+        "From Base91", "From Base92", "From Base94", "From Base100",
+    ]);
+
 
     /**
      * Magic constructor.
@@ -22,12 +38,14 @@ class Magic {
      * @param {ArrayBuffer} buf
      * @param {Object[]} [opCriteria]
      * @param {Object} [prevOp]
+     * @param {number} [bakeBudget=…] - 见 BAKE_BUDGET 说明(接受 {remaining} 计数对象以在递归分支间共享)
      */
-    constructor(buf, opCriteria=Magic._generateOpCriteria(), prevOp=null) {
+    constructor(buf, opCriteria=Magic._generateOpCriteria(), prevOp=null, bakeBudget={remaining: Magic.BAKE_BUDGET}) {
         this.inputBuffer = new Uint8Array(buf);
         this.inputStr = Utils.arrayBufferToStr(buf);
         this.opCriteria = opCriteria;
         this.prevOp = prevOp;
+        this.bakeBudget = bakeBudget;
     }
 
     /**
@@ -37,7 +55,11 @@ class Magic {
      */
     findMatchingInputOps() {
         const matches = [],
-            inputEntropy = this.calcEntropy();
+            inputEntropy = this.calcEntropy(),
+            // 编码识别只需头部样本: 全文匹配在超长输入上既慢(灾难性回溯)
+            // 又会触发 V8 无上限量词的栈溢出(RangeError), 采样后两者皆免疫,
+            // 且对"整串都属于某字母表"的判定结论与全文一致
+            sample = this.inputStr.slice(0, 8192);
 
         this.opCriteria.forEach(check => {
             // If the input doesn't lie in the required entropy range, move on
@@ -47,7 +69,7 @@ class Magic {
                 return;
             // If the input doesn't match the pattern, move on
             if (check.pattern &&
-                !check.pattern.test(this.inputStr))
+                !check.pattern.test(sample))
                 return;
 
             matches.push(check);
@@ -292,7 +314,7 @@ class Magic {
             if (op.output && !this.outputCheckPasses(output, op.output))
                 return;
 
-            const magic = new Magic(output, this.opCriteria, OperationConfig[op.op]),
+            const magic = new Magic(output, this.opCriteria, OperationConfig[op.op], this.bakeBudget),
                 speculativeResults = await magic.speculativeExecution(
                     depth-1, extLang, intensive, [...recipeConfig, opConfig], op.useful, crib);
 
@@ -304,7 +326,7 @@ class Magic {
             const bfEncodings = await this.bruteForce();
 
             await Promise.all(bfEncodings.map(async enc => {
-                const magic = new Magic(enc.data, this.opCriteria, undefined),
+                const magic = new Magic(enc.data, this.opCriteria, undefined, this.bakeBudget),
                     bfResults = await magic.speculativeExecution(
                         depth-1, extLang, false, [...recipeConfig, enc.conf], false, crib);
 
@@ -369,6 +391,14 @@ class Magic {
      */
     async _runRecipe(recipeConfig, input=this.inputBuffer) {
         input = input instanceof ArrayBuffer ? input : input.buffer;
+        // 共享烘焙配额(对象引用, 递归分支间真正共享): 耗尽后剪掉该分支,
+        // 限制分支组合爆炸的总开销
+        if (--this.bakeBudget.remaining < 0) return new ArrayBuffer();
+        // "整输入即大数"类操作对长输入是 O(n²)(BigNumber 解析+进制转换),
+        // 且耗时随内容剧烈波动不可预测; 试探只用 512B 样本, 判定方向足够
+        if (Magic.BIG_NUMBER_OPS.has(recipeConfig[0]?.op)) {
+            input = input.slice(0, 512);
+        }
         const dish = new Dish();
         dish.set(input, Dish.ARRAY_BUFFER);
 

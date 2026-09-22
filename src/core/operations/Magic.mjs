@@ -65,7 +65,12 @@ class Magic extends Operation {
         const ings = state.opList[state.progress].ingValues,
             [depth, intensive, extLang, crib] = ings,
             dish = state.dish,
-            magic = new MagicLib(await dish.get(Dish.ARRAY_BUFFER)),
+            // 仅分析头部 8KB 样本: 编码/语言/熵的判定结论与全文一致,
+            // 而推测执行的烘焙成本与分支数由此获得上界(部分操作如 From Base62
+            // 将整个输入当作一个大数运算, 对长输入是 O(n²)), 长输入不再卡死;
+            // 命中建议后由实际配方处理全量数据
+            input = (await dish.get(Dish.ARRAY_BUFFER)).slice(0, 8192),
+            magic = new MagicLib(input),
             cribRegex = (crib && crib.length) ? new RegExp(crib, "i") : null;
         let options = await magic.speculativeExecution(depth, extLang, intensive, [], false, cribRegex);
 
