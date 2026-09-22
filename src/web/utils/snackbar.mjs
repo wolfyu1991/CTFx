@@ -48,3 +48,5 @@ export function snackbar({content, timeout = 3000, htmlAllowed = false, onClose}
         remove: () => snackbar.remove()
     };
 }
+
+export default snackbar;

@@ -210,7 +210,7 @@ class OperationsWaiter {
         if (el.matches("[data-toggle=popover]")) targets.unshift(el);
 
         targets.forEach(opEl => {
-            Popover.getOrCreateInstance(opEl, {trigger: "manual"});
+            Popover.getOrCreateInstance(opEl, {trigger: "manual", html: true, container: "body"});
             const ac = new AbortController();
             opPopoverControllers.set(opEl, ac);
 
