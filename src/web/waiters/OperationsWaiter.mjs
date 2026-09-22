@@ -97,7 +97,7 @@ class OperationsWaiter {
 
             while (searchResultsEl.firstChild) {
                 try {
-                    Popover.getOrCreateInstance(searchResultsEl.firstChild).dispose();
+                    Popover.getInstance(searchResultsEl.firstChild)?.hide();
                 } catch (err) {}
                 searchResultsEl.removeChild(searchResultsEl.firstChild);
             }
@@ -244,21 +244,13 @@ class OperationsWaiter {
      * @param {HTMLElement} el
      */
     disposeOpPopover(el) {
+        // 仅移除监听并收起浮层, 绝不调用 dispose:
+        // 对显示/过渡中的实例销毁会使其过渡完成回调
+        // (_isWithActiveTrigger)读到已清空的内部状态而抛出未捕获异常。
+        // 实例注册在 BS5 的元素数据表上, 随元素离开 DOM 由 GC 自动回收。
         opPopoverControllers.get(el)?.abort();
         opPopoverControllers.delete(el);
-        const inst = Popover.getInstance(el);
-        if (!inst) return;
-        const tip = inst.tip;
-        if (tip && tip.classList.contains("show")) {
-            // 正在显示/过渡中: 走正常隐藏, 过渡结束后再销毁,
-            // 避免 dispose 与过渡回调竞争触发空引用异常
-            el.addEventListener("hidden.bs.popover", () => {
-                try { inst.dispose(); } catch { /* 实例已销毁 */ }
-            }, { once: true });
-            inst.hide();
-        } else {
-            try { inst.dispose(); } catch { /* 实例已销毁 */ }
-        }
+        try { Popover.getInstance(el)?.hide(); } catch { /* 已隐藏 */ }
     }
 
 
@@ -306,13 +298,13 @@ class OperationsWaiter {
             onFilter: function (evt) {
                 const el = editableList.closest(evt.item);
                 if (el && el.parentNode) {
-                    Popover.getOrCreateInstance(el).dispose();
+                    Popover.getInstance(el)?.hide();
                     el.parentNode.removeChild(el);
                 }
             },
             onEnd: function(evt) {
                 if (this.removeIntent) {
-                    Popover.getOrCreateInstance(evt.item).dispose();
+                    Popover.getInstance(evt.item)?.hide();
                     evt.item.remove();
                 }
             }.bind(this),

@@ -81,6 +81,7 @@
     "mini-css-extract-plugin": "2.10.2",
     "modify-source-webpack-plugin": "^4.1.0",
     "nightwatch": "^3.16.0",
+    "playwright": "^1.63.0",
     "postcss": "^8.5.28",
     "postcss-css-variables": "^0.19.0",
     "postcss-import": "^16.2.0",
