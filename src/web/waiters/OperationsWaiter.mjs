@@ -244,9 +244,21 @@ class OperationsWaiter {
      * @param {HTMLElement} el
      */
     disposeOpPopover(el) {
-        Popover.getInstance(el)?.dispose();
         opPopoverControllers.get(el)?.abort();
         opPopoverControllers.delete(el);
+        const inst = Popover.getInstance(el);
+        if (!inst) return;
+        const tip = inst.tip;
+        if (tip && tip.classList.contains("show")) {
+            // 正在显示/过渡中: 走正常隐藏, 过渡结束后再销毁,
+            // 避免 dispose 与过渡回调竞争触发空引用异常
+            el.addEventListener("hidden.bs.popover", () => {
+                try { inst.dispose(); } catch { /* 实例已销毁 */ }
+            }, { once: true });
+            inst.hide();
+        } else {
+            try { inst.dispose(); } catch { /* 实例已销毁 */ }
+        }
     }
 
 
